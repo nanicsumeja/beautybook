@@ -1,106 +1,134 @@
 @extends('layouts.app')
 
+@section('body-class', 'lux-auth-page')
+@section('main-class', '')
+
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
-                    Prijava
-                </div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+<section class="lux-login">
 
-                        <!-- Korisničko ime -->
-                        <div class="row mb-3">
-                            <label for="username" class="col-md-4 col-form-label text-md-end">
-                                Korisničko ime
-                            </label>
+    <img
+        src="{{ asset('images/beauty-hero.png') }}"
+        alt=""
+        class="lux-login-background"
+    >
 
-                            <div class="col-md-6">
-                                <input
-                                    id="username"
-                                    type="text"
-                                    class="form-control @error('username') is-invalid @enderror"
-                                    name="username"
-                                    value="{{ old('username') }}"
-                                    required
-                                    autocomplete="username"
-                                    autofocus
-                                >
+    <div class="lux-login-overlay"></div>
 
-                                @error('username')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+    <a href="{{ route('welcome') }}" class="lux-login-logo">
+        BEAUTYBOOK
+    </a>
 
-                        <!-- Lozinka -->
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">
-                                Lozinka
-                            </label>
+    <a href="{{ route('welcome') }}" class="lux-back">
+         BACK
+    </a>
 
-                            <div class="col-md-6">
-                                <input
-                                    id="password"
-                                    type="password"
-                                    class="form-control @error('password') is-invalid @enderror"
-                                    name="password"
-                                    required
-                                    autocomplete="current-password"
-                                >
+    <div class="lux-login-form">
 
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <!-- Zapamti me -->
-                        <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input
-                                        class="form-check-input"
-                                        type="checkbox"
-                                        name="remember"
-                                        id="remember"
-                                        {{ old('remember') ? 'checked' : '' }}
-                                    >
-
-                                    <label class="form-check-label" for="remember">
-                                        Zapamti me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Dugme -->
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Prijavi se
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        Zaboravili ste lozinku?
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-
-                    </form>
-                </div>
-            </div>
+        <div class="lux-login-heading">
+            <span>SIGN IN</span>
+            <h2>Welcome back.</h2>
         </div>
+
+        <form method="POST" action="{{ route('login') }}" novalidate>
+            @csrf
+
+            <div class="lux-field">
+
+                <label for="username">
+                    USERNAME
+                </label>
+
+                <input
+                    id="username"
+                    type="text"
+                    name="username"
+                    value="{{ old('username') }}"
+                    autocomplete="username"
+                    required
+                    autofocus
+                >
+
+                @error('username')
+                    <span class="lux-error">
+                        {{ $message }}
+                    </span>
+                @enderror
+
+            </div>
+
+
+            <div class="lux-field">
+
+                <label for="password">
+                    PASSWORD
+                </label>
+
+                <input
+                    id="password"
+                    type="password"
+                    name="password"
+                    autocomplete="current-password"
+                    required
+                >
+
+                @error('password')
+                    <span class="lux-error">
+                        {{ $message }}
+                    </span>
+                @enderror
+
+            </div>
+
+
+            <div class="lux-login-options">
+
+                <label class="lux-remember">
+
+                    <input
+                        type="checkbox"
+                        name="remember"
+                        {{ old('remember') ? 'checked' : '' }}
+                    >
+
+                    <span>Remember me</span>
+
+                </label>
+
+                @if (Route::has('password.request'))
+                    <a href="{{ route('password.request') }}">
+                        Forgot password?
+                    </a>
+                @endif
+
+            </div>
+
+
+            <button type="submit" class="lux-submit">
+                SIGN IN
+            </button>
+
+
+            @if (Route::has('register'))
+
+                <div class="lux-register">
+
+                    <span>New here?</span>
+
+                    <a href="{{ route('register') }}">
+                        CREATE ACCOUNT
+                    </a>
+
+                </div>
+
+            @endif
+
+        </form>
+
     </div>
-</div>
+
+    
+
+</section>
+
 @endsection

@@ -1,178 +1,203 @@
 @extends('layouts.app')
 
+@section('body-class', 'campaign-register-page')
+@section('main-class', '')
+
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Registracija') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+<section class="campaign-register">
 
-                        <!-- Ime -->
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">
-                                Ime
-                            </label>
+    <!-- HEADER -->
+    <a href="{{ route('welcome') }}" class="campaign-logo">
+        BEAUTYBOOK
+    </a>
 
-                            <div class="col-md-6">
-                                <input id="name"
-                                       type="text"
-                                       class="form-control @error('name') is-invalid @enderror"
-                                       name="name"
-                                       value="{{ old('name') }}"
-                                       required
-                                       autocomplete="name"
-                                       autofocus>
+    <a href="{{ route('welcome') }}" class="campaign-back">
+        ← BACK
+    </a>
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
 
-                        <!-- Prezime -->
-                        <div class="row mb-3">
-                            <label for="surname" class="col-md-4 col-form-label text-md-end">
-                                Prezime
-                            </label>
+    <!-- LIJEVA STRANA / FORMA -->
+    <div class="campaign-form-side">
 
-                            <div class="col-md-6">
-                                <input id="surname"
-                                       type="text"
-                                       class="form-control @error('surname') is-invalid @enderror"
-                                       name="surname"
-                                       value="{{ old('surname') }}"
-                                       required>
+        <div class="campaign-form">
 
-                                @error('surname')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+            <header class="campaign-heading">
+                <span>JOIN BEAUTYBOOK</span>
+                <h1>Create account.</h1>
+            </header>
 
-                        <!-- Korisničko ime -->
-                        <div class="row mb-3">
-                            <label for="username" class="col-md-4 col-form-label text-md-end">
-                                Korisničko ime
-                            </label>
 
-                            <div class="col-md-6">
-                                <input id="username"
-                                       type="text"
-                                       class="form-control @error('username') is-invalid @enderror"
-                                       name="username"
-                                       value="{{ old('username') }}"
-                                       required>
+            <form method="POST" action="{{ route('register') }}" novalidate>
+                @csrf
 
-                                @error('username')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
 
-                        <!-- Email -->
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">
-                                Email adresa
-                            </label>
+                <div class="campaign-row">
 
-                            <div class="col-md-6">
-                                <input id="email"
-                                       type="email"
-                                       class="form-control @error('email') is-invalid @enderror"
-                                       name="email"
-                                       value="{{ old('email') }}"
-                                       required
-                                       autocomplete="email">
+                    <div class="campaign-field">
+                        <label for="name">FIRST NAME</label>
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+                        <input
+                            id="name"
+                            type="text"
+                            name="name"
+                            value="{{ old('name') }}"
+                            required
+                            oninvalid="this.setCustomValidity('Please fill out this field.')"
+                            oninput="this.setCustomValidity('')"    
+                        >
 
-                        <!-- Telefon -->
-                        <div class="row mb-3">
-                            <label for="phone" class="col-md-4 col-form-label text-md-end">
-                                Broj telefona
-                            </label>
+                        @error('name')
+                            <span class="campaign-error">{{ $message }}</span>
+                        @enderror
+                    </div>
 
-                            <div class="col-md-6">
-                                <input id="phone"
-                                       type="text"
-                                       class="form-control @error('phone') is-invalid @enderror"
-                                       name="phone"
-                                       value="{{ old('phone') }}">
 
-                                @error('phone')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+                    <div class="campaign-field">
+                        <label for="surname">LAST NAME</label>
 
-                        <!-- Lozinka -->
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">
-                                Lozinka
-                            </label>
+                        <input
+                            id="surname"
+                            type="text"
+                            name="surname"
+                            value="{{ old('surname') }}"
+                            required
+                            oninvalid="this.setCustomValidity('Please fill out this field.')"
+oninput="this.setCustomValidity('')"
+                        >
 
-                            <div class="col-md-6">
-                                <input id="password"
-                                       type="password"
-                                       class="form-control @error('password') is-invalid @enderror"
-                                       name="password"
-                                       required
-                                       autocomplete="new-password">
+                        @error('surname')
+                            <span class="campaign-error">{{ $message }}</span>
+                        @enderror
+                    </div>
 
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <!-- Potvrda lozinke -->
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">
-                                Potvrdi lozinku
-                            </label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm"
-                                       type="password"
-                                       class="form-control"
-                                       name="password_confirmation"
-                                       required
-                                       autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Registruj se
-                                </button>
-                            </div>
-                        </div>
-
-                    </form>
                 </div>
-            </div>
+
+
+                <div class="campaign-field">
+                    <label for="username">USERNAME</label>
+
+                    <input
+                        id="username"
+                        type="text"
+                        name="username"
+                        value="{{ old('username') }}"
+                        required
+                        oninvalid="this.setCustomValidity('Please fill out this field.')"
+oninput="this.setCustomValidity('')"
+                    >
+
+                    @error('username')
+                        <span class="campaign-error">{{ $message }}</span>
+                    @enderror
+                </div>
+
+
+                <div class="campaign-field">
+                    <label for="email">EMAIL</label>
+
+                    <input
+                        id="email"
+                        type="email"
+                        name="email"
+                        value="{{ old('email') }}"
+                        required
+                        oninvalid="this.setCustomValidity('Please fill out this field.')"
+oninput="this.setCustomValidity('')"
+                    >
+                
+
+                    @error('email')
+                        <span class="campaign-error">{{ $message }}</span>
+                    @enderror
+                </div>
+
+
+                <div class="campaign-field">
+                    <label for="phone">PHONE</label>
+
+                    <input
+                        id="phone"
+                        type="text"
+                        name="phone"
+                        value="{{ old('phone') }}"
+                        oninvalid="this.setCustomValidity('Please fill out this field.')"
+oninput="this.setCustomValidity('')"
+                    >
+
+                    @error('phone')
+                        <span class="campaign-error">{{ $message }}</span>
+                    @enderror
+                </div>
+
+
+                <div class="campaign-row">
+
+                    <div class="campaign-field">
+                        <label for="password">PASSWORD</label>
+
+                        <input
+                            id="password"
+                            type="password"
+                            name="password"
+                            required
+                            oninvalid="this.setCustomValidity('Please fill out this field.')"
+oninput="this.setCustomValidity('')"
+                        >
+
+                        @error('password')
+                            <span class="campaign-error">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+
+                    <div class="campaign-field">
+                        <label for="password-confirm">
+                            CONFIRM PASSWORD
+                        </label>
+
+                        <input
+                            id="password-confirm"
+                            type="password"
+                            name="password_confirmation"
+                            required
+                            oninvalid="this.setCustomValidity('Please fill out this field.')"
+oninput="this.setCustomValidity('')"
+                        >
+                    </div>
+
+                </div>
+
+
+                <button type="submit" class="campaign-submit">
+                    CREATE ACCOUNT
+                </button>
+
+
+                <div class="campaign-signin">
+                    <span>Already have an account?</span>
+
+                    <a href="{{ route('login') }}">
+                        SIGN IN
+                    </a>
+                </div>
+
+            </form>
+
         </div>
+
     </div>
+
+
+    <!-- DESNA CAMPAIGN FOTOGRAFIJA -->
+<div class="campaign-floating-visual">
+    <img
+        src="{{ asset('images/register-beauty.png') }}"
+        alt="BeautyBook"
+    >
 </div>
+</div>
+
+</section>
+
 @endsection
