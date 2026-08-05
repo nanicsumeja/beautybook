@@ -102,6 +102,12 @@
 >
     Manage appointments
 </a>
+<a
+    href="{{ route('owner.employees.index') }}"
+    class="btn btn-outline-dark px-4 py-3"
+>
+    Manage employees
+</a>
             </div>
 
         </div>

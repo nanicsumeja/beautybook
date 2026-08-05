@@ -11,10 +11,17 @@
 
     <!-- Fontovi -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+
+    <link
+        href="https://fonts.bunny.net/css?family=cormorant-garamond:400,500,600,700|manrope:400,500,600,700&display=swap"
+        rel="stylesheet"
+    >
 
     <!-- Stilovi i skripte -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite([
+        'resources/sass/app.scss',
+        'resources/js/app.js'
+    ])
 </head>
 
 <body class="@yield('body-class')">
@@ -43,18 +50,183 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div
+                        class="collapse navbar-collapse"
+                        id="navbarSupportedContent"
+                    >
 
+                        <!-- Navigacija prema ulozi korisnika -->
                         <ul class="navbar-nav me-auto">
+
+                            @auth
+
+                                <!-- OWNER -->
+                                @if (Auth::user()->role === 'owner')
+
+                                    <li class="nav-item">
+                                        <a
+                                            href="{{ route('owner.dashboard') }}"
+                                            class="nav-link {{
+                                                request()->routeIs(
+                                                    'owner.dashboard'
+                                                )
+                                                    ? 'active'
+                                                    : ''
+                                            }}"
+                                        >
+                                            Dashboard
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a
+                                            href="{{ route(
+                                                'owner.services.index'
+                                            ) }}"
+                                            class="nav-link {{
+                                                request()->routeIs(
+                                                    'owner.services.*'
+                                                )
+                                                    ? 'active'
+                                                    : ''
+                                            }}"
+                                        >
+                                            Services
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a
+                                            href="{{ route(
+                                                'owner.reservations.index'
+                                            ) }}"
+                                            class="nav-link {{
+                                                request()->routeIs(
+                                                    'owner.reservations.*'
+                                                )
+                                                    ? 'active'
+                                                    : ''
+                                            }}"
+                                        >
+                                            Appointments
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a
+                                            href="{{ route(
+                                                'owner.employees.index'
+                                            ) }}"
+                                            class="nav-link {{
+                                                request()->routeIs(
+                                                    'owner.employees.*'
+                                                )
+                                                    ? 'active'
+                                                    : ''
+                                            }}"
+                                        >
+                                            Employees
+                                        </a>
+                                    </li>
+
+                                @endif
+
+
+                                <!-- CLIENT -->
+                                @if (Auth::user()->role === 'client')
+
+                                    <li class="nav-item">
+                                        <a
+                                            href="{{ route(
+                                                'client.dashboard'
+                                            ) }}"
+                                            class="nav-link {{
+                                                request()->routeIs(
+                                                    'client.dashboard'
+                                                )
+                                                    ? 'active'
+                                                    : ''
+                                            }}"
+                                        >
+                                            Dashboard
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a
+                                            href="{{ route(
+                                                'client.services.index'
+                                            ) }}"
+                                            class="nav-link {{
+                                                request()->routeIs(
+                                                    'client.services.*'
+                                                )
+                                                    ? 'active'
+                                                    : ''
+                                            }}"
+                                        >
+                                            Services
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a
+                                            href="{{ route(
+                                                'client.reservations.index'
+                                            ) }}"
+                                            class="nav-link {{
+                                                request()->routeIs(
+                                                    'client.reservations.*'
+                                                )
+                                                    ? 'active'
+                                                    : ''
+                                            }}"
+                                        >
+                                            My appointments
+                                        </a>
+                                    </li>
+
+                                @endif
+
+
+                                <!-- EMPLOYEE -->
+                                @if (Auth::user()->role === 'employee')
+
+                                    <li class="nav-item">
+                                        <a
+                                            href="{{ route(
+                                                'employee.dashboard'
+                                            ) }}"
+                                            class="nav-link {{
+                                                request()->routeIs(
+                                                    'employee.dashboard'
+                                                )
+                                                    ? 'active'
+                                                    : ''
+                                            }}"
+                                        >
+                                            Dashboard
+                                        </a>
+                                    </li>
+
+                                @endif
+
+                            @endauth
+
                         </ul>
 
+
+                        <!-- Desna strana navigacije -->
                         <ul class="navbar-nav ms-auto">
 
                             @guest
 
                                 @if (Route::has('login'))
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('login') }}">
+                                        <a
+                                            class="nav-link"
+                                            href="{{ route('login') }}"
+                                        >
                                             Prijava
                                         </a>
                                     </li>
@@ -62,7 +234,10 @@
 
                                 @if (Route::has('register'))
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('register') }}">
+                                        <a
+                                            class="nav-link"
+                                            href="{{ route('register') }}"
+                                        >
                                             Registracija
                                         </a>
                                     </li>
@@ -92,8 +267,14 @@
                                         <a
                                             class="dropdown-item"
                                             href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();"
+                                            onclick="
+                                                event.preventDefault();
+                                                document
+                                                    .getElementById(
+                                                        'logout-form'
+                                                    )
+                                                    .submit();
+                                            "
                                         >
                                             Odjava
                                         </a>
