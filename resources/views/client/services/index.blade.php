@@ -79,9 +79,15 @@
                                     KM
                                 </strong>
 
-                                <span class="small text-muted">
-                                    Available
-                                </span>
+                                <a
+    href="{{ route(
+        'client.reservations.create',
+        $service
+    ) }}"
+    class="btn btn-sm btn-dark"
+>
+    Book appointment
+</a>
                             </div>
 
                         </div>

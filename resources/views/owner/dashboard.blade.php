@@ -96,6 +96,12 @@
                 >
                     Manage services
                 </a>
+                <a
+    href="{{ route('owner.reservations.index') }}"
+    class="btn btn-outline-dark px-4 py-3"
+>
+    Manage appointments
+</a>
             </div>
 
         </div>

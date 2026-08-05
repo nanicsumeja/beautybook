@@ -13,5 +13,11 @@
 >
     Browse services
 </a>
+<a
+    href="{{ route('client.reservations.index') }}"
+    class="btn btn-outline-dark"
+>
+    My appointments
+</a>
 </div>
 @endsection
