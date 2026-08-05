@@ -266,18 +266,27 @@
                                 @endif
                             </div>
 
-                            <div class="salon-employee-action">
+                           <div class="salon-employee-action">
 
-                                <a
-                                    href="{{ route(
-                                        'owner.employees.edit',
-                                        $employee
-                                    ) }}"
-                                >
-                                    Edit
-                                </a>
+    <a
+        href="{{ route(
+            'owner.employees.working-hours.edit',
+            $employee
+        ) }}"
+    >
+        Working hours
+    </a>
 
-                            </div>
+    <a
+        href="{{ route(
+            'owner.employees.edit',
+            $employee
+        ) }}"
+    >
+        Edit
+    </a>
+
+</div>
 
                         </article>
 

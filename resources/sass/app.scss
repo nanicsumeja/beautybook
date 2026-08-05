@@ -7234,3 +7234,657 @@
         transform: translateY(0) scale(1);
     }
 }
+/* =========================================================
+   BEAUTYBOOK — OWNER WORKING HOURS
+========================================================= */
+
+.salon-working-hours-page {
+    background: #ebe7e1;
+}
+
+.salon-working-hours-main {
+    min-height: calc(100vh - 68px);
+    padding: 22px 30px 26px !important;
+}
+
+.salon-working-hours-main .working-hours-page.container {
+    width: 100%;
+    max-width: none;
+    height: calc(100vh - 116px);
+
+    display: flex;
+    flex-direction: column;
+
+    margin: 0;
+    padding: 0 !important;
+}
+
+
+/* HEADER */
+
+.salon-working-hours-page
+.working-hours-page
+> .d-flex:first-child {
+    flex-shrink: 0;
+
+    align-items: center !important;
+
+    margin-bottom: 16px !important;
+    padding: 0 5px;
+}
+
+.salon-working-hours-page
+.working-hours-page
+> .d-flex:first-child
+p.text-uppercase {
+    margin-bottom: 4px !important;
+
+    font-size: 0.67rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+
+    color: #81796f;
+}
+
+.salon-working-hours-page
+.working-hours-page
+> .d-flex:first-child
+h1 {
+    margin: 0 0 2px !important;
+
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.7rem, 3.5vw, 3.8rem);
+    line-height: 0.95;
+    font-weight: 600;
+    letter-spacing: -0.04em;
+
+    color: #211f1c;
+}
+
+.salon-working-hours-page
+.working-hours-page
+> .d-flex:first-child
+p.text-muted {
+    margin-top: 7px;
+
+    font-size: 0.84rem;
+
+    color: #777067 !important;
+}
+
+.salon-working-hours-page
+.working-hours-page
+> .d-flex:first-child
+.btn-outline-dark {
+    min-height: 42px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 18px;
+
+    border: 1px solid #ccc5bb;
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.55);
+    color: #27241f;
+
+    font-size: 0.76rem;
+    font-weight: 700;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.salon-working-hours-page
+.working-hours-page
+> .d-flex:first-child
+.btn-outline-dark:hover {
+    border-color: #27241f;
+
+    background: #27241f;
+    color: #ffffff;
+
+    transform: translateY(-1px);
+}
+
+
+/* ALERTS */
+
+.salon-working-hours-page .alert {
+    flex-shrink: 0;
+
+    margin-bottom: 12px;
+    padding: 11px 15px;
+
+    border: 0;
+    border-radius: 14px;
+
+    font-size: 0.78rem;
+}
+
+.salon-working-hours-page .alert-success {
+    background: #e3eadf;
+    color: #3d5039;
+}
+
+.salon-working-hours-page .alert-danger {
+    background: #f1dfdb;
+    color: #74483e;
+}
+
+
+/* FORM AND PANEL */
+
+.salon-working-hours-page
+.working-hours-page
+form {
+    flex: 1;
+    min-height: 0;
+}
+
+.salon-working-hours-page
+.working-hours-page
+.card {
+    height: 100%;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(50, 45, 39, 0.08) !important;
+    border-radius: 28px !important;
+
+    background: rgba(255, 255, 255, 0.72);
+
+    box-shadow:
+        0 22px 55px rgba(67, 59, 50, 0.08) !important;
+}
+
+.salon-working-hours-page
+.working-hours-page
+.card-body {
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 18px 20px !important;
+}
+
+
+/* DAYS LIST */
+
+.salon-working-hours-page .working-hours-list {
+    flex: 1;
+    min-height: 0;
+
+    overflow-y: auto;
+
+    padding-right: 7px;
+
+    scrollbar-width: thin;
+    scrollbar-color: #c7c0b6 transparent;
+}
+
+.salon-working-hours-page
+.working-hours-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.salon-working-hours-page
+.working-hours-list::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+
+    background: #c7c0b6;
+}
+
+.salon-working-hours-page .working-hours-row {
+    margin-bottom: 8px;
+    padding: 13px 16px !important;
+
+    border: 1px solid rgba(56, 50, 43, 0.07) !important;
+    border-radius: 18px;
+
+    background: #f7f4ef;
+}
+
+.salon-working-hours-page
+.working-hours-row
+> .row {
+    display: grid;
+
+    grid-template-columns:
+        minmax(130px, 0.7fr)
+        minmax(160px, 1fr)
+        minmax(160px, 1fr)
+        minmax(120px, 0.55fr);
+
+    align-items: center;
+
+    gap: 16px !important;
+
+    margin: 0;
+}
+
+.salon-working-hours-page
+.working-hours-row
+> .row
+> [class*='col-'] {
+    width: auto;
+    max-width: none;
+
+    padding: 0;
+}
+
+.salon-working-hours-page
+.working-hours-row
+strong {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+
+    color: #26231f;
+}
+
+.salon-working-hours-page
+.working-hours-row
+.form-label {
+    margin-bottom: 5px;
+
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    color: #847c72;
+}
+
+.salon-working-hours-page
+.working-hours-row
+.form-control {
+    min-height: 42px;
+
+    border: 1px solid #d9d3ca;
+    border-radius: 12px;
+
+    background: #ffffff;
+    color: #282520;
+
+    font-size: 0.8rem;
+
+    box-shadow: none;
+}
+
+.salon-working-hours-page
+.working-hours-row
+.form-control:focus {
+    border-color: #81796f;
+
+    box-shadow:
+        0 0 0 3px rgba(129, 121, 111, 0.1);
+}
+
+.salon-working-hours-page
+.working-hours-row
+.form-control:disabled {
+    border-color: #e0dbd3;
+
+    background: #e9e5df;
+    color: #9b958d;
+}
+
+.salon-working-hours-page
+.working-hours-row
+.form-check {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 20px !important;
+}
+
+.salon-working-hours-page
+.working-hours-row
+.form-check-input {
+    width: 18px;
+    height: 18px;
+
+    margin: 0;
+
+    border-color: #bdb6ac;
+
+    box-shadow: none;
+}
+
+.salon-working-hours-page
+.working-hours-row
+.form-check-input:checked {
+    border-color: #292621;
+
+    background-color: #292621;
+}
+
+.salon-working-hours-page
+.working-hours-row
+.form-check-label {
+    font-size: 0.76rem;
+    font-weight: 700;
+
+    color: #4e4942;
+}
+
+
+/* ACTIONS */
+
+.salon-working-hours-page
+.working-hours-page
+form
+.d-flex.justify-content-end {
+    flex-shrink: 0;
+
+    margin-top: 14px !important;
+    padding-top: 14px;
+
+    border-top: 1px solid rgba(52, 47, 41, 0.09);
+}
+
+.salon-working-hours-page
+.working-hours-page
+.btn-light,
+.salon-working-hours-page
+.working-hours-page
+.btn-dark {
+    min-height: 42px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 20px !important;
+
+    border-radius: 999px;
+
+    font-size: 0.74rem;
+    font-weight: 700;
+}
+
+.salon-working-hours-page
+.working-hours-page
+.btn-light {
+    border: 1px solid #d6d0c7;
+
+    background: transparent;
+    color: #5f5951;
+}
+
+.salon-working-hours-page
+.working-hours-page
+.btn-dark {
+    border-color: #28251f;
+
+    background: #28251f;
+    color: #ffffff;
+}
+
+.salon-working-hours-page
+.working-hours-page
+.btn-dark:hover {
+    border-color: #11100e;
+
+    background: #11100e;
+
+    transform: translateY(-1px);
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+    .salon-working-hours-main {
+        min-height: auto;
+        padding: 18px !important;
+    }
+
+    .salon-working-hours-main
+    .working-hours-page.container {
+        height: auto;
+    }
+
+    .salon-working-hours-page
+    .working-hours-page
+    .card {
+        height: auto;
+    }
+
+    .salon-working-hours-page
+    .working-hours-list {
+        overflow: visible;
+    }
+
+    .salon-working-hours-page
+    .working-hours-row
+    > .row {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .salon-working-hours-page
+    .working-hours-row
+    > .row
+    > div:first-child,
+    .salon-working-hours-page
+    .working-hours-row
+    > .row
+    > div:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .salon-working-hours-page
+    .working-hours-row
+    .form-check {
+        margin-top: 0 !important;
+    }
+}
+
+@media (max-width: 560px) {
+    .salon-working-hours-page
+    .working-hours-page
+    > .d-flex:first-child {
+        align-items: flex-start !important;
+        flex-direction: column;
+
+        gap: 14px;
+    }
+
+    .salon-working-hours-page
+    .working-hours-row
+    > .row {
+        grid-template-columns: 1fr;
+    }
+
+    .salon-working-hours-page
+    .working-hours-row
+    > .row
+    > div {
+        grid-column: 1 !important;
+    }
+}
+/* =========================================================
+   WORKING HOURS — COMPACT OVERRIDE
+========================================================= */
+
+.salon-working-hours-main {
+    padding: 14px 28px 18px !important;
+}
+
+.salon-working-hours-main
+.working-hours-page.container {
+    width: min(1500px, 100%);
+    height: calc(100vh - 100px);
+
+    margin: 0 auto;
+}
+
+
+/* MANJI HEADER */
+
+.salon-working-hours-page
+.working-hours-page
+> .d-flex:first-child {
+    margin-bottom: 10px !important;
+}
+
+.salon-working-hours-page
+.working-hours-page
+> .d-flex:first-child
+p.text-uppercase {
+    margin-bottom: 2px !important;
+
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+}
+
+.salon-working-hours-page
+.working-hours-page
+> .d-flex:first-child
+h1 {
+    margin-bottom: 0 !important;
+
+    font-size: 2.35rem;
+    line-height: 1;
+    letter-spacing: -0.035em;
+}
+
+.salon-working-hours-page
+.working-hours-page
+> .d-flex:first-child
+p.text-muted {
+    margin-top: 4px;
+
+    font-size: 0.76rem;
+}
+
+.salon-working-hours-page
+.working-hours-page
+> .d-flex:first-child
+.btn-outline-dark {
+    min-height: 38px;
+
+    padding: 0 16px;
+
+    font-size: 0.7rem;
+}
+
+
+/* MANJI GLAVNI PANEL */
+
+.salon-working-hours-page
+.working-hours-page
+.card {
+    border-radius: 22px !important;
+}
+
+.salon-working-hours-page
+.working-hours-page
+.card-body {
+    padding: 12px 16px !important;
+}
+
+
+/* KOMPAKTNI DANI */
+
+.salon-working-hours-page .working-hours-list {
+    padding-right: 5px;
+}
+
+.salon-working-hours-page .working-hours-row {
+    margin-bottom: 6px;
+    padding: 9px 14px !important;
+
+    border-radius: 14px;
+}
+
+.salon-working-hours-page
+.working-hours-row
+> .row {
+    grid-template-columns:
+        minmax(115px, 0.55fr)
+        minmax(155px, 1fr)
+        minmax(155px, 1fr)
+        minmax(105px, 0.45fr);
+
+    gap: 12px !important;
+}
+
+.salon-working-hours-page
+.working-hours-row
+strong {
+    font-size: 1.08rem;
+}
+
+.salon-working-hours-page
+.working-hours-row
+.form-label {
+    margin-bottom: 3px;
+
+    font-size: 0.57rem;
+}
+
+.salon-working-hours-page
+.working-hours-row
+.form-control {
+    min-height: 37px;
+    height: 37px;
+
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    border-radius: 10px;
+
+    font-size: 0.75rem;
+}
+
+.salon-working-hours-page
+.working-hours-row
+.form-check {
+    margin-top: 15px !important;
+}
+
+.salon-working-hours-page
+.working-hours-row
+.form-check-input {
+    width: 16px;
+    height: 16px;
+}
+
+.salon-working-hours-page
+.working-hours-row
+.form-check-label {
+    font-size: 0.7rem;
+}
+
+
+/* DONJA DUGMAD */
+
+.salon-working-hours-page
+.working-hours-page
+form
+.d-flex.justify-content-end {
+    margin-top: 8px !important;
+    padding-top: 10px;
+}
+
+.salon-working-hours-page
+.working-hours-page
+.btn-light,
+.salon-working-hours-page
+.working-hours-page
+.btn-dark {
+    min-height: 38px;
+
+    padding: 0 17px !important;
+
+    font-size: 0.68rem;
+}

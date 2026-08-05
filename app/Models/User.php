@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 #[Fillable([
     'name',
     'surname',
@@ -47,5 +48,12 @@ class User extends Authenticatable
         'employee_id',
         'service_id'
     )->withTimestamps();
+}
+public function workingHours(): HasMany
+{
+    return $this->hasMany(
+        EmployeeWorkingHour::class,
+        'employee_id'
+    );
 }
 }
