@@ -2,110 +2,180 @@
     $editing = isset($service);
 @endphp
 
-<div class="mb-3">
-    <label for="name" class="form-label">Service name</label>
+@if ($errors->any())
+    <div class="service-form-errors">
+        <strong>Please check the entered information.</strong>
 
-    <input
-        type="text"
-        id="name"
-        name="name"
-        value="{{ old('name', $editing ? $service->name : '') }}"
-        class="form-control @error('name') is-invalid @enderror"
-    >
-
-    @error('name')
-        <div class="invalid-feedback">
-            {{ $message }}
-        </div>
-    @enderror
-</div>
-
-<div class="mb-3">
-    <label for="description" class="form-label">Description</label>
-
-    <textarea
-        id="description"
-        name="description"
-        rows="4"
-        class="form-control @error('description') is-invalid @enderror"
-    >{{ old('description', $editing ? $service->description : '') }}</textarea>
-
-    @error('description')
-        <div class="invalid-feedback">
-            {{ $message }}
-        </div>
-    @enderror
-</div>
-
-<div class="row">
-    <div class="col-md-6 mb-3">
-        <label for="price" class="form-label">Price (KM)</label>
-
-        <input
-            type="number"
-            id="price"
-            name="price"
-            step="0.01"
-            min="0"
-            value="{{ old('price', $editing ? $service->price : '') }}"
-            class="form-control @error('price') is-invalid @enderror"
-        >
-
-        @error('price')
-            <div class="invalid-feedback">
-                {{ $message }}
-            </div>
-        @enderror
+        <span>
+            {{ $errors->first() }}
+        </span>
     </div>
+@endif
 
-    <div class="col-md-6 mb-3">
-        <label for="duration_minutes" class="form-label">
-            Duration in minutes
+<div class="service-form-grid">
+
+    <div class="service-form-field service-form-field-wide">
+        <label for="name">
+            Service name
+            <span>Required</span>
         </label>
 
         <input
-            type="number"
-            id="duration_minutes"
-            name="duration_minutes"
-            min="5"
-            step="5"
+            type="text"
+            id="name"
+            name="name"
             value="{{ old(
-                'duration_minutes',
-                $editing ? $service->duration_minutes : ''
+                'name',
+                $editing ? $service->name : ''
             ) }}"
-            class="form-control @error('duration_minutes') is-invalid @enderror"
+            placeholder="Service name"
+            class="@error('name') is-invalid @enderror"
         >
 
-        @error('duration_minutes')
-            <div class="invalid-feedback">
+        @error('name')
+            <small class="service-field-error">
                 {{ $message }}
-            </div>
+            </small>
         @enderror
     </div>
+
+    <div class="service-form-field">
+        <label for="price">
+            Price
+            <span>KM</span>
+        </label>
+
+        <div class="service-input-with-suffix">
+            <input
+                type="number"
+                id="price"
+                name="price"
+                value="{{ old(
+                    'price',
+                    $editing ? $service->price : ''
+                ) }}"
+                min="0"
+                step="0.01"
+                placeholder="0.00"
+                class="@error('price') is-invalid @enderror"
+            >
+
+            <span>KM</span>
+        </div>
+
+        @error('price')
+            <small class="service-field-error">
+                {{ $message }}
+            </small>
+        @enderror
+    </div>
+
+    <div class="service-form-field">
+        <label for="duration_minutes">
+            Duration
+            <span>Minutes</span>
+        </label>
+
+        <div class="service-input-with-suffix">
+            <input
+                type="number"
+                id="duration_minutes"
+                name="duration_minutes"
+                value="{{ old(
+                    'duration_minutes',
+                    $editing
+                        ? $service->duration_minutes
+                        : ''
+                ) }}"
+                min="1"
+                step="1"
+                placeholder="30"
+                class="@error('duration_minutes')
+                    is-invalid
+                @enderror"
+            >
+
+            <span>min</span>
+        </div>
+
+        @error('duration_minutes')
+            <small class="service-field-error">
+                {{ $message }}
+            </small>
+        @enderror
+    </div>
+
+    <div class="service-form-field service-form-field-wide">
+        <label for="description">
+            Description
+            <span>Optional</span>
+        </label>
+
+        <textarea
+            id="description"
+            name="description"
+            rows="5"
+            maxlength="1000"
+            placeholder="Briefly describe the treatment and its benefits."
+            class="@error('description') is-invalid @enderror"
+        >{{ old(
+            'description',
+            $editing ? $service->description : ''
+        ) }}</textarea>
+
+        <div class="service-description-footer">
+            <small>
+                Keep the description clear and concise.
+            </small>
+
+            <small id="descriptionCounter">
+                0 / 1000
+            </small>
+        </div>
+
+        @error('description')
+            <small class="service-field-error">
+                {{ $message }}
+            </small>
+        @enderror
+    </div>
+
 </div>
 
-<div class="form-check mb-4">
-    <input
-        type="hidden"
-        name="is_active"
-        value="0"
-    >
+<div class="service-availability">
 
-    <input
-        type="checkbox"
-        id="is_active"
-        name="is_active"
-        value="1"
-        class="form-check-input"
-        @checked(
-            (bool) old(
-                'is_active',
-                $editing ? $service->is_active : true
+    <div>
+        <strong>Service availability</strong>
+
+        <span>
+            Active services are visible to clients.
+        </span>
+    </div>
+
+    <label class="service-toggle">
+        <input
+            type="hidden"
+            name="is_active"
+            value="0"
+        >
+
+        <input
+            type="checkbox"
+            name="is_active"
+            value="1"
+            @checked(
+                (bool) old(
+                    'is_active',
+                    $editing ? $service->is_active : true
+                )
             )
-        )
-    >
+        >
 
-    <label for="is_active" class="form-check-label">
-        Service is active and visible to clients
+        <span class="service-toggle-track">
+            <i></i>
+        </span>
+
+        <em>Active</em>
     </label>
+
 </div>

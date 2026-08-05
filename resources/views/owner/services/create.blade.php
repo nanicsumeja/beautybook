@@ -1,41 +1,97 @@
 @extends('layouts.app')
 
+@section(
+    'body-class',
+    'salon-admin-page salon-service-form-page'
+)
+
+@section('main-class', 'salon-service-form-main')
+
 @section('content')
-<div class="container py-4" style="max-width: 760px;">
+<div class="service-form-shell">
 
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <div>
-            <p class="text-muted mb-1">SERVICES</p>
-            <h1 class="h3 mb-0">Add new service</h1>
-        </div>
+    <section class="service-form-panel">
 
-        <a
-            href="{{ route('owner.services.index') }}"
-            class="btn btn-outline-dark"
-        >
-            Back
-        </a>
-    </div>
+        <header class="service-form-header">
 
-    <div class="card border-0 shadow-sm">
-        <div class="card-body p-4">
+            <div>
+                <p>OWNER WORKSPACE</p>
 
-            <form
-                method="POST"
-                action="{{ route('owner.services.store') }}"
-                novalidate
+                <h1>Add service</h1>
+
+                <span>
+                    Create a new treatment for your salon catalogue.
+                </span>
+            </div>
+
+            <a
+                href="{{ route('owner.services.index') }}"
+                class="service-form-back"
             >
-                @csrf
+                ← Services
+            </a>
 
+        </header>
+
+        <form
+            method="POST"
+            action="{{ route('owner.services.store') }}"
+            class="service-form"
+            novalidate
+        >
+            @csrf
+
+            <div class="service-form-content">
                 @include('owner.services._form')
+            </div>
 
-                <button type="submit" class="btn btn-dark px-4">
+            <footer class="service-form-actions">
+
+                <a
+                    href="{{ route('owner.services.index') }}"
+                    class="service-secondary-button"
+                >
+                    Cancel
+                </a>
+
+                <button
+                    type="submit"
+                    class="service-primary-button"
+                >
                     Save service
                 </button>
-            </form>
 
-        </div>
-    </div>
+            </footer>
+
+        </form>
+
+    </section>
 
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const description =
+        document.getElementById('description');
+
+    const counter =
+        document.getElementById('descriptionCounter');
+
+    if (!description || !counter) {
+        return;
+    }
+
+    const updateCounter = () => {
+        counter.textContent =
+            `${description.value.length} / 1000`;
+    };
+
+    description.addEventListener(
+        'input',
+        updateCounter
+    );
+
+    updateCounter();
+});
+</script>
 @endsection

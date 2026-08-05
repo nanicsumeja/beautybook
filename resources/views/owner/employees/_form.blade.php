@@ -10,14 +10,18 @@
 
     $selectedServices = array_map(
         'intval',
-        $selectedServices
+        is_array($selectedServices)
+            ? $selectedServices
+            : []
     );
 @endphp
 
-<div class="row">
-    <div class="col-md-6 mb-3">
-        <label for="name" class="form-label">
-            First name
+<div class="employee-form-grid">
+
+    <div class="employee-form-field">
+        <label for="name">
+            <span>First name</span>
+            <small>Required</small>
         </label>
 
         <input
@@ -28,20 +32,21 @@
                 'name',
                 $editing ? $employee->name : ''
             ) }}"
-            class="form-control
-                @error('name') is-invalid @enderror"
+            autocomplete="given-name"
+            class="@error('name') is-invalid @enderror"
         >
 
         @error('name')
-            <div class="invalid-feedback">
+            <small class="employee-field-error">
                 {{ $message }}
-            </div>
+            </small>
         @enderror
     </div>
 
-    <div class="col-md-6 mb-3">
-        <label for="surname" class="form-label">
-            Last name
+    <div class="employee-form-field">
+        <label for="surname">
+            <span>Last name</span>
+            <small>Required</small>
         </label>
 
         <input
@@ -52,22 +57,21 @@
                 'surname',
                 $editing ? $employee->surname : ''
             ) }}"
-            class="form-control
-                @error('surname') is-invalid @enderror"
+            autocomplete="family-name"
+            class="@error('surname') is-invalid @enderror"
         >
 
         @error('surname')
-            <div class="invalid-feedback">
+            <small class="employee-field-error">
                 {{ $message }}
-            </div>
+            </small>
         @enderror
     </div>
-</div>
 
-<div class="row">
-    <div class="col-md-6 mb-3">
-        <label for="username" class="form-label">
-            Username
+    <div class="employee-form-field">
+        <label for="username">
+            <span>Username</span>
+            <small>Required</small>
         </label>
 
         <input
@@ -78,20 +82,21 @@
                 'username',
                 $editing ? $employee->username : ''
             ) }}"
-            class="form-control
-                @error('username') is-invalid @enderror"
+            autocomplete="username"
+            class="@error('username') is-invalid @enderror"
         >
 
         @error('username')
-            <div class="invalid-feedback">
+            <small class="employee-field-error">
                 {{ $message }}
-            </div>
+            </small>
         @enderror
     </div>
 
-    <div class="col-md-6 mb-3">
-        <label for="email" class="form-label">
-            Email
+    <div class="employee-form-field">
+        <label for="email">
+            <span>Email</span>
+            <small>Required</small>
         </label>
 
         <input
@@ -102,168 +107,202 @@
                 'email',
                 $editing ? $employee->email : ''
             ) }}"
-            class="form-control
-                @error('email') is-invalid @enderror"
+            autocomplete="email"
+            class="@error('email') is-invalid @enderror"
         >
 
         @error('email')
-            <div class="invalid-feedback">
+            <small class="employee-field-error">
                 {{ $message }}
-            </div>
+            </small>
         @enderror
     </div>
-</div>
 
-<div class="mb-3">
-    <label for="phone" class="form-label">
-        Phone
-    </label>
+    <div class="employee-form-field employee-phone-field">
+        <label for="phone">
+            <span>Phone</span>
+            <small>Optional</small>
+        </label>
 
-    <input
-        type="text"
-        id="phone"
-        name="phone"
-        value="{{ old(
-            'phone',
-            $editing ? $employee->phone : ''
-        ) }}"
-        class="form-control
-            @error('phone') is-invalid @enderror"
-    >
+        <input
+            type="text"
+            id="phone"
+            name="phone"
+            value="{{ old(
+                'phone',
+                $editing ? $employee->phone : ''
+            ) }}"
+            autocomplete="tel"
+            class="@error('phone') is-invalid @enderror"
+        >
 
-    @error('phone')
-        <div class="invalid-feedback">
-            {{ $message }}
-        </div>
-    @enderror
-</div>
+        @error('phone')
+            <small class="employee-field-error">
+                {{ $message }}
+            </small>
+        @enderror
+    </div>
 
-<div class="row">
-    <div class="col-md-6 mb-3">
-        <label for="password" class="form-label">
-            Password
+    <div class="employee-form-field">
+        <label for="password">
+            <span>
+                {{ $editing ? 'New password' : 'Password' }}
+            </span>
+
+            <small>
+                {{ $editing ? 'Optional' : 'Required' }}
+            </small>
         </label>
 
         <input
             type="password"
             id="password"
             name="password"
-            class="form-control
-                @error('password') is-invalid @enderror"
+            autocomplete="new-password"
+            class="@error('password') is-invalid @enderror"
         >
 
-        @if ($editing)
-            <div class="form-text">
-                Leave blank to keep the current password.
-            </div>
-        @endif
-
         @error('password')
-            <div class="invalid-feedback">
+            <small class="employee-field-error">
                 {{ $message }}
-            </div>
+            </small>
         @enderror
     </div>
 
-    <div class="col-md-6 mb-3">
-        <label
-            for="password_confirmation"
-            class="form-label"
-        >
-            Confirm password
+    <div class="employee-form-field">
+        <label for="password_confirmation">
+            <span>Confirm password</span>
+            <small>
+                {{ $editing ? 'If changed' : 'Required' }}
+            </small>
         </label>
 
         <input
             type="password"
             id="password_confirmation"
             name="password_confirmation"
-            class="form-control"
+            autocomplete="new-password"
         >
     </div>
+
 </div>
 
-<div class="mb-4">
-    <p class="form-label mb-2">
-        Services
-    </p>
+<section class="employee-services-section">
+
+    <div class="employee-section-heading">
+        <div>
+            <strong>Assigned services</strong>
+
+            <span>
+                Choose the treatments this employee provides.
+            </span>
+        </div>
+
+        <small>
+            {{ count($selectedServices) }} selected
+        </small>
+    </div>
 
     @if ($services->isEmpty())
-        <p class="text-muted small mb-0">
+
+        <div class="employee-services-empty">
             No services have been created yet.
-        </p>
-    @else
-        <div class="row g-2">
-            @foreach ($services as $service)
-                <div class="col-md-6">
-                    <div class="form-check border rounded p-3 ps-5">
-                        <input
-                            type="checkbox"
-                            id="service_{{ $service->id }}"
-                            name="service_ids[]"
-                            value="{{ $service->id }}"
-                            class="form-check-input"
-                            @checked(
-                                in_array(
-                                    $service->id,
-                                    $selectedServices,
-                                    true
-                                )
-                            )
-                        >
-
-                        <label
-                            for="service_{{ $service->id }}"
-                            class="form-check-label"
-                        >
-                            {{ $service->name }}
-
-                            @unless ($service->is_active)
-                                <span class="text-muted">
-                                    (inactive)
-                                </span>
-                            @endunless
-                        </label>
-                    </div>
-                </div>
-            @endforeach
         </div>
+
+    @else
+
+        <div class="employee-services-grid">
+
+            @foreach ($services as $service)
+
+                <label
+                    for="service_{{ $service->id }}"
+                    class="employee-service-option"
+                >
+                    <input
+                        type="checkbox"
+                        id="service_{{ $service->id }}"
+                        name="service_ids[]"
+                        value="{{ $service->id }}"
+                        @checked(
+                            in_array(
+                                $service->id,
+                                $selectedServices,
+                                true
+                            )
+                        )
+                    >
+
+                    <span class="employee-service-check">
+                        ✓
+                    </span>
+
+                    <span class="employee-service-name">
+                        {{ $service->name }}
+
+                        @unless ($service->is_active)
+                            <small>Inactive</small>
+                        @endunless
+                    </span>
+                </label>
+
+            @endforeach
+
+        </div>
+
     @endif
 
     @error('service_ids')
-        <div class="text-danger small mt-2">
+        <small class="employee-field-error">
             {{ $message }}
-        </div>
+        </small>
     @enderror
 
     @error('service_ids.*')
-        <div class="text-danger small mt-2">
+        <small class="employee-field-error">
             {{ $message }}
-        </div>
+        </small>
     @enderror
-</div>
 
-<div class="form-check mb-4">
-    <input
-        type="hidden"
-        name="is_active"
-        value="0"
-    >
+</section>
 
-    <input
-        type="checkbox"
-        id="is_active"
-        name="is_active"
-        value="1"
-        class="form-check-input"
-        @checked(
-            (bool) old(
-                'is_active',
-                $editing ? $employee->is_active : true
+<div class="employee-access-row">
+
+    <div>
+        <strong>Account access</strong>
+
+        <span>
+            Active employees can sign in to their account.
+        </span>
+    </div>
+
+    <label class="employee-access-toggle">
+
+        <input
+            type="hidden"
+            name="is_active"
+            value="0"
+        >
+
+        <input
+            type="checkbox"
+            id="is_active"
+            name="is_active"
+            value="1"
+            @checked(
+                (bool) old(
+                    'is_active',
+                    $editing ? $employee->is_active : true
+                )
             )
-        )
-    >
+        >
 
-    <label for="is_active" class="form-check-label">
-        Employee is active and can sign in
+        <span class="employee-toggle-track">
+            <i></i>
+        </span>
+
+        <em>Active</em>
+
     </label>
+
 </div>

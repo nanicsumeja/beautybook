@@ -1,60 +1,114 @@
 @extends('layouts.app')
 
+@section(
+    'body-class',
+    'salon-admin-page salon-employee-form-page'
+)
+
+@section('main-class', 'salon-employee-form-main')
+
 @section('content')
-<div class="container py-5" style="max-width: 850px;">
+<div class="employee-form-shell">
 
-    <div
-        class="d-flex justify-content-between
-               align-items-start mb-5"
-    >
-        <div>
-            <p class="text-muted text-uppercase small mb-2">
-                Employees
-            </p>
+    <section class="employee-form-panel">
 
-            <h1 class="display-6 fw-light mb-2">
-                Edit employee
-            </h1>
+        <header class="employee-form-header">
 
-            <p class="text-muted mb-0">
-                Update employee details and assigned services.
-            </p>
+            <div>
+                <p>OWNER WORKSPACE</p>
+
+                <h1>Edit employee</h1>
+
+                <span>
+                    Update account details and assigned services.
+                </span>
+            </div>
+
+            <a
+                href="{{ route('owner.employees.index') }}"
+                class="employee-form-back"
+            >
+                ← Employees
+            </a>
+
+        </header>
+
+        <div class="employee-edit-context">
+
+            <div class="employee-edit-avatar">
+                {{ mb_strtoupper(
+                    mb_substr($employee->name, 0, 1)
+                ) }}
+            </div>
+
+            <div>
+                <strong>
+                    {{ $employee->name }}
+                    {{ $employee->surname }}
+                </strong>
+
+                <span>
+                    {{ '@' . $employee->username }}
+                </span>
+            </div>
+
+            <em class="{{
+                $employee->is_active
+                    ? 'is-active'
+                    : 'is-inactive'
+            }}">
+                {{ $employee->is_active
+                    ? 'Active'
+                    : 'Inactive' }}
+            </em>
+
         </div>
 
-        <a
-            href="{{ route('owner.employees.index') }}"
-            class="btn btn-outline-dark"
+        @if ($errors->any())
+            <div class="employee-form-error-summary">
+                <span>!</span>
+
+                Please review the highlighted fields.
+            </div>
+        @endif
+
+        <form
+            method="POST"
+            action="{{ route(
+                'owner.employees.update',
+                $employee
+            ) }}"
+            class="employee-form-card"
+            novalidate
         >
-            Back
-        </a>
-    </div>
+            @csrf
+            @method('PUT')
 
-    <div class="card border-0 shadow-sm">
-        <div class="card-body p-4 p-md-5">
-
-            <form
-                method="POST"
-                action="{{ route(
-                    'owner.employees.update',
-                    $employee
-                ) }}"
-                novalidate
-            >
-                @csrf
-                @method('PUT')
-
+            <div class="employee-form-content">
                 @include('owner.employees._form')
+            </div>
+
+            <footer class="employee-form-actions">
+
+                <a
+                    href="{{ route('owner.employees.index') }}"
+                    class="employee-secondary-button"
+                >
+                    Cancel
+                </a>
 
                 <button
                     type="submit"
-                    class="btn btn-dark px-4 py-3"
+                    class="employee-primary-button"
                 >
                     Save changes
                 </button>
-            </form>
 
-        </div>
-    </div>
+            </footer>
+
+        </form>
+
+    </section>
 
 </div>
 @endsection

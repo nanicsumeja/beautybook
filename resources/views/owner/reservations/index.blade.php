@@ -1,205 +1,438 @@
 @extends('layouts.app')
 
+@section(
+    'body-class',
+    'salon-admin-page salon-appointments-page'
+)
+
+@section('main-class', 'salon-appointments-main')
+
 @section('content')
-<div class="container py-5">
+@php
+    $totalCount = $reservations->count();
+    $pendingCount = $reservations->where('status', 'pending')->count();
+    $confirmedCount = $reservations->where('status', 'confirmed')->count();
+    $completedCount = $reservations->where('status', 'completed')->count();
+    $cancelledCount = $reservations->where('status', 'cancelled')->count();
+@endphp
 
-    <div class="d-flex justify-content-between align-items-start mb-5">
-        <div>
-            <p class="text-muted text-uppercase small mb-2">
-                Owner panel
-            </p>
+<div class="salon-appointments-shell">
 
-            <h1 class="display-6 fw-light mb-2">
-                Appointments
-            </h1>
+    <section class="salon-appointments-panel">
 
-            <p class="text-muted mb-0">
-                Review and confirm client appointments.
-            </p>
+        <header class="salon-appointments-header">
+            <div>
+                <p class="salon-appointments-eyebrow">
+                    OWNER WORKSPACE
+                </p>
+
+                <h1>Appointments</h1>
+
+                <p class="salon-appointments-description">
+                    Review and confirm client appointments.
+                </p>
+            </div>
+
+            <a
+                href="{{ route('owner.dashboard') }}"
+                class="salon-appointments-back"
+            >
+                ← Dashboard
+            </a>
+        </header>
+
+        @if (session('success'))
+            <div class="salon-appointment-message success">
+                <span>✓</span>
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if ($errors->has('reservation'))
+            <div class="salon-appointment-message error">
+                <span>!</span>
+                {{ $errors->first('reservation') }}
+            </div>
+        @endif
+
+        <div class="salon-appointments-summary">
+            <div>
+                <span>Total</span>
+                <strong>{{ $totalCount }}</strong>
+            </div>
+
+            <div>
+                <span>Pending</span>
+                <strong>{{ $pendingCount }}</strong>
+            </div>
+
+            <div>
+                <span>Confirmed</span>
+                <strong>{{ $confirmedCount }}</strong>
+            </div>
+
+            <div>
+                <span>Completed</span>
+                <strong>{{ $completedCount }}</strong>
+            </div>
+
+            <div>
+                <span>Cancelled</span>
+                <strong>{{ $cancelledCount }}</strong>
+            </div>
         </div>
 
-        <a
-            href="{{ route('owner.dashboard') }}"
-            class="btn btn-outline-dark"
-        >
-            Back
-        </a>
-    </div>
+        <div class="salon-appointments-toolbar">
 
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
+            <label
+                for="appointmentSearch"
+                class="salon-appointments-search"
+            >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="11" cy="11" r="6.5"></circle>
+                    <path d="M16 16L21 21"></path>
+                </svg>
+
+                <input
+                    type="search"
+                    id="appointmentSearch"
+                    placeholder="Search client or service"
+                    autocomplete="off"
+                >
+            </label>
+
+            <div class="salon-appointments-filters">
+                <button
+                    type="button"
+                    class="active"
+                    data-appointment-filter="all"
+                >
+                    All
+                </button>
+
+                <button
+                    type="button"
+                    data-appointment-filter="pending"
+                >
+                    Pending
+                </button>
+
+                <button
+                    type="button"
+                    data-appointment-filter="confirmed"
+                >
+                    Confirmed
+                </button>
+
+                <button
+                    type="button"
+                    data-appointment-filter="completed"
+                >
+                    Completed
+                </button>
+
+                <button
+                    type="button"
+                    data-appointment-filter="cancelled"
+                >
+                    Cancelled
+                </button>
+            </div>
+
         </div>
-    @endif
 
-    @if ($errors->has('reservation'))
-        <div class="alert alert-danger">
-            {{ $errors->first('reservation') }}
-        </div>
-    @endif
+        @if ($reservations->isEmpty())
 
-    <div class="card border-0 shadow-sm">
-        <div class="card-body p-0">
+            <div class="salon-appointments-empty">
+                <span>○</span>
 
-            @if ($reservations->isEmpty())
+                <h2>No appointments yet</h2>
 
-                <div class="p-5 text-center">
-                    <h2 class="h5 fw-normal mb-2">
-                        No appointments yet
-                    </h2>
+                <p>
+                    Client appointments will appear here.
+                </p>
+            </div>
 
-                    <p class="text-muted mb-0">
-                        Client appointments will appear here.
-                    </p>
+        @else
+
+            <div class="salon-appointments-table">
+
+                <div class="salon-appointments-table-head">
+                    <span>Client</span>
+                    <span>Service</span>
+                    <span>Date and time</span>
+                    <span>Price</span>
+                    <span>Status</span>
+                    <span>Action</span>
                 </div>
 
-            @else
+                <div class="salon-appointments-table-body">
 
-                <div class="table-responsive">
-                    <table class="table align-middle mb-0">
+                    @foreach ($reservations as $reservation)
+                        @php
+                            $appointmentStart = \Carbon\Carbon::parse(
+                                $reservation->appointment_date
+                                    ->format('Y-m-d')
+                                . ' '
+                                . $reservation->start_time
+                            );
 
-                        <thead class="table-light">
-                            <tr>
-                                <th class="px-4 py-3">Client</th>
-                                <th class="py-3">Service</th>
-                                <th class="py-3">Date and time</th>
-                                <th class="py-3">Price</th>
-                                <th class="py-3">Status</th>
-                                <th class="px-4 py-3 text-end">
-                                    Action
-                                </th>
-                            </tr>
-                        </thead>
+                            $canConfirm =
+                                $reservation->status === 'pending'
+                                && $appointmentStart->isFuture();
 
-                        <tbody>
-                            @foreach ($reservations as $reservation)
-                                @php
-                                    $statusClass = match (
+                            $clientName =
+                                $reservation->client->name
+                                . ' '
+                                . $reservation->client->surname;
+
+                            $searchValue = mb_strtolower(
+                                $clientName
+                                . ' '
+                                . $reservation->client->email
+                                . ' '
+                                . $reservation->service_name
+                            );
+                        @endphp
+
+                        <article
+                            class="salon-appointment-row"
+                            data-appointment-row
+                            data-status="{{ $reservation->status }}"
+                            data-search="{{ $searchValue }}"
+                        >
+
+                            <div class="salon-appointment-client">
+                                <span class="salon-appointment-avatar">
+                                    {{ mb_strtoupper(
+                                        mb_substr(
+                                            $reservation->client->name,
+                                            0,
+                                            1
+                                        )
+                                    ) }}
+                                </span>
+
+                                <div>
+                                    <strong>{{ $clientName }}</strong>
+
+                                    <small>
+                                        {{ $reservation->client->email }}
+                                    </small>
+                                </div>
+                            </div>
+
+                            <div
+                                class="salon-appointment-service"
+                                data-label="Service"
+                            >
+                                <strong>
+                                    {{ $reservation->service_name }}
+                                </strong>
+
+                                <small>
+                                    {{ $reservation->duration_minutes }}
+                                    minutes
+                                </small>
+                            </div>
+
+                            <div
+                                class="salon-appointment-date"
+                                data-label="Date and time"
+                            >
+                                <strong>
+                                    {{ $reservation
+                                        ->appointment_date
+                                        ->format('d.m.Y') }}
+                                </strong>
+
+                                <small>
+                                    {{ substr(
+                                        $reservation->start_time,
+                                        0,
+                                        5
+                                    ) }}
+                                    –
+                                    {{ substr(
+                                        $reservation->end_time,
+                                        0,
+                                        5
+                                    ) }}
+                                </small>
+                            </div>
+
+                            <div
+                                class="salon-appointment-price"
+                                data-label="Price"
+                            >
+                                <strong>
+                                    {{ number_format(
+                                        (float) $reservation->total_price,
+                                        2
+                                    ) }}
+                                </strong>
+
+                                <small>KM</small>
+                            </div>
+
+                            <div
+                                class="salon-appointment-status-cell"
+                                data-label="Status"
+                            >
+                                <span
+                                    class="salon-appointment-status
+                                           {{ $reservation->status }}"
+                                >
+                                    <i></i>
+
+                                    {{ ucfirst(
                                         $reservation->status
-                                    ) {
-                                        'confirmed' =>
-                                            'text-bg-success',
+                                    ) }}
+                                </span>
+                            </div>
 
-                                        'completed' =>
-                                            'text-bg-dark',
-
-                                        'cancelled' =>
-                                            'text-bg-danger',
-
-                                        default =>
-                                            'text-bg-secondary',
-                                    };
-
-                                    $appointmentStart =
-                                        \Carbon\Carbon::parse(
+                            <div class="salon-appointment-action">
+                                @if ($canConfirm)
+                                    <form
+                                        method="POST"
+                                        action="{{ route(
+                                            'owner.reservations.confirm',
                                             $reservation
-                                                ->appointment_date
-                                                ->format('Y-m-d')
-                                            . ' '
-                                            . $reservation->start_time
-                                        );
+                                        ) }}"
+                                    >
+                                        @csrf
+                                        @method('PATCH')
 
-                                    $canConfirm =
-                                        $reservation->status ===
-                                            'pending'
-                                        && $appointmentStart
-                                            ->isFuture();
-                                @endphp
+                                        <button type="submit">
+                                            Confirm
+                                        </button>
+                                    </form>
+                                @else
+                                    <span>No action</span>
+                                @endif
+                            </div>
 
-                                <tr>
-                                    <td class="px-4 py-3">
-                                        <strong>
-                                            {{ $reservation->client->name }}
-                                            {{ $reservation->client->surname }}
-                                        </strong>
+                        </article>
+                    @endforeach
 
-                                        <div class="small text-muted">
-                                            {{ $reservation->client->email }}
-                                        </div>
-                                    </td>
+                    <div
+                        class="salon-appointments-no-results"
+                        id="appointmentsNoResults"
+                        hidden
+                    >
+                        No appointments match your search.
+                    </div>
 
-                                    <td class="py-3">
-                                        {{ $reservation->service_name }}
-
-                                        <div class="small text-muted">
-                                            {{ $reservation->duration_minutes }}
-                                            minutes
-                                        </div>
-                                    </td>
-
-                                    <td class="py-3">
-                                        {{ $reservation
-                                            ->appointment_date
-                                            ->format('d.m.Y') }}
-
-                                        <div class="small text-muted">
-                                            {{ substr(
-                                                $reservation->start_time,
-                                                0,
-                                                5
-                                            ) }}
-                                            –
-                                            {{ substr(
-                                                $reservation->end_time,
-                                                0,
-                                                5
-                                            ) }}
-                                        </div>
-                                    </td>
-
-                                    <td class="py-3">
-                                        {{ number_format(
-                                            (float)
-                                                $reservation->total_price,
-                                            2
-                                        ) }}
-                                        KM
-                                    </td>
-
-                                    <td class="py-3">
-                                        <span class="badge {{ $statusClass }}">
-                                            {{ ucfirst(
-                                                $reservation->status
-                                            ) }}
-                                        </span>
-                                    </td>
-
-                                    <td class="px-4 py-3 text-end">
-                                        @if ($canConfirm)
-                                            <form
-                                                method="POST"
-                                                action="{{ route(
-                                                    'owner.reservations.confirm',
-                                                    $reservation
-                                                ) }}"
-                                            >
-                                                @csrf
-                                                @method('PATCH')
-
-                                                <button
-                                                    type="submit"
-                                                    class="btn btn-sm btn-dark"
-                                                >
-                                                    Confirm
-                                                </button>
-                                            </form>
-                                        @else
-                                            <span class="small text-muted">
-                                                No action
-                                            </span>
-                                        @endif
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-
-                    </table>
                 </div>
 
-            @endif
+                <footer class="salon-appointments-table-footer">
+                    <span id="appointmentResultCount">
+                        Showing {{ $totalCount }}
+                        {{ $totalCount === 1
+                            ? 'appointment'
+                            : 'appointments' }}
+                    </span>
 
-        </div>
-    </div>
+                    <a href="{{ route('owner.dashboard') }}">
+                        Back to dashboard
+                    </a>
+                </footer>
+
+            </div>
+
+        @endif
+
+    </section>
 
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput =
+        document.getElementById('appointmentSearch');
+
+    const rows = Array.from(
+        document.querySelectorAll('[data-appointment-row]')
+    );
+
+    const buttons = Array.from(
+        document.querySelectorAll(
+            '[data-appointment-filter]'
+        )
+    );
+
+    const resultCount =
+        document.getElementById('appointmentResultCount');
+
+    const noResults =
+        document.getElementById('appointmentsNoResults');
+
+    if (!searchInput || rows.length === 0) {
+        return;
+    }
+
+    let activeFilter = 'all';
+
+    const updateAppointments = () => {
+        const query = searchInput.value
+            .trim()
+            .toLowerCase();
+
+        let visibleCount = 0;
+
+        rows.forEach((row) => {
+            const matchesSearch =
+                row.dataset.search.includes(query);
+
+            const matchesStatus =
+                activeFilter === 'all'
+                || row.dataset.status === activeFilter;
+
+            const visible =
+                matchesSearch && matchesStatus;
+
+            row.hidden = !visible;
+
+            if (visible) {
+                visibleCount++;
+            }
+        });
+
+        if (resultCount) {
+            resultCount.textContent =
+                `Showing ${visibleCount} `
+                + (
+                    visibleCount === 1
+                        ? 'appointment'
+                        : 'appointments'
+                );
+        }
+
+        if (noResults) {
+            noResults.hidden = visibleCount !== 0;
+        }
+    };
+
+    searchInput.addEventListener(
+        'input',
+        updateAppointments
+    );
+
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            activeFilter =
+                button.dataset.appointmentFilter;
+
+            buttons.forEach((item) => {
+                item.classList.toggle(
+                    'active',
+                    item === button
+                );
+            });
+
+            updateAppointments();
+        });
+    });
+});
+</script>
 @endsection

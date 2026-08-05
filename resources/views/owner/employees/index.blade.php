@@ -1,189 +1,415 @@
 @extends('layouts.app')
 
+@section(
+    'body-class',
+    'salon-admin-page salon-employees-page'
+)
+
+@section('main-class', 'salon-employees-main')
+
 @section('content')
-<div class="container py-5">
+@php
+    $totalCount = $employees->count();
 
-    <div
-        class="d-flex justify-content-between
-               align-items-start mb-5"
-    >
-        <div>
-            <p class="text-muted text-uppercase small mb-2">
-                Owner panel
-            </p>
+    $activeCount = $employees
+        ->where('is_active', true)
+        ->count();
 
-            <h1 class="display-6 fw-light mb-2">
-                Employees
-            </h1>
+    $inactiveCount = $totalCount - $activeCount;
+@endphp
 
-            <p class="text-muted mb-0">
-                Manage employee accounts and assigned services.
-            </p>
+<div class="salon-employees-shell">
+
+    <section class="salon-employees-panel">
+
+        <header class="salon-employees-header">
+
+            <div>
+                <p class="salon-employees-eyebrow">
+                    OWNER WORKSPACE
+                </p>
+
+                <h1>Employees</h1>
+
+                <p class="salon-employees-description">
+                    Manage employee accounts and assigned services.
+                </p>
+            </div>
+
+            <a
+                href="{{ route('owner.employees.create') }}"
+                class="salon-employees-primary-action"
+            >
+                <span aria-hidden="true">+</span>
+                Add employee
+            </a>
+
+        </header>
+
+        @if (session('success'))
+            <div class="salon-employees-message">
+                <span aria-hidden="true">✓</span>
+                {{ session('success') }}
+            </div>
+        @endif
+
+        <div class="salon-employees-summary">
+
+            <div>
+                <span>Total employees</span>
+                <strong>{{ $totalCount }}</strong>
+            </div>
+
+            <div>
+                <span>Active</span>
+                <strong>{{ $activeCount }}</strong>
+            </div>
+
+            <div>
+                <span>Inactive</span>
+                <strong>{{ $inactiveCount }}</strong>
+            </div>
+
         </div>
 
-        <a
-            href="{{ route('owner.employees.create') }}"
-            class="btn btn-dark"
-        >
-            Add employee
-        </a>
-    </div>
+        <div class="salon-employees-toolbar">
 
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
+            <label
+                for="employeeSearch"
+                class="salon-employees-search"
+            >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="11" cy="11" r="6.5"></circle>
+                    <path d="M16 16L21 21"></path>
+                </svg>
+
+                <input
+                    type="search"
+                    id="employeeSearch"
+                    placeholder="Search employees"
+                    autocomplete="off"
+                >
+            </label>
+
+            <div class="salon-employees-filters">
+
+                <button
+                    type="button"
+                    class="active"
+                    data-employee-filter="all"
+                    aria-pressed="true"
+                >
+                    All
+                </button>
+
+                <button
+                    type="button"
+                    data-employee-filter="active"
+                    aria-pressed="false"
+                >
+                    Active
+                </button>
+
+                <button
+                    type="button"
+                    data-employee-filter="inactive"
+                    aria-pressed="false"
+                >
+                    Inactive
+                </button>
+
+            </div>
+
         </div>
-    @endif
 
-    <div class="card border-0 shadow-sm">
-        <div class="card-body p-0">
+        @if ($employees->isEmpty())
 
-            @if ($employees->isEmpty())
+            <div class="salon-employees-empty">
 
-                <div class="p-5 text-center">
-                    <h2 class="h5 fw-normal mb-2">
-                        No employees yet
-                    </h2>
+                <span>+</span>
 
-                    <p class="text-muted mb-4">
-                        Add the first salon employee.
-                    </p>
+                <h2>No employees yet</h2>
 
-                    <a
-                        href="{{ route(
-                            'owner.employees.create'
-                        ) }}"
-                        class="btn btn-dark"
-                    >
-                        Add first employee
-                    </a>
+                <p>
+                    Add the first salon employee.
+                </p>
+
+                <a
+                    href="{{ route('owner.employees.create') }}"
+                    class="salon-employees-primary-action"
+                >
+                    Add employee
+                </a>
+
+            </div>
+
+        @else
+
+            <div class="salon-employees-table">
+
+                <div class="salon-employees-table-head">
+                    <span>Employee</span>
+                    <span>Contact</span>
+                    <span>Services</span>
+                    <span>Status</span>
+                    <span>Action</span>
                 </div>
 
-            @else
+                <div class="salon-employees-table-body">
 
-                <div class="table-responsive">
-                    <table class="table align-middle mb-0">
+                    @foreach ($employees as $employee)
+                        @php
+                            $employeeName =
+                                $employee->name
+                                . ' '
+                                . $employee->surname;
 
-                        <thead class="table-light">
-                            <tr>
-                                <th class="px-4 py-3">
-                                    Employee
-                                </th>
+                            $servicesText =
+                                $employee->services
+                                    ->pluck('name')
+                                    ->implode(' ');
 
-                                <th class="py-3">
-                                    Contact
-                                </th>
+                            $searchValue = mb_strtolower(
+                                $employeeName
+                                . ' '
+                                . $employee->username
+                                . ' '
+                                . $employee->email
+                                . ' '
+                                . ($employee->phone ?? '')
+                                . ' '
+                                . $servicesText
+                            );
+                        @endphp
 
-                                <th class="py-3">
-                                    Services
-                                </th>
+                        <article
+                            class="salon-employee-row"
+                            data-employee-row
+                            data-status="{{
+                                $employee->is_active
+                                    ? 'active'
+                                    : 'inactive'
+                            }}"
+                            data-search="{{ $searchValue }}"
+                        >
 
-                                <th class="py-3">
-                                    Status
-                                </th>
+                            <div class="salon-employee-identity">
 
-                                <th class="px-4 py-3 text-end">
-                                    Action
-                                </th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            @foreach ($employees as $employee)
-                                <tr>
-                                    <td class="px-4 py-3">
-                                        <strong>
-                                            {{ $employee->name }}
-                                            {{ $employee->surname }}
-                                        </strong>
-
-                                        <div class="small text-muted">
-                                            {{ '@' . $employee->username }}
-                                        </div>
-                                    </td>
-
-                                    <td class="py-3">
-                                        {{ $employee->email }}
-
-                                        @if ($employee->phone)
-                                            <div class="small text-muted">
-                                                {{ $employee->phone }}
-                                            </div>
-                                        @endif
-                                    </td>
-
-                                    <td class="py-3">
-                                        @forelse (
-                                            $employee->services
-                                            as $service
+                                <span class="salon-employee-avatar">
+                                    {{ mb_strtoupper(
+                                        mb_substr(
+                                            $employee->name,
+                                            0,
+                                            1
                                         )
-                                            <span
-                                                class="badge
-                                                       text-bg-light
-                                                       border
-                                                       text-dark
-                                                       me-1
-                                                       mb-1"
-                                            >
-                                                {{ $service->name }}
-                                            </span>
-                                        @empty
-                                            <span class="text-muted small">
-                                                No services assigned
-                                            </span>
-                                        @endforelse
-                                    </td>
+                                    ) }}
+                                </span>
 
-                                    <td class="py-3">
-                                        @if ($employee->is_active)
-                                            <span
-                                                class="badge
-                                                       text-bg-success"
-                                            >
-                                                Active
-                                            </span>
-                                        @else
-                                            <span
-                                                class="badge
-                                                       text-bg-secondary"
-                                            >
-                                                Inactive
-                                            </span>
-                                        @endif
-                                    </td>
+                                <div>
+                                    <strong>
+                                        {{ $employeeName }}
+                                    </strong>
 
-                                    <td class="px-4 py-3 text-end">
-                                        <a
-                                            href="{{ route(
-                                                'owner.employees.edit',
-                                                $employee
-                                            ) }}"
-                                            class="btn btn-sm
-                                                   btn-outline-dark"
-                                        >
-                                            Edit
-                                        </a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
+                                    <small>
+                                        {{ '@' . $employee->username }}
+                                    </small>
+                                </div>
 
-                    </table>
+                            </div>
+
+                            <div
+                                class="salon-employee-contact"
+                                data-label="Contact"
+                            >
+                                <strong>
+                                    {{ $employee->email }}
+                                </strong>
+
+                                <small>
+                                    {{ $employee->phone
+                                        ?: 'No phone number' }}
+                                </small>
+                            </div>
+
+                            <div
+                                class="salon-employee-services"
+                                data-label="Services"
+                            >
+                                @forelse (
+                                    $employee->services
+                                    as $service
+                                )
+                                    <span>
+                                        {{ $service->name }}
+                                    </span>
+                                @empty
+                                    <small>
+                                        No services assigned
+                                    </small>
+                                @endforelse
+                            </div>
+
+                            <div
+                                class="salon-employee-status-cell"
+                                data-label="Status"
+                            >
+                                @if ($employee->is_active)
+                                    <span class="salon-employee-status active">
+                                        <i></i>
+                                        Active
+                                    </span>
+                                @else
+                                    <span class="salon-employee-status inactive">
+                                        <i></i>
+                                        Inactive
+                                    </span>
+                                @endif
+                            </div>
+
+                            <div class="salon-employee-action">
+
+                                <a
+                                    href="{{ route(
+                                        'owner.employees.edit',
+                                        $employee
+                                    ) }}"
+                                >
+                                    Edit
+                                </a>
+
+                            </div>
+
+                        </article>
+
+                    @endforeach
+
+                    <div
+                        class="salon-employees-no-results"
+                        id="employeesNoResults"
+                        hidden
+                    >
+                        No employees match your search.
+                    </div>
+
                 </div>
 
-            @endif
+                <footer class="salon-employees-table-footer">
 
-        </div>
-    </div>
+                    <span id="employeeResultCount">
+                        Showing {{ $totalCount }}
+                        {{ $totalCount === 1
+                            ? 'employee'
+                            : 'employees' }}
+                    </span>
 
-    <div class="mt-4">
-        <a
-            href="{{ route('owner.dashboard') }}"
-            class="text-dark"
-        >
-            ← Back to dashboard
-        </a>
-    </div>
+                    <a href="{{ route('owner.dashboard') }}">
+                        Back to dashboard
+                    </a>
+
+                </footer>
+
+            </div>
+
+        @endif
+
+    </section>
 
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput =
+        document.getElementById('employeeSearch');
+
+    const rows = Array.from(
+        document.querySelectorAll('[data-employee-row]')
+    );
+
+    const buttons = Array.from(
+        document.querySelectorAll(
+            '[data-employee-filter]'
+        )
+    );
+
+    const resultCount =
+        document.getElementById('employeeResultCount');
+
+    const noResults =
+        document.getElementById('employeesNoResults');
+
+    if (!searchInput || rows.length === 0) {
+        return;
+    }
+
+    let activeFilter = 'all';
+
+    const updateEmployees = () => {
+        const query = searchInput.value
+            .trim()
+            .toLowerCase();
+
+        let visibleCount = 0;
+
+        rows.forEach((row) => {
+            const matchesSearch =
+                row.dataset.search.includes(query);
+
+            const matchesStatus =
+                activeFilter === 'all'
+                || row.dataset.status === activeFilter;
+
+            const visible =
+                matchesSearch && matchesStatus;
+
+            row.hidden = !visible;
+
+            if (visible) {
+                visibleCount++;
+            }
+        });
+
+        if (resultCount) {
+            resultCount.textContent =
+                `Showing ${visibleCount} `
+                + (
+                    visibleCount === 1
+                        ? 'employee'
+                        : 'employees'
+                );
+        }
+
+        if (noResults) {
+            noResults.hidden = visibleCount !== 0;
+        }
+    };
+
+    searchInput.addEventListener(
+        'input',
+        updateEmployees
+    );
+
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            activeFilter =
+                button.dataset.employeeFilter;
+
+            buttons.forEach((item) => {
+                const isActive = item === button;
+
+                item.classList.toggle(
+                    'active',
+                    isActive
+                );
+
+                item.setAttribute(
+                    'aria-pressed',
+                    String(isActive)
+                );
+            });
+
+            updateEmployees();
+        });
+    });
+});
+</script>
 @endsection

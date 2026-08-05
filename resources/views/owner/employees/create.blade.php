@@ -1,56 +1,79 @@
 @extends('layouts.app')
 
+@section(
+    'body-class',
+    'salon-admin-page salon-employee-form-page'
+)
+
+@section('main-class', 'salon-employee-form-main')
+
 @section('content')
-<div class="container py-5" style="max-width: 850px;">
+<div class="employee-form-shell">
 
-    <div
-        class="d-flex justify-content-between
-               align-items-start mb-5"
-    >
-        <div>
-            <p class="text-muted text-uppercase small mb-2">
-                Employees
-            </p>
+    <section class="employee-form-panel">
 
-            <h1 class="display-6 fw-light mb-2">
-                Add employee
-            </h1>
+        <header class="employee-form-header">
 
-            <p class="text-muted mb-0">
-                Create an employee account and assign services.
-            </p>
-        </div>
+            <div>
+                <p>OWNER WORKSPACE</p>
 
-        <a
-            href="{{ route('owner.employees.index') }}"
-            class="btn btn-outline-dark"
-        >
-            Back
-        </a>
-    </div>
+                <h1>Add employee</h1>
 
-    <div class="card border-0 shadow-sm">
-        <div class="card-body p-4 p-md-5">
+                <span>
+                    Create an account and assign salon services.
+                </span>
+            </div>
 
-            <form
-                method="POST"
-                action="{{ route('owner.employees.store') }}"
-                novalidate
+            <a
+                href="{{ route('owner.employees.index') }}"
+                class="employee-form-back"
             >
-                @csrf
+                ← Employees
+            </a>
 
+        </header>
+
+        @if ($errors->any())
+            <div class="employee-form-error-summary">
+                <span>!</span>
+
+                Please review the highlighted fields.
+            </div>
+        @endif
+
+        <form
+            method="POST"
+            action="{{ route('owner.employees.store') }}"
+            class="employee-form-card"
+            novalidate
+        >
+            @csrf
+
+            <div class="employee-form-content">
                 @include('owner.employees._form')
+            </div>
+
+            <footer class="employee-form-actions">
+
+                <a
+                    href="{{ route('owner.employees.index') }}"
+                    class="employee-secondary-button"
+                >
+                    Cancel
+                </a>
 
                 <button
                     type="submit"
-                    class="btn btn-dark px-4 py-3"
+                    class="employee-primary-button"
                 >
                     Save employee
                 </button>
-            </form>
 
-        </div>
-    </div>
+            </footer>
+
+        </form>
+
+    </section>
 
 </div>
 @endsection
