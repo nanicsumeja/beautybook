@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 #[Fillable([
     'name',
@@ -22,4 +23,13 @@ class Service extends Model
             'is_active' => 'boolean',
         ];
     }
+    public function employees(): BelongsToMany
+{
+    return $this->belongsToMany(
+        User::class,
+        'employee_service',
+        'service_id',
+        'employee_id'
+    )->withTimestamps();
+}
 }

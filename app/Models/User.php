@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 #[Fillable([
     'name',
     'surname',
@@ -39,4 +39,13 @@ class User extends Authenticatable
             'is_active' => 'boolean',
         ];
     }
+    public function services(): BelongsToMany
+{
+    return $this->belongsToMany(
+        Service::class,
+        'employee_service',
+        'employee_id',
+        'service_id'
+    )->withTimestamps();
+}
 }

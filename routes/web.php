@@ -6,6 +6,7 @@ use App\Http\Controllers\Owner\DashboardController;
 use App\Http\Controllers\Client\ServiceCatalogController;
 use App\Http\Controllers\Client\ReservationController;
 use App\Http\Controllers\Owner\ReservationController as OwnerReservationController;
+use App\Http\Controllers\Owner\EmployeeController;
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
@@ -70,4 +71,11 @@ Route::patch(
     '/reservations/{reservation}/confirm',
     [OwnerReservationController::class, 'confirm']
 )->name('reservations.confirm');
+Route::resource(
+    'employees',
+    EmployeeController::class
+)->except([
+    'show',
+    'destroy',
+]);
     });
