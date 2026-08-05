@@ -1,0 +1,885 @@
+@import url('https://fonts.bunny.net/css?family=montserrat:300,400,500&display=swap');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+
+/* =========================================================
+   BEAUTYBOOK — HOME
+========================================================= */
+
+.welcome-page {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.beauty-hero-page {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 650px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: url('/images/beauty-hero.png') center center / cover no-repeat;
+    color: #fff;
+}
+
+.beauty-hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.20);
+    pointer-events: none;
+}
+
+.hero-background-image {
+    display: none;
+}
+
+.hero-logo {
+    position: absolute;
+    top: 34px;
+    left: 30px;
+    z-index: 5;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 0.66rem;
+    font-weight: 300;
+    letter-spacing: 0.52em;
+    text-decoration: none;
+    animation: hero-fade 1.2s ease 0.3s both;
+}
+
+.hero-logo:hover {
+    color: #fff;
+}
+
+.hero-center {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.hero-center h1 {
+    margin: 0;
+    padding-left: 0.35em;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: 0.35em;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    animation: hero-title-enter 1.25s cubic-bezier(.2, .8, .2, 1) 0.35s both;
+}
+
+.hero-center p {
+    margin: 31px 0 0;
+    padding-left: 0.50em;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 0.72rem;
+    font-weight: 300;
+    letter-spacing: 0.50em;
+    animation: hero-fade-up 1s ease 0.75s both;
+}
+
+.hero-start-button {
+    width: 205px;
+    height: 60px;
+    margin: 55px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    background: rgba(255, 255, 255, 0.025);
+    backdrop-filter: blur(2px);
+    color: rgba(255, 255, 255, 0.92);
+    text-decoration: none;
+    font-size: 0.72rem;
+    font-weight: 300;
+    letter-spacing: 0.32em;
+    text-indent: 0.32em;
+    transition:
+        background 0.4s ease,
+        color 0.4s ease,
+        transform 0.4s ease,
+        border-color 0.4s ease;
+    animation: hero-fade-up 1s ease 1s both;
+}
+
+.hero-start-button:hover {
+    color: #333;
+    background: rgba(255, 255, 255, 0.93);
+    border-color: #fff;
+    transform: translateY(-3px);
+}
+
+.hero-bottom-line {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    z-index: 5;
+    width: 1px;
+    height: 42px;
+    background: rgba(255, 255, 255, 0.60);
+    animation: bottom-line 1s ease 1.5s both;
+}
+
+@keyframes hero-title-enter {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+        letter-spacing: 0.50em;
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        letter-spacing: 0.35em;
+    }
+}
+
+@keyframes hero-fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes hero-fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes bottom-line {
+    from {
+        height: 0;
+        opacity: 0;
+    }
+    to {
+        height: 42px;
+        opacity: 1;
+    }
+}
+
+@media (max-width: 700px) {
+    .hero-logo {
+        top: 27px;
+        left: 24px;
+        font-size: 0.55rem;
+    }
+
+    .hero-center {
+        padding: 0 22px;
+    }
+
+    .hero-center h1 {
+        font-size: clamp(2rem, 10vw, 3rem);
+        letter-spacing: 0.22em;
+        padding-left: 0.22em;
+    }
+
+    .hero-center p {
+        margin-top: 24px;
+        font-size: 0.55rem;
+        letter-spacing: 0.32em;
+        padding-left: 0.32em;
+    }
+
+    .hero-start-button {
+        width: 185px;
+        height: 57px;
+        margin-top: 45px;
+    }
+}
+
+
+/* =========================================================
+   BEAUTYBOOK — LOGIN
+========================================================= */
+
+.lux-auth-page {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow: hidden;
+    background: #111;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.lux-auth-page main {
+    padding: 0 !important;
+}
+
+.lux-login {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 650px;
+    overflow: hidden;
+    color: #fff;
+}
+
+.lux-login-background {
+    position: absolute;
+    inset: -20px;
+    z-index: 1;
+    width: calc(100% + 40px);
+    height: calc(100% + 40px);
+    object-fit: cover;
+    object-position: center;
+    filter:
+        grayscale(100%)
+        blur(7px)
+        contrast(1.05)
+        brightness(0.58);
+    transform: scale(1.04);
+    animation: lux-background-enter 1.8s ease-out both;
+}
+
+.lux-login-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.22) 0%,
+        rgba(0, 0, 0, 0.30) 50%,
+        rgba(0, 0, 0, 0.62) 100%
+    );
+    pointer-events: none;
+}
+
+.lux-login-logo,
+.lux-back {
+    position: absolute;
+    z-index: 10;
+    text-decoration: none;
+}
+
+.lux-login-logo {
+    top: 34px;
+    left: 32px;
+    color: rgba(255, 255, 255, 0.90);
+    font-size: 0.67rem;
+    font-weight: 300;
+    letter-spacing: 0.52em;
+    transition: opacity 0.3s ease;
+    animation: lux-fade 1s ease 0.2s both;
+}
+
+.lux-login-logo:hover {
+    color: #fff;
+    opacity: 0.7;
+}
+
+.lux-back {
+    top: 36px;
+    right: 38px;
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 0.58rem;
+    font-weight: 300;
+    letter-spacing: 0.30em;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.lux-back:hover {
+    color: #fff;
+    transform: translateX(-4px);
+}
+
+.lux-login-form {
+    position: absolute;
+    top: 50%;
+    right: 9vw;
+    z-index: 5;
+    width: min(390px, 80vw);
+    transform: translateY(-50%);
+    animation: lux-form-enter 1s cubic-bezier(.2, .8, .2, 1) 0.35s both;
+}
+
+.lux-login-heading {
+    margin-bottom: 55px;
+}
+
+.lux-login-heading > span {
+    display: block;
+    margin-bottom: 18px;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.58rem;
+    font-weight: 300;
+    letter-spacing: 0.48em;
+}
+
+.lux-login-heading h1 {
+    margin: 0;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(2.7rem, 4vw, 4.1rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: 0.06em;
+}
+
+.lux-field {
+    position: relative;
+    margin-bottom: 34px;
+}
+
+.lux-field label {
+    display: block;
+    margin-bottom: 12px;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.56rem;
+    font-weight: 300;
+    letter-spacing: 0.30em;
+}
+
+.lux-field input {
+    width: 100%;
+    padding: 7px 0 13px;
+    border: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.42);
+    border-radius: 0;
+    outline: 0;
+    background: transparent;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    transition: border-color 0.35s ease;
+}
+
+.lux-field input:focus {
+    border-bottom-color: #fff;
+}
+
+.lux-field input:-webkit-autofill,
+.lux-field input:-webkit-autofill:hover,
+.lux-field input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #fff;
+    -webkit-box-shadow: 0 0 0 1000px transparent inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.lux-login-options {
+    margin: 2px 0 42px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    font-size: 0.65rem;
+}
+
+.lux-remember {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: rgba(255, 255, 255, 0.58);
+    cursor: pointer;
+}
+
+.lux-remember input {
+    width: 12px;
+    height: 12px;
+    accent-color: #fff;
+}
+
+.lux-login-options a {
+    color: rgba(255, 255, 255, 0.60);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.lux-login-options a:hover {
+    color: #fff;
+}
+
+.lux-submit {
+    width: 100%;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(4px);
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.66rem;
+    font-weight: 300;
+    letter-spacing: 0.38em;
+    cursor: pointer;
+    transition: background 0.35s ease, color 0.35s ease, transform 0.35s ease;
+}
+
+.lux-submit:hover {
+    background: #fff;
+    color: #222;
+    transform: translateY(-2px);
+}
+
+.lux-register {
+    margin-top: 28px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.50);
+    font-size: 0.62rem;
+}
+
+.lux-register a {
+    color: rgba(255, 255, 255, 0.90);
+    letter-spacing: 0.10em;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.lux-register a:hover {
+    opacity: 0.65;
+}
+
+.lux-error {
+    display: block;
+    margin-top: 7px;
+    color: #fff;
+    font-size: 0.62rem;
+}
+
+.lux-login-bottom-line {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    z-index: 5;
+    width: 1px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.50);
+}
+
+@keyframes lux-background-enter {
+    from {
+        opacity: 0;
+        transform: scale(1.08);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1.04);
+    }
+}
+
+@keyframes lux-form-enter {
+    from {
+        opacity: 0;
+        transform: translateY(calc(-50% + 20px));
+    }
+    to {
+        opacity: 1;
+        transform: translateY(-50%);
+    }
+}
+
+@keyframes lux-fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@media (max-width: 800px) {
+    .lux-login-overlay {
+        background: rgba(0, 0, 0, 0.50);
+    }
+
+    .lux-login-form {
+        left: 50%;
+        right: auto;
+        width: calc(100% - 55px);
+        transform: translate(-50%, -50%);
+    }
+
+    .lux-login-heading {
+        margin-bottom: 45px;
+    }
+
+    .lux-login-heading h1 {
+        font-size: 2.8rem;
+    }
+
+    .lux-back {
+        right: 25px;
+    }
+
+    .lux-login-logo {
+        left: 25px;
+    }
+
+    @keyframes lux-form-enter {
+        from {
+            opacity: 0;
+            transform: translate(-50%, calc(-50% + 20px));
+        }
+        to {
+            opacity: 1;
+            transform: translate(-50%, -50%);
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .lux-login-options {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .lux-login-heading h1 {
+        font-size: 2.45rem;
+    }
+
+    .lux-register {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
+/* =========================================================
+   BEAUTYBOOK — REGISTER
+========================================================= */
+
+.campaign-register-page {
+    margin: 0;
+    min-height: 100vh;
+    overflow: hidden;
+    background: #f7f7f4;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.campaign-register-page main {
+    padding: 0 !important;
+}
+
+.campaign-register {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            circle at 82% 18%,
+            rgba(255, 255, 255, 0.95),
+            transparent 28%
+        ),
+        #f7f7f4;
+}
+
+.campaign-logo,
+.campaign-back {
+    position: absolute;
+    z-index: 20;
+    text-decoration: none;
+}
+
+.campaign-logo {
+    top: 30px;
+    left: 34px;
+    color: #292929;
+    font-size: 0.60rem;
+    font-weight: 400;
+    letter-spacing: 0.50em;
+}
+
+.campaign-back {
+    top: 31px;
+    right: 35px;
+    color: #8f8f8a;
+    font-size: 0.52rem;
+    letter-spacing: 0.30em;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.campaign-back:hover {
+    color: #222;
+    transform: translateX(-4px);
+}
+
+.campaign-form-side {
+    position: relative;
+    z-index: 5;
+    width: 56%;
+    min-height: 100vh;
+    padding: 70px 0 40px 7vw;
+    display: flex;
+    align-items: center;
+    background: transparent;
+}
+
+.campaign-form {
+    width: 100%;
+    max-width: 520px;
+    animation: register-form-luxury 1s cubic-bezier(.2, .8, .2, 1) 0.25s both;
+}
+
+.campaign-heading {
+    margin-bottom: 22px;
+    animation: register-heading-enter 0.9s ease 0.45s both;
+}
+
+.campaign-heading span {
+    display: block;
+    margin-bottom: 7px;
+    color: #9d9d98;
+    font-size: 0.46rem;
+    font-weight: 500;
+    letter-spacing: 0.36em;
+}
+
+.campaign-heading h1 {
+    margin: 0;
+    color: #252525;
+    font-size: 2.35rem;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: 0.01em;
+}
+
+.campaign-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.campaign-field {
+    margin-bottom: 14px;
+}
+
+.campaign-field label {
+    display: block;
+    margin-bottom: 5px;
+    color: #787874;
+    font-size: 0.46rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+}
+
+.campaign-field input {
+    width: 100%;
+    padding: 5px 0 8px;
+    border: 0;
+    border-bottom: 1px solid #c8c8c3;
+    border-radius: 0;
+    outline: 0;
+    background: transparent;
+    color: #222;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.76rem;
+    font-weight: 300;
+    transition: border-color 0.3s ease;
+}
+
+.campaign-field input:focus {
+    border-bottom-color: #222;
+}
+
+.campaign-submit {
+    width: 100%;
+    height: 47px;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #292929;
+    background: #292929;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.54rem;
+    font-weight: 400;
+    letter-spacing: 0.32em;
+    cursor: pointer;
+    transition:
+        background 0.35s ease,
+        color 0.35s ease,
+        transform 0.35s ease,
+        letter-spacing 0.35s ease;
+}
+
+.campaign-submit:hover {
+    background: transparent;
+    color: #292929;
+    transform: translateY(-2px);
+    letter-spacing: 0.40em;
+}
+
+.campaign-signin {
+    margin-top: 14px;
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+    color: #9a9a96;
+    font-size: 0.55rem;
+}
+
+.campaign-signin a {
+    color: #2f2f2e;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+}
+
+.campaign-signin a:hover {
+    text-decoration: underline;
+}
+
+.campaign-error {
+    display: block;
+    margin-top: 4px;
+    color: #973f3f;
+    font-size: 0.53rem;
+}
+
+.campaign-floating-visual {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 1vw;
+    z-index: 50;
+    width: 430px;
+    height: 100vh;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    overflow: visible;
+    pointer-events: none;
+    animation: beauty-visual-enter 1.4s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+.campaign-floating-visual img {
+    display: block;
+    width: auto;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    object-fit: contain;
+    object-position: center top;
+    opacity: 1;
+    filter:
+        grayscale(100%)
+        contrast(1.03)
+        brightness(0.98);
+    animation: beauty-soft-float 6s ease-in-out 1.4s infinite;
+}
+
+@keyframes beauty-visual-enter {
+    from {
+        opacity: 0;
+        transform: translateX(55px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes beauty-soft-float {
+    0%,
+    100% {
+        transform: translateY(0) scale(1.06);
+    }
+    50% {
+        transform: translateY(-10px) scale(1.065);
+    }
+}
+
+@keyframes register-form-luxury {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes register-heading-enter {
+    from {
+        opacity: 0;
+        transform: translateX(-12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 900px) {
+    .campaign-register-page {
+        overflow: auto;
+    }
+
+    .campaign-register {
+        min-height: 100vh;
+    }
+
+    .campaign-form-side {
+        width: 100%;
+        min-height: 100vh;
+        padding: 90px 30px 45px;
+    }
+
+    .campaign-floating-visual {
+        top: 95px;
+        right: 18px;
+        bottom: auto;
+        width: 120px;
+        height: 220px;
+        opacity: 0.18;
+        align-items: center;
+    }
+
+    .campaign-floating-visual img {
+        width: auto;
+        height: 100%;
+    }
+
+    .campaign-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .campaign-heading h1 {
+        font-size: 2.1rem;
+    }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-logo,
+    .hero-center h1,
+    .hero-center p,
+    .hero-start-button,
+    .hero-bottom-line,
+    .lux-login-background,
+    .lux-login-logo,
+    .lux-login-form,
+    .campaign-floating-visual,
+    .campaign-floating-visual img,
+    .campaign-form,
+    .campaign-heading {
+        animation: none !important;
+    }
+}
