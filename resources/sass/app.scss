@@ -6581,3 +6581,656 @@
         padding-top: 0.3rem;
     }
 }
+// =====================================================
+// BEAUTYBOOK — EMPLOYEE DASHBOARD
+// =====================================================
+
+.salon-employee-dashboard-page {
+    height: 100svh;
+    overflow: hidden;
+    background: #ebe7e1;
+}
+
+.salon-employee-dashboard-page #app {
+    display: flex;
+    height: 100svh;
+    flex-direction: column;
+}
+
+.salon-employee-dashboard-page .navbar {
+    flex: 0 0 auto;
+}
+
+.salon-employee-dashboard-main {
+    display: flex;
+    min-height: 0;
+    flex: 1;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            circle at 8% 8%,
+            rgba(255, 255, 255, 0.82),
+            transparent 32%
+        ),
+        linear-gradient(
+            135deg,
+            #eeeae4,
+            #e7e2db
+        );
+}
+
+.employee-dashboard-shell {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 14px;
+    box-sizing: border-box;
+}
+
+.employee-dashboard-panel {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    flex-direction: column;
+    padding: 1.35rem 1.5rem;
+    overflow: hidden;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(252, 250, 247, 0.98),
+            rgba(247, 244, 239, 0.98)
+        );
+    border: 1px solid rgba(39, 34, 30, 0.065);
+    border-radius: 28px;
+    box-shadow:
+        0 30px 75px rgba(57, 49, 42, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.82);
+    animation:
+        employeeDashboardEnter 520ms
+        cubic-bezier(0.22, 1, 0.36, 1)
+        both;
+}
+
+
+// HEADER
+
+.employee-dashboard-header {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+
+.employee-dashboard-header p {
+    margin: 0 0 0.28rem;
+    color: #918a83;
+    font-size: 0.61rem;
+    font-weight: 700;
+    letter-spacing: 0.19em;
+}
+
+.employee-dashboard-header h1 {
+    margin: 0;
+    color: #211f1d;
+    font-size: clamp(1.65rem, 2.3vw, 2.15rem);
+    font-weight: 520;
+    line-height: 1.1;
+    letter-spacing: -0.045em;
+}
+
+.employee-dashboard-header > div:first-child > span {
+    display: block;
+    margin-top: 0.35rem;
+    color: #938c85;
+    font-size: 0.67rem;
+}
+
+.employee-dashboard-date {
+    min-width: 105px;
+    padding: 0.65rem 0.8rem;
+    background: rgba(239, 235, 230, 0.74);
+    border-radius: 14px;
+    text-align: right;
+}
+
+.employee-dashboard-date span,
+.employee-dashboard-date strong {
+    display: block;
+}
+
+.employee-dashboard-date span {
+    color: #99928b;
+    font-size: 0.54rem;
+    text-transform: uppercase;
+}
+
+.employee-dashboard-date strong {
+    margin-top: 0.13rem;
+    color: #4c4742;
+    font-size: 0.68rem;
+    font-weight: 680;
+}
+
+
+// GRID
+
+.employee-dashboard-grid {
+    display: grid;
+    grid-template-columns:
+        minmax(330px, 0.72fr)
+        minmax(520px, 1.28fr);
+    min-height: 0;
+    flex: 1;
+    gap: 0.9rem;
+}
+
+.employee-overview-card,
+.employee-assigned-card {
+    min-height: 0;
+    padding: 1rem;
+    background: rgba(255, 253, 250, 0.72);
+    border: 1px solid rgba(42, 37, 33, 0.055);
+    border-radius: 20px;
+}
+
+.employee-overview-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.employee-assigned-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+
+// CARD HEADING
+
+.employee-card-heading {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.9rem;
+}
+
+.employee-card-heading p {
+    margin: 0 0 0.18rem;
+    color: #9b948d;
+    font-size: 0.53rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+}
+
+.employee-card-heading h2 {
+    margin: 0;
+    color: #35312e;
+    font-size: 1rem;
+    font-weight: 650;
+    letter-spacing: -0.025em;
+}
+
+.employee-account-status,
+.employee-service-count {
+    flex: 0 0 auto;
+    border-radius: 999px;
+    font-size: 0.54rem;
+    font-weight: 650;
+}
+
+.employee-account-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.38rem;
+    padding: 0.35rem 0.55rem;
+}
+
+.employee-account-status i {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+}
+
+.employee-account-status.active {
+    color: #586052;
+    background: #e5eadf;
+}
+
+.employee-account-status.active i {
+    background: #747d6d;
+}
+
+.employee-account-status.inactive {
+    color: #7d756f;
+    background: #ebe5df;
+}
+
+.employee-account-status.inactive i {
+    background: #9c948d;
+}
+
+.employee-service-count {
+    padding: 0.35rem 0.55rem;
+    color: #77716b;
+    background: #efebe6;
+}
+
+
+// PROFILE
+
+.employee-profile {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.8rem;
+    background: rgba(239, 235, 230, 0.66);
+    border-radius: 16px;
+}
+
+.employee-profile-avatar {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    color: #625d57;
+    background: #ffffff;
+    border-radius: 14px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    place-items: center;
+}
+
+.employee-profile strong,
+.employee-profile span {
+    display: block;
+}
+
+.employee-profile strong {
+    color: #3d3935;
+    font-size: 0.72rem;
+    font-weight: 680;
+}
+
+.employee-profile span {
+    margin-top: 0.12rem;
+    color: #99928b;
+    font-size: 0.57rem;
+}
+
+
+// DETAILS
+
+.employee-profile-details {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
+    margin-top: 0.75rem;
+}
+
+.employee-profile-details > div {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.55rem 0.65rem;
+    border-bottom:
+        1px solid rgba(42, 37, 33, 0.055);
+}
+
+.employee-profile-details span {
+    color: #99928b;
+    font-size: 0.55rem;
+}
+
+.employee-profile-details strong {
+    overflow: hidden;
+    color: #514c47;
+    font-size: 0.59rem;
+    font-weight: 650;
+    text-align: right;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+// STATS
+
+.employee-dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.45rem;
+    margin-top: 0.75rem;
+}
+
+.employee-dashboard-stats article {
+    min-width: 0;
+    padding: 0.7rem;
+    background: rgba(241, 238, 234, 0.7);
+    border-radius: 14px;
+}
+
+.employee-dashboard-stats span,
+.employee-dashboard-stats strong {
+    display: block;
+}
+
+.employee-dashboard-stats span {
+    min-height: 27px;
+    color: #918a83;
+    font-size: 0.51rem;
+    line-height: 1.35;
+}
+
+.employee-dashboard-stats strong {
+    margin-top: 0.2rem;
+    color: #312e2b;
+    font-size: 1.2rem;
+    font-weight: 550;
+}
+
+
+// NOTE
+
+.employee-dashboard-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.55rem;
+    margin-top: auto;
+    padding: 0.65rem;
+    color: #77716b;
+    background: rgba(235, 232, 227, 0.75);
+    border-radius: 14px;
+}
+
+.employee-dashboard-note > span {
+    display: grid;
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    background: rgba(255, 255, 255, 0.76);
+    border-radius: 50%;
+    font-size: 0.56rem;
+    font-weight: 700;
+    place-items: center;
+}
+
+.employee-dashboard-note p {
+    margin: 0;
+    font-size: 0.55rem;
+    line-height: 1.55;
+}
+
+
+// ASSIGNED SERVICES
+
+.employee-assigned-list {
+    display: grid;
+    min-height: 0;
+    flex: 1;
+    align-content: start;
+    gap: 0.45rem;
+    padding-right: 0.25rem;
+    overflow-y: auto;
+}
+
+.employee-assigned-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.employee-assigned-list::-webkit-scrollbar-thumb {
+    background: rgba(77, 70, 64, 0.17);
+    border-radius: 999px;
+}
+
+.employee-assigned-service {
+    display: grid;
+    grid-template-columns:
+        36px
+        minmax(170px, 1fr)
+        105px
+        75px;
+    align-items: center;
+    gap: 0.7rem;
+    min-height: 62px;
+    padding: 0.6rem 0.7rem;
+    background: rgba(241, 238, 234, 0.66);
+    border: 1px solid transparent;
+    border-radius: 15px;
+    transition:
+        background 170ms ease,
+        border-color 170ms ease;
+}
+
+.employee-assigned-service:hover {
+    background: rgba(248, 246, 242, 0.96);
+    border-color: rgba(42, 37, 33, 0.055);
+}
+
+.employee-service-icon {
+    display: grid;
+    width: 36px;
+    height: 36px;
+    color: #69635d;
+    background: #ffffff;
+    border-radius: 12px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    place-items: center;
+}
+
+.employee-service-copy {
+    min-width: 0;
+}
+
+.employee-service-copy strong,
+.employee-service-copy span {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.employee-service-copy strong {
+    color: #403b37;
+    font-size: 0.65rem;
+    font-weight: 680;
+}
+
+.employee-service-copy span {
+    margin-top: 0.13rem;
+    color: #99928b;
+    font-size: 0.54rem;
+}
+
+.employee-service-meta {
+    text-align: right;
+}
+
+.employee-service-meta span,
+.employee-service-meta strong {
+    display: block;
+}
+
+.employee-service-meta span {
+    color: #99928b;
+    font-size: 0.53rem;
+}
+
+.employee-service-meta strong {
+    margin-top: 0.1rem;
+    color: #514c47;
+    font-size: 0.59rem;
+    font-weight: 680;
+}
+
+.employee-service-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.34rem 0.45rem;
+    border-radius: 999px;
+    font-size: 0.52rem;
+    font-weight: 650;
+}
+
+.employee-service-status i {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+}
+
+.employee-service-status.active {
+    color: #586052;
+    background: #e5eadf;
+}
+
+.employee-service-status.active i {
+    background: #747d6d;
+}
+
+.employee-service-status.inactive {
+    color: #7d756f;
+    background: #eae5df;
+}
+
+.employee-service-status.inactive i {
+    background: #9c948d;
+}
+
+
+// EMPTY
+
+.employee-assigned-empty {
+    display: grid;
+    min-height: 260px;
+    flex: 1;
+    align-content: center;
+    justify-items: center;
+    text-align: center;
+}
+
+.employee-assigned-empty > span {
+    display: grid;
+    width: 43px;
+    height: 43px;
+    margin-bottom: 0.75rem;
+    color: #756f69;
+    background: #ece7e1;
+    border-radius: 14px;
+    place-items: center;
+}
+
+.employee-assigned-empty h3 {
+    margin: 0;
+    color: #393531;
+    font-size: 0.78rem;
+    font-weight: 680;
+}
+
+.employee-assigned-empty p {
+    max-width: 290px;
+    margin: 0.35rem 0 0;
+    color: #99928b;
+    font-size: 0.58rem;
+    line-height: 1.55;
+}
+
+
+// RESPONSIVE
+
+@media (max-width: 950px) {
+    .salon-employee-dashboard-page {
+        height: auto;
+        overflow: auto;
+    }
+
+    .salon-employee-dashboard-page #app {
+        height: auto;
+        min-height: 100svh;
+    }
+
+    .salon-employee-dashboard-main {
+        min-height: calc(100svh - 70px);
+        overflow: visible;
+    }
+
+    .employee-dashboard-shell {
+        height: auto;
+        padding: 0.75rem;
+    }
+
+    .employee-dashboard-panel {
+        height: auto;
+        min-height: calc(100svh - 94px);
+        padding: 1.1rem;
+        border-radius: 23px;
+    }
+
+    .employee-dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .employee-dashboard-note {
+        margin-top: 0.8rem;
+    }
+
+    .employee-assigned-list {
+        max-height: none;
+        overflow: visible;
+    }
+}
+
+@media (max-width: 640px) {
+    .employee-dashboard-header {
+        gap: 1rem;
+    }
+
+    .employee-dashboard-date {
+        min-width: 88px;
+    }
+
+    .employee-dashboard-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .employee-dashboard-stats span {
+        min-height: auto;
+    }
+
+    .employee-assigned-service {
+        grid-template-columns:
+            36px
+            minmax(0, 1fr);
+    }
+
+    .employee-service-meta {
+        grid-column: 2;
+        text-align: left;
+    }
+
+    .employee-service-status {
+        grid-column: 2;
+        justify-self: start;
+    }
+}
+
+@keyframes employeeDashboardEnter {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.995);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}

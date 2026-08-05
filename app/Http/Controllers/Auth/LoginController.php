@@ -43,15 +43,15 @@ class LoginController extends Controller
      * Preusmjeravanje korisnika nakon uspješne prijave.
      */
     protected function authenticated(Request $request, $user)
-    {
-        if ($user->role === 'owner') {
-            return redirect('/owner/dashboard');
-        }
+{
+    return match ($user->role) {
+        'owner' => redirect()->route('owner.dashboard'),
 
-        if ($user->role === 'employee') {
-            return redirect('/employee/dashboard');
-        }
+        'employee' => redirect()->route('employee.dashboard'),
 
-        return redirect('/client/dashboard');
-    }
+        'client' => redirect()->route('client.dashboard'),
+
+        default => redirect()->route('welcome'),
+    };
+}
 }

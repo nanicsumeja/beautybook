@@ -7,6 +7,8 @@ use App\Http\Controllers\Client\ServiceCatalogController;
 use App\Http\Controllers\Client\ReservationController;
 use App\Http\Controllers\Owner\ReservationController as OwnerReservationController;
 use App\Http\Controllers\Owner\EmployeeController;
+use App\Http\Controllers\Employee\DashboardController
+    as EmployeeDashboardController;
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
@@ -47,11 +49,15 @@ Route::middleware(['auth', 'role:client'])
             [ReservationController::class, 'cancel']
         )->name('reservations.cancel');
     });
-Route::middleware(['auth', 'role:employee'])->group(function () {
-    Route::get('/employee/dashboard', function () {
-        return view('employee.dashboard');
-    })->name('employee.dashboard');
-});
+Route::middleware(['auth', 'role:employee'])
+    ->prefix('employee')
+    ->name('employee.')
+    ->group(function () {
+        Route::get(
+            '/dashboard',
+            EmployeeDashboardController::class
+        )->name('dashboard');
+    });
 
 Route::middleware(['auth', 'role:owner'])
     ->prefix('owner')
