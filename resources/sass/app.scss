@@ -552,7 +552,6 @@
     }
 }
 
-
 /* =========================================================
    BEAUTYBOOK — REGISTER
 ========================================================= */
@@ -574,6 +573,7 @@
     width: 100%;
     min-height: 100vh;
     overflow: hidden;
+
     background:
         radial-gradient(
             circle at 82% 18%,
@@ -582,6 +582,11 @@
         ),
         #f7f7f4;
 }
+
+
+/* =========================================================
+   LOGO + BACK
+========================================================= */
 
 .campaign-logo,
 .campaign-back {
@@ -593,7 +598,9 @@
 .campaign-logo {
     top: 30px;
     left: 34px;
+
     color: #292929;
+
     font-size: 0.60rem;
     font-weight: 400;
     letter-spacing: 0.50em;
@@ -602,10 +609,15 @@
 .campaign-back {
     top: 31px;
     right: 35px;
+
     color: #8f8f8a;
+
     font-size: 0.52rem;
     letter-spacing: 0.30em;
-    transition: color 0.3s ease, transform 0.3s ease;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
 }
 
 .campaign-back:hover {
@@ -613,32 +625,69 @@
     transform: translateX(-4px);
 }
 
+
+/* =========================================================
+   FORM SIDE
+========================================================= */
+
 .campaign-form-side {
     position: relative;
     z-index: 5;
+
     width: 56%;
     min-height: 100vh;
-    padding: 70px 0 40px 7vw;
+
+    padding: 70px 40px 40px;
+
     display: flex;
     align-items: center;
+    justify-content: center;
+
     background: transparent;
 }
 
+
+/* =========================================================
+   FORM
+========================================================= */
+
 .campaign-form {
     width: 100%;
-    max-width: 520px;
-    animation: register-form-luxury 1s cubic-bezier(.2, .8, .2, 1) 0.25s both;
+
+    /* prije je bilo 520px */
+    max-width: 430px;
+
+    animation:
+        register-form-luxury
+        1s
+        cubic-bezier(.2, .8, .2, 1)
+        0.25s
+        both;
 }
 
+
+/* =========================================================
+   HEADING
+========================================================= */
+
 .campaign-heading {
-    margin-bottom: 22px;
-    animation: register-heading-enter 0.9s ease 0.45s both;
+    margin-bottom: 24px;
+
+    animation:
+        register-heading-enter
+        0.9s
+        ease
+        0.45s
+        both;
 }
 
 .campaign-heading span {
     display: block;
+
     margin-bottom: 7px;
+
     color: #9d9d98;
+
     font-size: 0.46rem;
     font-weight: 500;
     letter-spacing: 0.36em;
@@ -646,27 +695,46 @@
 
 .campaign-heading h1 {
     margin: 0;
+
     color: #252525;
+
     font-size: 2.35rem;
     font-weight: 300;
     line-height: 1;
+
     letter-spacing: 0.01em;
 }
 
+
+/* =========================================================
+   FORM ROWS
+========================================================= */
+
 .campaign-row {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
 }
 
+
+/* =========================================================
+   FORM FIELDS
+========================================================= */
+
 .campaign-field {
-    margin-bottom: 14px;
+    margin-bottom: 15px;
 }
 
 .campaign-field label {
     display: block;
+
     margin-bottom: 5px;
+
     color: #787874;
+
     font-size: 0.46rem;
     font-weight: 500;
     letter-spacing: 0.22em;
@@ -674,38 +742,58 @@
 
 .campaign-field input {
     width: 100%;
+
     padding: 5px 0 8px;
+
     border: 0;
     border-bottom: 1px solid #c8c8c3;
     border-radius: 0;
+
     outline: 0;
+
     background: transparent;
     color: #222;
+
     font-family: 'Montserrat', sans-serif;
     font-size: 0.76rem;
     font-weight: 300;
-    transition: border-color 0.3s ease;
+
+    transition:
+        border-color 0.3s ease;
 }
 
 .campaign-field input:focus {
     border-bottom-color: #222;
 }
 
+
+/* =========================================================
+   CREATE ACCOUNT BUTTON
+========================================================= */
+
 .campaign-submit {
-    width: 100%;
+    width: 210px;
     height: 47px;
-    margin-top: 4px;
+
+    margin-top: 5px auto 0;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     border: 1px solid #292929;
+
     background: #292929;
     color: #fff;
+
     font-family: 'Montserrat', sans-serif;
+
     font-size: 0.54rem;
     font-weight: 400;
     letter-spacing: 0.32em;
+
     cursor: pointer;
+
     transition:
         background 0.35s ease,
         color 0.35s ease,
@@ -716,23 +804,37 @@
 .campaign-submit:hover {
     background: transparent;
     color: #292929;
+
     transform: translateY(-2px);
+
     letter-spacing: 0.40em;
 }
 
+
+/* =========================================================
+   SIGN IN LINK
+========================================================= */
+
 .campaign-signin {
     margin-top: 14px;
+
     display: flex;
     justify-content: center;
+    align-items: center;
+
     gap: 7px;
+
     color: #9a9a96;
+
     font-size: 0.55rem;
 }
 
 .campaign-signin a {
     color: #2f2f2e;
+
     font-weight: 500;
     letter-spacing: 0.08em;
+
     text-decoration: none;
 }
 
@@ -740,89 +842,154 @@
     text-decoration: underline;
 }
 
+
+/* =========================================================
+   ERRORS
+========================================================= */
+
 .campaign-error {
     display: block;
+
     margin-top: 4px;
+
     color: #973f3f;
+
     font-size: 0.53rem;
 }
 
+
+/* =========================================================
+   RIGHT BEAUTY IMAGE
+========================================================= */
+
 .campaign-floating-visual {
     position: absolute;
+
     top: 0;
     bottom: 0;
     right: 1vw;
+
     z-index: 50;
+
     width: 430px;
     height: 100vh;
+
     display: flex;
     align-items: stretch;
     justify-content: center;
+
     overflow: visible;
+
     pointer-events: none;
-    animation: beauty-visual-enter 1.4s cubic-bezier(.2, .8, .2, 1) both;
+
+    animation:
+        beauty-visual-enter
+        1.4s
+        cubic-bezier(.2, .8, .2, 1)
+        both;
 }
 
 .campaign-floating-visual img {
     display: block;
+
     width: auto;
     height: 100%;
+
     max-width: none;
     max-height: none;
+
     object-fit: contain;
     object-position: center top;
+
     opacity: 1;
+
     filter:
         grayscale(100%)
         contrast(1.03)
         brightness(0.98);
-    animation: beauty-soft-float 6s ease-in-out 1.4s infinite;
+
+    animation:
+        beauty-soft-float
+        6s
+        ease-in-out
+        1.4s
+        infinite;
 }
 
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
 @keyframes beauty-visual-enter {
+
     from {
         opacity: 0;
         transform: translateX(55px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
     }
+
 }
+
 
 @keyframes beauty-soft-float {
+
     0%,
     100% {
-        transform: translateY(0) scale(1.06);
+        transform:
+            translateY(0)
+            scale(1.06);
     }
+
     50% {
-        transform: translateY(-10px) scale(1.065);
+        transform:
+            translateY(-10px)
+            scale(1.065);
     }
+
 }
 
+
 @keyframes register-form-luxury {
+
     from {
         opacity: 0;
         transform: translateY(18px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
     }
+
 }
 
+
 @keyframes register-heading-enter {
+
     from {
         opacity: 0;
         transform: translateX(-12px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
     }
+
 }
 
+
+/* =========================================================
+   TABLET / MOBILE
+========================================================= */
+
 @media (max-width: 900px) {
+
     .campaign-register-page {
         overflow: auto;
     }
@@ -834,16 +1001,30 @@
     .campaign-form-side {
         width: 100%;
         min-height: 100vh;
-        padding: 90px 30px 45px;
+
+        padding:
+            90px
+            30px
+            45px;
+
+        justify-content: center;
+    }
+
+    .campaign-form {
+        width: 100%;
+        max-width: 430px;
     }
 
     .campaign-floating-visual {
         top: 95px;
         right: 18px;
         bottom: auto;
+
         width: 120px;
         height: 220px;
+
         opacity: 0.18;
+
         align-items: center;
     }
 
@@ -860,6 +1041,45 @@
     .campaign-heading h1 {
         font-size: 2.1rem;
     }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 500px) {
+
+    .campaign-logo {
+        top: 25px;
+        left: 20px;
+    }
+
+    .campaign-back {
+        top: 25px;
+        right: 20px;
+    }
+
+    .campaign-form-side {
+        padding:
+            85px
+            22px
+            40px;
+    }
+
+    .campaign-form {
+        max-width: 100%;
+    }
+
+    .campaign-heading h1 {
+        font-size: 1.9rem;
+    }
+
+    .campaign-field {
+        margin-bottom: 14px;
+    }
+
 }
 
 
@@ -868,6 +1088,7 @@
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
+
     .hero-logo,
     .hero-center h1,
     .hero-center p,
@@ -882,7 +1103,9 @@
     .campaign-heading {
         animation: none !important;
     }
+
 }
+
 // =====================================================
 // BEAUTYBOOK — OWNER ADMIN PANEL
 // =====================================================
@@ -7014,4 +7237,428 @@ form
 .salon-admin-panel,
 .salon-admin-grid {
     width: 100%;
+}
+/* =========================================================
+   BEAUTYBOOK — FORGOT PASSWORD
+========================================================= */
+
+.forgot-password-page {
+    position: fixed;
+    inset: 0;
+
+    z-index: 100;
+
+    width: 100%;
+    min-height: 100vh;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 82% 18%,
+            rgba(255, 255, 255, 0.95),
+            transparent 28%
+        ),
+        #f7f7f4;
+
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+/* =========================================================
+   LOGO + BACK
+========================================================= */
+
+.forgot-logo,
+.forgot-back {
+    position: absolute;
+    z-index: 20;
+
+    text-decoration: none;
+}
+
+.forgot-logo {
+    top: 30px;
+    left: 34px;
+
+    color: #292929;
+
+    font-size: 0.60rem;
+    font-weight: 400;
+    letter-spacing: 0.50em;
+}
+
+.forgot-logo:hover {
+    color: #292929;
+}
+
+.forgot-back {
+    top: 31px;
+    right: 35px;
+
+    color: #8f8f8a;
+
+    font-size: 0.52rem;
+    font-weight: 400;
+    letter-spacing: 0.30em;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.forgot-back:hover {
+    color: #222;
+
+    transform: translateX(-4px);
+}
+
+
+/* =========================================================
+   PAGE LAYOUT
+========================================================= */
+
+.forgot-password-shell {
+    display: flex;
+
+    width: 100%;
+    min-height: 100vh;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 80px 30px 50px;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.forgot-password-form {
+    width: 100%;
+    max-width: 430px;
+
+    animation:
+        forgot-form-enter
+        0.9s
+        cubic-bezier(.2, .8, .2, 1)
+        both;
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.forgot-heading {
+    margin-bottom: 40px;
+}
+
+.forgot-heading > span {
+    display: block;
+
+    margin-bottom: 13px;
+
+    color: #9d9d98;
+
+    font-size: 0.48rem;
+    font-weight: 500;
+    letter-spacing: 0.36em;
+}
+
+.forgot-heading h1 {
+    margin: 0;
+
+    color: #252525;
+
+    font-size: 2.65rem;
+    font-weight: 300;
+    line-height: 1.05;
+
+    letter-spacing: 0.01em;
+}
+
+.forgot-heading p {
+    max-width: 370px;
+
+    margin: 18px 0 0;
+
+    color: #969691;
+
+    font-size: 0.67rem;
+    font-weight: 300;
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   FIELD
+========================================================= */
+
+.forgot-field {
+    margin-bottom: 30px;
+}
+
+.forgot-field label {
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: #787874;
+
+    font-size: 0.48rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+}
+
+.forgot-field input {
+    width: 100%;
+
+    padding: 8px 0 11px;
+
+    border: 0;
+    border-bottom: 1px solid #bfbfba;
+    border-radius: 0;
+
+    outline: none;
+
+    background: transparent;
+    color: #222;
+
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: 0.82rem;
+    font-weight: 300;
+
+    box-shadow: none !important;
+
+    transition:
+        border-color 0.3s ease;
+}
+
+.forgot-field input:focus {
+    border-bottom-color: #222;
+
+    outline: none;
+
+    box-shadow: none;
+}
+
+
+/* uklanja Bootstrap crveni okvir */
+
+.forgot-field input.is-invalid {
+    border: 0;
+    border-bottom: 1px solid #973f3f;
+
+    background-image: none;
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.forgot-error {
+    display: block;
+
+    margin-top: 7px;
+
+    color: #973f3f;
+
+    font-size: 0.55rem;
+    font-weight: 400;
+}
+
+
+/* =========================================================
+   SUCCESS MESSAGE
+========================================================= */
+
+.forgot-success {
+    margin-bottom: 27px;
+
+    padding: 13px 15px;
+
+    color: #535750;
+
+    background: rgba(222, 228, 218, 0.55);
+
+    border: 1px solid rgba(87, 95, 82, 0.12);
+
+    font-size: 0.61rem;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   BUTTON
+========================================================= */
+.forgot-submit {
+    width: 150px;
+    height: 49px;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #292929;
+
+    background: #292929;
+    color: #ffffff;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.54rem;
+    font-weight: 400;
+    letter-spacing: 0.30em;
+
+    cursor: pointer;
+
+    transition:
+        background 0.35s ease,
+        color 0.35s ease,
+        transform 0.35s ease,
+        letter-spacing 0.35s ease;
+}
+
+.forgot-submit:hover {
+    background: transparent;
+
+    color: #292929;
+
+    transform: translateY(-2px);
+
+    letter-spacing: 0.36em;
+}
+
+
+/* =========================================================
+   SIGN IN
+========================================================= */
+
+.forgot-login {
+    margin-top: 19px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    color: #9a9a96;
+
+    font-size: 0.55rem;
+}
+
+.forgot-login a {
+    color: #2f2f2e;
+
+    font-weight: 500;
+    letter-spacing: 0.08em;
+
+    text-decoration: none;
+}
+
+.forgot-login a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   HIDE DEFAULT NAVBAR ON THIS PAGE
+========================================================= */
+
+body:has(.forgot-password-page) .navbar {
+    display: none !important;
+}
+
+body:has(.forgot-password-page) main {
+    padding: 0 !important;
+}
+
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+@keyframes forgot-form-enter {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .forgot-password-shell {
+        padding:
+            90px
+            24px
+            50px;
+    }
+
+    .forgot-password-form {
+        max-width: 100%;
+    }
+
+    .forgot-heading {
+        margin-bottom: 34px;
+    }
+
+    .forgot-heading h1 {
+        font-size: 2.15rem;
+    }
+
+    .forgot-heading p {
+        font-size: 0.63rem;
+    }
+
+    .forgot-logo {
+        top: 25px;
+        left: 21px;
+    }
+
+    .forgot-back {
+        top: 25px;
+        right: 21px;
+    }
+
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .forgot-password-form {
+        animation: none !important;
+    }
+
+}
+.campaign-submit {
+    width: 180px !important;
+    margin: 5px auto 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

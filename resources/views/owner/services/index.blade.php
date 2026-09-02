@@ -800,8 +800,8 @@ document.addEventListener('DOMContentLoaded', () => {
             0.85fr;
         gap: 18px;
         padding: 11px 20px;
-        background: #211d1a;
-        color: #c9bbb5;
+        background: #e9e0da;
+        color: #090808;
     }
 
     .owner-services-list-head span {

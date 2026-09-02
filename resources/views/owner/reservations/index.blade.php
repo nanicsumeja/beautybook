@@ -863,8 +863,8 @@ document.addEventListener('DOMContentLoaded', () => {
             1.25fr;
         gap: 18px;
         padding: 12px 18px;
-        background: #211d1a;
-        color: #cbbeb8;
+        background: #e9e0da;
+        color: #0d0c0c;
     }
 
     .owner-appointments-list-head span {

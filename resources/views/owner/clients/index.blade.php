@@ -444,8 +444,8 @@
             0.45fr;
         gap: 20px;
         padding: 11px 20px;
-        background: #211d1a;
-        color: #c9bbb5;
+        background: #e9e0da;
+        color: #0a0a0a;
     }
 
     .owner-clients-list-head span {
