@@ -6907,3 +6907,111 @@ form
 
     font-size: 0.68rem;
 }
+
+/* =========================================================
+   OWNER DASHBOARD - EXTENDED SYSTEM MONITORING
+   ========================================================= */
+
+@media (min-width: 951px) {
+
+    .salon-admin-page {
+        height: auto;
+        min-height: 100vh;
+        overflow: auto;
+    }
+
+    .salon-admin-page #app {
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .salon-admin-main {
+        min-height: calc(100vh - 70px);
+        overflow: visible;
+    }
+
+    .salon-admin-shell {
+        height: auto;
+        min-height: calc(100vh - 70px);
+        padding: 18px;
+    }
+
+    .salon-admin-panel {
+        width: calc(100% - 8px);
+        height: auto;
+        min-height: calc(100vh - 106px);
+        padding: 1.35rem 1.5rem;
+        overflow: visible;
+    }
+
+    .salon-admin-grid {
+        grid-template-columns:
+            minmax(0, 1.22fr)
+            minmax(320px, 0.78fr);
+
+        grid-template-rows:
+            minmax(190px, auto)
+            minmax(250px, auto)
+            auto
+            auto;
+
+        height: auto;
+        flex: none;
+        align-items: stretch;
+    }
+
+    .admin-overview,
+    .admin-status {
+        min-height: 190px;
+    }
+
+    .admin-appointments,
+    .admin-actions {
+        min-height: 250px;
+    }
+
+    .admin-monitoring-card {
+        min-height: 220px;
+        padding: 1.25rem 1.35rem;
+        overflow: hidden;
+    }
+
+    .admin-monitoring-card .admin-section-heading {
+        margin-bottom: 1rem;
+    }
+
+    .admin-monitoring-card > .p-3 {
+        padding: 0 !important;
+    }
+
+    .admin-recent-activity {
+        grid-column: 1 / -1;
+        min-height: 150px;
+    }
+}
+
+/* =========================================================
+   OWNER DASHBOARD - REMOVE HORIZONTAL SCROLL
+   ========================================================= */
+
+.salon-admin-page,
+.salon-admin-page #app,
+.salon-admin-main,
+.salon-admin-shell,
+.salon-admin-panel,
+.salon-admin-grid {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.salon-admin-page,
+.salon-admin-page #app,
+.salon-admin-main,
+.salon-admin-shell {
+    overflow-x: hidden;
+}
+
+.salon-admin-panel,
+.salon-admin-grid {
+    width: 100%;
+}

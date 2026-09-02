@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Owner;
 
 use App\Http\Controllers\Controller;
+use App\Models\ActivityLog;
 use App\Models\Reservation;
 use App\Models\Service;
 use App\Models\User;
@@ -24,6 +25,51 @@ class DashboardController extends Controller
             ->orderBy('appointment_date')
             ->orderBy('start_time')
             ->limit(4)
+            ->get();
+
+        /*
+        |--------------------------------------------------------------------------
+        | SYSTEM MONITORING
+        |--------------------------------------------------------------------------
+        */
+
+        $pendingAppointments = Reservation::query()
+            ->where('status', 'pending')
+            ->count();
+
+        $employeesWithoutWorkingHours = User::query()
+            ->where('role', 'employee')
+            ->whereDoesntHave('workingHours')
+            ->count();
+
+        $servicesWithoutEmployees = Service::query()
+            ->whereDoesntHave('employees')
+            ->count();
+
+        $failedPayments = Reservation::query()
+            ->where('payment_status', 'failed')
+            ->count();
+
+        $appointmentsWithoutEmployees = Reservation::query()
+            ->whereNull('employee_id')
+            ->whereIn('status', ['pending', 'confirmed'])
+            ->count();
+
+        $warningCount =
+            $pendingAppointments +
+            $employeesWithoutWorkingHours +
+            $servicesWithoutEmployees +
+            $failedPayments +
+            $appointmentsWithoutEmployees;
+
+        $systemStatus = $warningCount === 0
+            ? 'Operational'
+            : 'Attention required';
+
+        $recentActivities = ActivityLog::query()
+            ->with(['user', 'reservation'])
+            ->latest()
+            ->limit(8)
             ->get();
 
         return view('owner.dashboard', [
@@ -56,6 +102,31 @@ class DashboardController extends Controller
             'totalReservations' => (int) $statusCounts->sum(),
 
             'upcomingReservations' => $upcomingReservations,
+
+            /*
+            |--------------------------------------------------------------------------
+            | Monitoring data
+            |--------------------------------------------------------------------------
+            */
+
+            'pendingAppointments' => $pendingAppointments,
+
+            'employeesWithoutWorkingHours' =>
+                $employeesWithoutWorkingHours,
+
+            'servicesWithoutEmployees' =>
+                $servicesWithoutEmployees,
+
+            'failedPayments' => $failedPayments,
+
+            'appointmentsWithoutEmployees' =>
+                $appointmentsWithoutEmployees,
+
+            'warningCount' => $warningCount,
+
+            'systemStatus' => $systemStatus,
+
+            'recentActivities' => $recentActivities,
         ]);
     }
 }

@@ -5,9 +5,12 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Client\ReservationController;
 use App\Http\Controllers\Client\ServiceCatalogController;
+use App\Http\Controllers\Client\NotificationController;
 
 use App\Http\Controllers\Employee\DashboardController
     as EmployeeDashboardController;
+use App\Http\Controllers\Employee\ScheduleController;
+use App\Http\Controllers\Employee\ClientController;
 
 use App\Http\Controllers\Owner\DashboardController;
 use App\Http\Controllers\Owner\EmployeeController;
@@ -15,6 +18,8 @@ use App\Http\Controllers\Owner\EmployeeWorkingHourController;
 use App\Http\Controllers\Owner\ReservationController
     as OwnerReservationController;
 use App\Http\Controllers\Owner\ServiceController;
+use App\Http\Controllers\Owner\ClientController as OwnerClientController;
+use App\Http\Controllers\Owner\ReportController;
 
 
 Route::get('/', function () {
@@ -47,6 +52,21 @@ Route::middleware(['auth', 'role:client'])
         })->name('dashboard');
 
         Route::get(
+            '/notifications',
+            [NotificationController::class, 'index']
+        )->name('notifications.index');
+
+        Route::patch(
+            '/notifications/{notification}/read',
+            [NotificationController::class, 'markAsRead']
+        )->name('notifications.read');
+
+        Route::patch(
+            '/notifications/read-all',
+            [NotificationController::class, 'markAllAsRead']
+        )->name('notifications.read-all');
+
+        Route::get(
             '/services',
             [ServiceCatalogController::class, 'index']
         )->name('services.index');
@@ -65,6 +85,31 @@ Route::middleware(['auth', 'role:client'])
             '/services/{service}/book',
             [ReservationController::class, 'store']
         )->name('reservations.store');
+
+        Route::get(
+            '/reservations/{reservation}/payment',
+            [ReservationController::class, 'payment']
+        )->name('reservations.payment');
+
+        Route::post(
+            '/reservations/{reservation}/payment',
+            [ReservationController::class, 'processPayment']
+        )->name('reservations.payment.process');
+
+        Route::get(
+            '/reservations/{reservation}/payment/success',
+            [ReservationController::class, 'paymentSuccess']
+        )->name('reservations.payment.success');
+
+        Route::get(
+            '/reservations/{reservation}/payment/cancel',
+            [ReservationController::class, 'paymentCancel']
+        )->name('reservations.payment.cancel');
+
+        Route::get(
+            '/services/{service}/available-slots',
+            [ReservationController::class, 'availableSlots']
+        )->name('reservations.available-slots');
 
         Route::patch(
             '/reservations/{reservation}/cancel',
@@ -99,10 +144,35 @@ Route::middleware(['auth', 'role:owner'])
             [OwnerReservationController::class, 'index']
         )->name('reservations.index');
 
+        Route::get(
+            '/reservations/create',
+            [OwnerReservationController::class, 'create']
+        )->name('reservations.create');
+
+        Route::post(
+            '/reservations',
+            [OwnerReservationController::class, 'store']
+        )->name('reservations.store');
+
+        Route::get(
+            '/reservations/{reservation}/edit',
+            [OwnerReservationController::class, 'edit']
+        )->name('reservations.edit');
+
+        Route::put(
+            '/reservations/{reservation}',
+            [OwnerReservationController::class, 'update']
+        )->name('reservations.update');
+
         Route::patch(
             '/reservations/{reservation}/confirm',
             [OwnerReservationController::class, 'confirm']
         )->name('reservations.confirm');
+
+        Route::patch(
+            '/reservations/{reservation}/cancel',
+            [OwnerReservationController::class, 'cancel']
+        )->name('reservations.cancel');
 
         Route::resource(
             'employees',
@@ -121,6 +191,24 @@ Route::middleware(['auth', 'role:owner'])
             '/employees/{employee}/working-hours',
             [EmployeeWorkingHourController::class, 'update']
         )->name('employees.working-hours.update');
+
+        Route::get(
+            '/clients',
+            [OwnerClientController::class, 'index']
+        )->name('clients.index');
+
+        Route::get(
+            '/clients/{client}',
+            [OwnerClientController::class, 'show']
+        )->name('clients.show');
+
+        Route::get('/reports', [ReportController::class, 'index'])
+            ->name('reports.index');
+
+        Route::get(
+            '/reports/pdf',
+            [ReportController::class, 'downloadPdf']
+        )->name('reports.pdf');
     });
 
 
@@ -139,4 +227,29 @@ Route::middleware(['auth', 'role:employee'])
             '/dashboard',
             EmployeeDashboardController::class
         )->name('dashboard');
+
+        Route::get(
+            '/schedule',
+            [ScheduleController::class, 'index']
+        )->name('schedule.index');
+
+        Route::get(
+            '/schedule/{reservation}',
+            [ScheduleController::class, 'show']
+        )->name('schedule.show');
+
+        Route::get(
+            '/clients',
+            [ClientController::class, 'index']
+        )->name('clients.index');
+
+        Route::get(
+            '/clients/{client}',
+            [ClientController::class, 'show']
+        )->name('clients.show');
+
+        Route::patch(
+            '/schedule/{reservation}/complete',
+            [ScheduleController::class, 'complete']
+        )->name('schedule.complete');
     });

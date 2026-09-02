@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
@@ -11,6 +10,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Laravel\Cashier\Billable;
+
 #[Fillable([
     'name',
     'surname',
@@ -19,13 +20,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
     'phone',
     'password',
     'role',
-    'is_active'
+    'is_active',
 ])]
-#[Hidden(['password', 'remember_token'])]
+#[Hidden([
+    'password',
+    'remember_token',
+])]
 class User extends Authenticatable
 {
-    /** @use HasFactory<UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, Billable;
 
     /**
      * Get the attributes that should be cast.
@@ -40,20 +43,22 @@ class User extends Authenticatable
             'is_active' => 'boolean',
         ];
     }
+
     public function services(): BelongsToMany
-{
-    return $this->belongsToMany(
-        Service::class,
-        'employee_service',
-        'employee_id',
-        'service_id'
-    )->withTimestamps();
-}
-public function workingHours(): HasMany
-{
-    return $this->hasMany(
-        EmployeeWorkingHour::class,
-        'employee_id'
-    );
-}
+    {
+        return $this->belongsToMany(
+            Service::class,
+            'employee_service',
+            'employee_id',
+            'service_id'
+        )->withTimestamps();
+    }
+
+    public function workingHours(): HasMany
+    {
+        return $this->hasMany(
+            EmployeeWorkingHour::class,
+            'employee_id'
+        );
+    }
 }

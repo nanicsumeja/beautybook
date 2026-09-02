@@ -1,71 +1,108 @@
 @extends('layouts.app')
 
-@section('body-class', 'salon-admin-page salon-services-page')
-@section('main-class', 'salon-services-main')
+@section('body-class', 'owner-services-page')
+@section('main-class', 'owner-services-main')
 
 @section('content')
+
 @php
     $totalCount = $services->count();
     $activeCount = $services->where('is_active', true)->count();
     $inactiveCount = $totalCount - $activeCount;
 @endphp
 
-<div class="salon-services-shell">
 
-    <section class="salon-services-panel">
+<section class="owner-services-space">
 
-        <header class="salon-services-header">
+    <div class="owner-services-shell">
+
+        {{-- HEADER --}}
+        <header class="owner-services-header">
+
             <div>
-                <p class="salon-services-eyebrow">
+                <span class="owner-services-eyebrow">
                     OWNER WORKSPACE
-                </p>
+                </span>
 
-                <h1>Services</h1>
+                <h1>
+                    Services
+                </h1>
 
-                <p class="salon-services-description">
+                <p>
                     Manage treatments, pricing and availability.
                 </p>
             </div>
 
-            <a
-                href="{{ route('owner.services.create') }}"
-                class="salon-primary-action"
-            >
-                <span>+</span>
-                Add service
-            </a>
+            <div class="owner-services-header-actions">
+
+                <a
+                    href="{{ route('owner.services.create') }}"
+                    class="owner-services-primary"
+                >
+                    <span>+</span>
+                    ADD SERVICE
+                </a>
+
+                <a
+                    href="{{ route('owner.dashboard') }}"
+                    class="owner-services-dashboard-link"
+                >
+                    DASHBOARD
+                </a>
+
+            </div>
+
         </header>
 
+
+        {{-- SUCCESS --}}
         @if (session('success'))
-            <div class="salon-success-message">
+
+            <div class="owner-services-success">
+
                 <span>✓</span>
-                {{ session('success') }}
+
+                <p>
+                    {{ session('success') }}
+                </p>
+
             </div>
+
         @endif
 
-        <div class="salon-services-summary">
-            <div>
-                <span>Total services</span>
+
+        {{-- SUMMARY --}}
+        <div class="owner-services-summary">
+
+            <article>
+                <span>TOTAL SERVICES</span>
                 <strong>{{ $totalCount }}</strong>
-            </div>
+                <small>catalogue</small>
+            </article>
 
-            <div>
-                <span>Active</span>
+            <article>
+                <span>ACTIVE</span>
                 <strong>{{ $activeCount }}</strong>
-            </div>
+                <small>available</small>
+            </article>
 
-            <div>
-                <span>Inactive</span>
+            <article>
+                <span>INACTIVE</span>
                 <strong>{{ $inactiveCount }}</strong>
-            </div>
+                <small>unavailable</small>
+            </article>
+
         </div>
 
-        <div class="salon-services-toolbar">
+
+        {{-- TOOLBAR --}}
+        <div class="owner-services-toolbar">
 
             <label
-                class="salon-services-search"
+                class="owner-services-search"
                 for="serviceSearch"
             >
+
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                     <circle cx="11" cy="11" r="6.5"></circle>
                     <path d="M16 16L21 21"></path>
@@ -77,42 +114,51 @@
                     placeholder="Search services"
                     autocomplete="off"
                 >
+
             </label>
 
-            <div class="salon-services-filters">
+
+            <div class="owner-services-filters">
+
                 <button
                     type="button"
                     class="active"
                     data-service-filter="all"
                 >
-                    All
+                    ALL
                 </button>
 
                 <button
                     type="button"
                     data-service-filter="active"
                 >
-                    Active
+                    ACTIVE
                 </button>
 
                 <button
                     type="button"
                     data-service-filter="inactive"
                 >
-                    Inactive
+                    INACTIVE
                 </button>
+
             </div>
 
         </div>
 
+
+        {{-- EMPTY --}}
         @if ($services->isEmpty())
 
-            <div class="salon-services-empty">
-                <span class="salon-services-empty-icon">
+            <section class="owner-services-empty">
+
+                <span class="owner-services-empty-icon">
                     +
                 </span>
 
-                <h2>No services yet</h2>
+                <h2>
+                    No services yet
+                </h2>
 
                 <p>
                     Add the first treatment to your salon catalogue.
@@ -120,121 +166,190 @@
 
                 <a
                     href="{{ route('owner.services.create') }}"
-                    class="salon-primary-action"
+                    class="owner-services-primary"
                 >
-                    Add first service
+                    ADD FIRST SERVICE
                 </a>
-            </div>
+
+            </section>
 
         @else
 
-            <div class="salon-services-table">
+            {{-- SERVICES --}}
+            <section class="owner-services-card">
 
-                <div class="salon-services-table-head">
-                    <span>Service</span>
-                    <span>Price</span>
-                    <span>Duration</span>
-                    <span>Status</span>
-                    <span>Actions</span>
+                <div class="owner-services-card-heading">
+
+                    <div>
+                        <span>
+                            SERVICE CATALOGUE
+                        </span>
+
+                        <h2>
+                            Treatment overview
+                        </h2>
+                    </div>
+
+                    <strong>
+                        {{ $totalCount }}
+                        {{ $totalCount === 1 ? 'SERVICE' : 'SERVICES' }}
+                    </strong>
+
                 </div>
 
+
+                <div class="owner-services-list-head">
+                    <span>SERVICE</span>
+                    <span>PRICE</span>
+                    <span>DURATION</span>
+                    <span>STATUS</span>
+                    <span>ACTIONS</span>
+                </div>
+
+
                 <div
-                    class="salon-services-table-body"
+                    class="owner-services-list"
                     id="servicesTableBody"
                 >
+
                     @foreach ($services as $service)
 
                         <article
-                            class="salon-service-row"
+                            class="owner-service-row"
                             data-service-row
-                            data-status="{{ $service->is_active
-                                ? 'active'
-                                : 'inactive' }}"
-                            data-search="{{ mb_strtolower(
-                                $service->name . ' ' .
-                                ($service->description ?? '')
-                            ) }}"
+                            data-status="{{
+                                $service->is_active
+                                    ? 'active'
+                                    : 'inactive'
+                            }}"
+                            data-search="{{
+                                mb_strtolower(
+                                    $service->name . ' ' .
+                                    ($service->description ?? '')
+                                )
+                            }}"
                         >
 
-                            <div class="salon-service-info">
+                            {{-- SERVICE --}}
+                            <div class="owner-service-info">
 
-                                <div class="salon-service-initial">
-                                    {{ mb_strtoupper(
-                                        mb_substr($service->name, 0, 1)
-                                    ) }}
+                                <div class="owner-service-initial">
+                                    {{
+                                        mb_strtoupper(
+                                            mb_substr(
+                                                $service->name,
+                                                0,
+                                                1
+                                            )
+                                        )
+                                    }}
                                 </div>
 
                                 <div>
+
+                                    <span class="owner-service-mobile-label">
+                                        SERVICE
+                                    </span>
+
                                     <strong>
                                         {{ $service->name }}
                                     </strong>
 
                                     @if ($service->description)
+
                                         <p title="{{ $service->description }}">
                                             {{ $service->description }}
                                         </p>
+
                                     @else
+
                                         <p class="is-empty">
                                             No description
                                         </p>
+
                                     @endif
+
                                 </div>
 
                             </div>
 
-                            <div
-                                class="salon-service-value"
-                                data-label="Price"
-                            >
+
+                            {{-- PRICE --}}
+                            <div class="owner-service-value">
+
+                                <span class="owner-service-mobile-label">
+                                    PRICE
+                                </span>
+
                                 <strong>
-                                    {{ number_format(
-                                        (float) $service->price,
-                                        2
-                                    ) }}
+                                    {{
+                                        number_format(
+                                            (float) $service->price,
+                                            2
+                                        )
+                                    }}
                                 </strong>
 
-                                <span>KM</span>
+                                <small>KM</small>
+
                             </div>
 
-                            <div
-                                class="salon-service-value"
-                                data-label="Duration"
-                            >
+
+                            {{-- DURATION --}}
+                            <div class="owner-service-value">
+
+                                <span class="owner-service-mobile-label">
+                                    DURATION
+                                </span>
+
                                 <strong>
                                     {{ $service->duration_minutes }}
                                 </strong>
 
-                                <span>min</span>
+                                <small>min</small>
+
                             </div>
 
-                            <div
-                                class="salon-service-status-cell"
-                                data-label="Status"
-                            >
+
+                            {{-- STATUS --}}
+                            <div class="owner-service-status-cell">
+
+                                <span class="owner-service-mobile-label">
+                                    STATUS
+                                </span>
+
                                 @if ($service->is_active)
-                                    <span class="salon-service-status active">
+
+                                    <span class="owner-service-status active">
                                         <i></i>
-                                        Active
+                                        ACTIVE
                                     </span>
+
                                 @else
-                                    <span class="salon-service-status inactive">
+
+                                    <span class="owner-service-status inactive">
                                         <i></i>
-                                        Inactive
+                                        INACTIVE
                                     </span>
+
                                 @endif
+
                             </div>
 
-                            <div class="salon-service-actions">
+
+                            {{-- ACTIONS --}}
+                            <div class="owner-service-actions">
 
                                 <a
                                     href="{{ route(
                                         'owner.services.edit',
                                         $service
                                     ) }}"
-                                    class="salon-edit-action"
+                                    class="owner-service-edit"
                                 >
-                                    Edit
+                                    EDIT
                                 </a>
+
 
                                 <form
                                     method="POST"
@@ -251,10 +366,11 @@
 
                                     <button
                                         type="submit"
-                                        class="salon-delete-action"
+                                        class="owner-service-delete"
                                     >
-                                        Delete
+                                        DELETE
                                     </button>
+
                                 </form>
 
                             </div>
@@ -263,8 +379,9 @@
 
                     @endforeach
 
+
                     <div
-                        class="salon-services-no-results"
+                        class="owner-services-no-results"
                         id="servicesNoResults"
                         hidden
                     >
@@ -273,26 +390,32 @@
 
                 </div>
 
-                <footer class="salon-services-table-footer">
+
+                <footer class="owner-services-footer">
+
                     <span id="serviceResultCount">
                         Showing {{ $totalCount }}
-                        {{ $totalCount === 1
-                            ? 'service'
-                            : 'services' }}
+                        {{
+                            $totalCount === 1
+                                ? 'service'
+                                : 'services'
+                        }}
                     </span>
 
                     <a href="{{ route('owner.dashboard') }}">
-                        Back to dashboard
+                        BACK TO DASHBOARD
                     </a>
+
                 </footer>
 
-            </div>
+            </section>
 
         @endif
 
-    </section>
+    </div>
 
-</div>
+</section>
+
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
@@ -347,9 +470,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (resultCount) {
             resultCount.textContent =
                 `Showing ${visibleCount} `
-                + (visibleCount === 1
-                    ? 'service'
-                    : 'services');
+                + (
+                    visibleCount === 1
+                        ? 'service'
+                        : 'services'
+                );
         }
 
         if (noResults) {
@@ -379,4 +504,649 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 </script>
+
 @endsection
+
+
+@push('styles')
+<style>
+
+    .owner-services-page {
+        background: #f3efea;
+    }
+
+    .owner-services-main {
+        background: #f3efea;
+    }
+
+    .owner-services-space {
+        min-height: calc(100vh - 62px);
+        padding: 27px 0 40px;
+        background:
+            radial-gradient(
+                circle at 93% 4%,
+                rgba(190,151,140,0.12),
+                transparent 23%
+            ),
+            #f3efea;
+        color: #211d1a;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .owner-services-shell {
+        width: min(1160px, calc(100% - 48px));
+        margin: 0 auto;
+    }
+
+
+    /* HEADER */
+
+    .owner-services-header {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 25px;
+        padding-bottom: 17px;
+        margin-bottom: 15px;
+        border-bottom: 1px solid rgba(33,29,26,0.12);
+    }
+
+    .owner-services-eyebrow {
+        display: block;
+        margin-bottom: 5px;
+        color: #a0796d;
+        font-size: 0.53rem;
+        font-weight: 500;
+        letter-spacing: 0.19em;
+    }
+
+    .owner-services-header h1 {
+        margin: 0 0 5px;
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 300;
+        letter-spacing: -0.045em;
+    }
+
+    .owner-services-header p {
+        margin: 0;
+        color: #81766f;
+        font-size: 0.69rem;
+    }
+
+    .owner-services-header-actions {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+    }
+
+    .owner-services-primary {
+        min-height: 41px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        padding: 0 16px;
+        border: 1px solid #211d1a;
+        background: #211d1a;
+        color: #fff;
+        text-decoration: none;
+        font-size: 0.43rem;
+        font-weight: 500;
+        letter-spacing: 0.11em;
+    }
+
+    .owner-services-primary > span {
+        font-size: 0.9rem;
+        font-weight: 300;
+        line-height: 1;
+    }
+
+    .owner-services-primary:hover {
+        background: #9d7063;
+        border-color: #9d7063;
+        color: #fff;
+    }
+
+    .owner-services-dashboard-link {
+        color: #211d1a;
+        text-decoration: none;
+        font-size: 0.42rem;
+        font-weight: 500;
+        letter-spacing: 0.11em;
+    }
+
+    .owner-services-dashboard-link:hover {
+        color: #9d7063;
+    }
+
+
+    /* SUCCESS */
+
+    .owner-services-success {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 13px;
+        padding: 12px 15px;
+        background: #dfe5dd;
+        border-left: 3px solid #72806e;
+        color: #566251;
+    }
+
+    .owner-services-success > span {
+        font-size: 0.7rem;
+    }
+
+    .owner-services-success p {
+        margin: 0;
+        font-size: 0.57rem;
+    }
+
+
+    /* SUMMARY */
+
+    .owner-services-summary {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-bottom: 13px;
+    }
+
+    .owner-services-summary article {
+        min-height: 87px;
+        padding: 15px 17px;
+        background: #faf7f3;
+        border: 1px solid rgba(33,29,26,0.08);
+    }
+
+    .owner-services-summary span {
+        display: block;
+        margin-bottom: 7px;
+        color: #967a71;
+        font-size: 0.4rem;
+        letter-spacing: 0.12em;
+    }
+
+    .owner-services-summary strong {
+        display: block;
+        font-size: 1.65rem;
+        font-weight: 300;
+        line-height: 1;
+    }
+
+    .owner-services-summary small {
+        display: block;
+        margin-top: 4px;
+        color: #9a8f88;
+        font-size: 0.45rem;
+    }
+
+
+    /* TOOLBAR */
+
+    .owner-services-toolbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+        margin-bottom: 12px;
+    }
+
+    .owner-services-search {
+        width: min(410px, 100%);
+        height: 40px;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        padding: 0 13px;
+        background: #faf7f3;
+        border: 1px solid rgba(33,29,26,0.13);
+    }
+
+    .owner-services-search svg {
+        width: 14px;
+        height: 14px;
+        flex-shrink: 0;
+        fill: none;
+        stroke: #8c7f78;
+        stroke-width: 1.5;
+    }
+
+    .owner-services-search input {
+        width: 100%;
+        border: 0;
+        outline: 0;
+        background: transparent;
+        color: #211d1a;
+        font-family: inherit;
+        font-size: 0.61rem;
+    }
+
+    .owner-services-filters {
+        display: inline-flex;
+        align-items: center;
+        gap: 3px;
+        padding: 3px;
+        background: #e9e0da;
+    }
+
+    .owner-services-filters button {
+        min-height: 31px;
+        padding: 0 13px;
+        border: 0;
+        background: transparent;
+        color: #84766f;
+        font-family: inherit;
+        font-size: 0.38rem;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        cursor: pointer;
+    }
+
+    .owner-services-filters button.active {
+        background: #211d1a;
+        color: #fff;
+    }
+
+
+    /* CARD */
+
+    .owner-services-card {
+        background: #faf7f3;
+        border: 1px solid rgba(33,29,26,0.08);
+    }
+
+    .owner-services-card-heading {
+        min-height: 71px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 15px 20px;
+        border-bottom: 1px solid rgba(33,29,26,0.09);
+    }
+
+    .owner-services-card-heading span {
+        display: block;
+        margin-bottom: 3px;
+        color: #9f776b;
+        font-size: 0.41rem;
+        letter-spacing: 0.14em;
+    }
+
+    .owner-services-card-heading h2 {
+        margin: 0;
+        font-size: 1.05rem;
+        font-weight: 300;
+    }
+
+    .owner-services-card-heading > strong {
+        color: #8b7b73;
+        font-size: 0.42rem;
+        font-weight: 500;
+        letter-spacing: 0.11em;
+    }
+
+
+    /* LIST HEAD */
+
+    .owner-services-list-head {
+        display: grid;
+        grid-template-columns:
+            1.55fr
+            0.55fr
+            0.65fr
+            0.7fr
+            0.85fr;
+        gap: 18px;
+        padding: 11px 20px;
+        background: #211d1a;
+        color: #c9bbb5;
+    }
+
+    .owner-services-list-head span {
+        font-size: 0.37rem;
+        letter-spacing: 0.12em;
+    }
+
+
+    /* ROW */
+
+    .owner-service-row {
+        display: grid;
+        grid-template-columns:
+            1.55fr
+            0.55fr
+            0.65fr
+            0.7fr
+            0.85fr;
+        gap: 18px;
+        align-items: center;
+        min-height: 75px;
+        padding: 11px 20px;
+        border-bottom: 1px solid rgba(33,29,26,0.08);
+        transition: background 0.15s ease;
+    }
+
+    .owner-service-row:last-of-type {
+        border-bottom: 0;
+    }
+
+    .owner-service-row:hover {
+        background: #f3ebe6;
+    }
+
+
+    /* SERVICE INFO */
+
+    .owner-service-info {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        min-width: 0;
+    }
+
+    .owner-service-initial {
+        width: 37px;
+        height: 37px;
+        flex-shrink: 0;
+        display: grid;
+        place-items: center;
+        background: #dec7bd;
+        font-size: 0.73rem;
+    }
+
+    .owner-service-info strong {
+        display: block;
+        font-size: 0.61rem;
+        font-weight: 500;
+    }
+
+    .owner-service-info p {
+        max-width: 280px;
+        margin: 3px 0 0;
+        overflow: hidden;
+        color: #91857e;
+        font-size: 0.44rem;
+        line-height: 1.4;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .owner-service-info p.is-empty {
+        color: #aaa09a;
+        font-style: italic;
+    }
+
+
+    /* VALUES */
+
+    .owner-service-value strong {
+        font-size: 0.61rem;
+        font-weight: 400;
+    }
+
+    .owner-service-value small {
+        margin-left: 2px;
+        color: #948980;
+        font-size: 0.43rem;
+    }
+
+
+    /* STATUS */
+
+    .owner-service-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 5px 8px;
+        font-size: 0.36rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+    }
+
+    .owner-service-status i {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+    }
+
+    .owner-service-status.active {
+        background: #dce5da;
+        color: #5c6b59;
+    }
+
+    .owner-service-status.active i {
+        background: #6b7c68;
+    }
+
+    .owner-service-status.inactive {
+        background: #ead8d4;
+        color: #885f56;
+    }
+
+    .owner-service-status.inactive i {
+        background: #9d6b61;
+    }
+
+
+    /* ACTIONS */
+
+    .owner-service-actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 7px;
+    }
+
+    .owner-service-actions form {
+        margin: 0;
+    }
+
+    .owner-service-edit,
+    .owner-service-delete {
+        min-height: 29px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 9px;
+        font-family: inherit;
+        font-size: 0.37rem;
+        font-weight: 500;
+        letter-spacing: 0.09em;
+    }
+
+    .owner-service-edit {
+        border: 1px solid rgba(33,29,26,0.22);
+        color: #211d1a;
+        text-decoration: none;
+    }
+
+    .owner-service-edit:hover {
+        background: #211d1a;
+        border-color: #211d1a;
+        color: #fff;
+    }
+
+    .owner-service-delete {
+        border: 1px solid rgba(157,96,85,0.24);
+        background: transparent;
+        color: #9d6055;
+        cursor: pointer;
+    }
+
+    .owner-service-delete:hover {
+        background: #9d6055;
+        border-color: #9d6055;
+        color: #fff;
+    }
+
+
+    /* MOBILE LABEL */
+
+    .owner-service-mobile-label {
+        display: none;
+    }
+
+
+    /* FOOTER */
+
+    .owner-services-footer {
+        min-height: 49px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 0 20px;
+        border-top: 1px solid rgba(33,29,26,0.09);
+        color: #8c8079;
+    }
+
+    .owner-services-footer span {
+        font-size: 0.43rem;
+    }
+
+    .owner-services-footer a {
+        color: #211d1a;
+        text-decoration: none;
+        font-size: 0.4rem;
+        font-weight: 500;
+        letter-spacing: 0.09em;
+    }
+
+    .owner-services-footer a:hover {
+        color: #9d7063;
+    }
+
+
+    /* NO RESULTS */
+
+    .owner-services-no-results {
+        padding: 45px 20px;
+        color: #8b8079;
+        text-align: center;
+        font-size: 0.58rem;
+    }
+
+
+    /* EMPTY */
+
+    .owner-services-empty {
+        padding: 70px 25px;
+        background: #faf7f3;
+        border: 1px solid rgba(33,29,26,0.08);
+        text-align: center;
+    }
+
+    .owner-services-empty-icon {
+        display: block;
+        margin-bottom: 7px;
+        color: #b48d82;
+        font-size: 1.6rem;
+        font-weight: 300;
+    }
+
+    .owner-services-empty h2 {
+        margin: 0 0 6px;
+        font-size: 1.25rem;
+        font-weight: 300;
+    }
+
+    .owner-services-empty p {
+        margin: 0 0 18px;
+        color: #897d76;
+        font-size: 0.58rem;
+    }
+
+
+    /* RESPONSIVE */
+
+    @media (max-width: 880px) {
+
+        .owner-services-list-head {
+            display: none;
+        }
+
+        .owner-service-row {
+            grid-template-columns: 1fr 1fr;
+            padding: 17px 20px;
+        }
+
+        .owner-service-mobile-label {
+            display: block;
+            margin-bottom: 4px;
+            color: #9e8076;
+            font-size: 0.37rem;
+            letter-spacing: 0.1em;
+        }
+
+        .owner-service-actions {
+            justify-content: flex-start;
+        }
+
+    }
+
+
+    @media (max-width: 650px) {
+
+        .owner-services-header {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
+        .owner-services-header-actions {
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        .owner-services-toolbar {
+            align-items: stretch;
+            flex-direction: column;
+        }
+
+        .owner-services-search {
+            width: 100%;
+        }
+
+        .owner-services-filters {
+            align-self: flex-start;
+        }
+
+        .owner-services-summary {
+            grid-template-columns: 1fr;
+        }
+
+    }
+
+
+    @media (max-width: 575px) {
+
+        .owner-services-space {
+            padding: 21px 0 32px;
+        }
+
+        .owner-services-shell {
+            width: calc(100% - 24px);
+        }
+
+        .owner-service-row {
+            grid-template-columns: 1fr;
+            gap: 13px;
+        }
+
+        .owner-services-card-heading {
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .owner-services-footer {
+            align-items: flex-start;
+            flex-direction: column;
+            padding: 14px 20px;
+        }
+
+    }
+
+</style>
+@endpush

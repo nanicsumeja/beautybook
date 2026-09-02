@@ -21,6 +21,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
     'payment_reference',
     'notes',
     'cancelled_at',
+    'advance_amount',
+    'payment_method',
+    'paid_at',
+    'reminder_sent_at',
+    'completed_at',
+    'employee_note',
 ])]
 class Reservation extends Model
 {
@@ -30,7 +36,11 @@ class Reservation extends Model
             'appointment_date' => 'date',
             'duration_minutes' => 'integer',
             'total_price' => 'decimal:2',
+            'advance_amount' => 'decimal:2',
+            'paid_at' => 'datetime',
             'cancelled_at' => 'datetime',
+            'reminder_sent_at' => 'datetime',
+            'completed_at' => 'datetime',
         ];
     }
 

@@ -22,6 +22,7 @@
         'resources/sass/app.scss',
         'resources/js/app.js'
     ])
+    @stack('styles')
 </head>
 
 <body class="@yield('body-class')">
@@ -114,6 +115,19 @@
 
                                     <li class="nav-item">
                                         <a
+                                            href="{{ route('owner.reports.index') }}"
+                                            class="nav-link {{
+                                                request()->routeIs('owner.reports.*')
+                                                    ? 'active'
+                                                    : ''
+                                            }}"
+                                        >
+                                            Reports
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a
                                             href="{{ route(
                                                 'owner.employees.index'
                                             ) }}"
@@ -126,6 +140,15 @@
                                             }}"
                                         >
                                             Employees
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a
+                                            href="{{ route('owner.clients.index') }}"
+                                            class="nav-link {{ request()->routeIs('owner.clients.*') ? 'active' : '' }}"
+                                        >
+                                            Clients
                                         </a>
                                     </li>
 
@@ -188,7 +211,6 @@
 
                                 @endif
 
-
                                 <!-- EMPLOYEE -->
                                 @if (Auth::user()->role === 'employee')
 
@@ -206,6 +228,28 @@
                                             }}"
                                         >
                                             Dashboard
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a
+                                            href="{{ route('employee.schedule.index') }}"
+                                            class="nav-link {{ request()->routeIs('employee.schedule.*') ? 'active' : '' }}"
+                                        >
+                                            My schedule
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a
+                                            href="{{ route('employee.clients.index') }}"
+                                            class="nav-link {{
+                                                request()->routeIs('employee.clients.*')
+                                                    ? 'active'
+                                                    : ''
+                                            }}"
+                                        >
+                                            Clients
                                         </a>
                                     </li>
 
@@ -244,6 +288,28 @@
                                 @endif
 
                             @else
+
+                            @if (Auth::user()->role === 'client')
+                                <li class="nav-item me-2">
+                                    <a
+                                        href="{{ route('client.notifications.index') }}"
+                                        class="nav-link position-relative"
+                                        title="Notifications"
+                                        aria-label="Notifications"
+                                    >
+                                        <i class="bi bi-bell fs-5"></i>
+
+                                        @if (Auth::user()->unreadNotifications->count() > 0)
+                                            <span
+                                                class="position-absolute top-0 start-100
+                                                    translate-middle badge rounded-pill bg-danger"
+                                            >
+                                                {{ Auth::user()->unreadNotifications->count() }}
+                                            </span>
+                                        @endif
+                                    </a>
+                                </li>
+                            @endif
 
                                 <li class="nav-item dropdown">
 
