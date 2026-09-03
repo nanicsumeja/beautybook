@@ -626,7 +626,7 @@
         display: block;
         margin-bottom: 5px;
         color: #a0796d;
-        font-size: 0.53rem;
+        font-size: 0.64rem;
         font-weight: 500;
         letter-spacing: 0.19em;
     }
@@ -641,7 +641,7 @@
     .owner-reports-header p {
         margin: 0;
         color: #81766f;
-        font-size: 0.69rem;
+        font-size: 0.76rem;
     }
 
     .owner-reports-header-actions {
@@ -663,7 +663,7 @@
         background: #211d1a;
         color: #fff;
         text-decoration: none;
-        font-size: 0.38rem;
+        font-size: 0.56rem;
         font-weight: 500;
         letter-spacing: 0.1em;
         transition:
@@ -690,7 +690,7 @@
         border: 1px solid rgba(33,29,26,0.16);
         color: #514944;
         text-decoration: none;
-        font-size: 0.37rem;
+        font-size: 0.55rem;
         font-weight: 500;
         letter-spacing: 0.09em;
     }
@@ -727,7 +727,7 @@
         display: block;
         margin-bottom: 4px;
         color: #9f776b;
-        font-size: 0.39rem;
+        font-size: 0.55rem;
         font-weight: 500;
         letter-spacing: 0.13em;
     }
@@ -745,7 +745,7 @@
         max-width: 280px;
         margin: 0;
         color: #948881;
-        font-size: 0.45rem;
+        font-size: 0.6rem;
         line-height: 1.55;
         text-align: right;
     }
@@ -765,7 +765,7 @@
         display: block;
         margin-bottom: 6px;
         color: #655c57;
-        font-size: 0.41rem;
+        font-size: 0.56rem;
         font-weight: 500;
         letter-spacing: 0.07em;
         text-transform: uppercase;
@@ -782,7 +782,7 @@
         background: #f7f2ee;
         color: #332d29;
         font-family: inherit;
-        font-size: 0.56rem;
+        font-size: 0.68rem;
     }
 
     .owner-reports-field select:focus,
@@ -802,7 +802,7 @@
         background: #211d1a;
         color: #fff;
         font-family: inherit;
-        font-size: 0.38rem;
+        font-size: 0.56rem;
         font-weight: 500;
         letter-spacing: 0.1em;
         cursor: pointer;
@@ -820,7 +820,7 @@
     .owner-reports-validation {
         margin-top: 9px;
         color: #a45f55;
-        font-size: 0.44rem;
+        font-size: 0.58rem;
     }
 
 
@@ -841,7 +841,7 @@
         display: block;
         margin-bottom: 2px;
         color: #a17b70;
-        font-size: 0.35rem;
+        font-size: 0.52rem;
         font-weight: 500;
         letter-spacing: 0.11em;
     }
@@ -849,7 +849,7 @@
     .owner-reports-period p {
         margin: 0;
         color: #6f655f;
-        font-size: 0.5rem;
+        font-size: 0.62rem;
     }
 
     .owner-reports-period p strong {
@@ -861,7 +861,7 @@
         padding: 5px 8px;
         background: rgba(255,255,255,0.55);
         color: #796962;
-        font-size: 0.35rem;
+        font-size: 0.51rem;
         font-weight: 500;
         letter-spacing: 0.09em;
     }
@@ -905,12 +905,12 @@
 
     .owner-reports-stat-top span:first-child {
         color: #b19489;
-        font-size: 0.35rem;
+        font-size: 0.51rem;
     }
 
     .owner-reports-stat-top span:last-child {
         color: #877a73;
-        font-size: 0.35rem;
+        font-size: 0.51rem;
         font-weight: 500;
         letter-spacing: 0.1em;
     }
@@ -928,7 +928,7 @@
         max-width: 180px;
         margin: 0;
         color: #988d86;
-        font-size: 0.43rem;
+        font-size: 0.59rem;
         line-height: 1.5;
     }
 
@@ -960,7 +960,7 @@
         display: block;
         margin-bottom: 5px;
         color: #83665d;
-        font-size: 0.39rem;
+        font-size: 0.55rem;
         font-weight: 500;
         letter-spacing: 0.12em;
     }
@@ -968,7 +968,7 @@
     .owner-reports-finance-card p {
         margin: 0;
         color: #796c65;
-        font-size: 0.46rem;
+        font-size: 0.6rem;
     }
 
     .owner-reports-finance-card > strong {
@@ -979,7 +979,7 @@
     }
 
     .owner-reports-finance-card > strong small {
-        font-size: 0.45rem;
+        font-size: 0.57rem;
         font-weight: 500;
         letter-spacing: 0.07em;
     }
@@ -1013,7 +1013,7 @@
     .owner-reports-table-card > header small {
         flex-shrink: 0;
         color: #9d8d84;
-        font-size: 0.33rem;
+        font-size: 0.49rem;
         letter-spacing: 0.08em;
     }
 
@@ -1030,7 +1030,7 @@
         padding: 9px 15px;
         border-bottom: 1px solid rgba(33,29,26,0.08);
         color: #9d8f87;
-        font-size: 0.33rem;
+        font-size: 0.5rem;
         font-weight: 500;
         letter-spacing: 0.08em;
         text-align: left;
@@ -1046,7 +1046,7 @@
         padding: 12px 15px;
         border-bottom: 1px solid rgba(33,29,26,0.07);
         color: #625954;
-        font-size: 0.49rem;
+        font-size: 0.62rem;
     }
 
     .owner-reports-table-card tbody tr:last-child td {
@@ -1119,7 +1119,7 @@
 
     .owner-reports-empty p {
         margin: 0;
-        font-size: 0.47rem;
+        font-size: 0.6rem;
     }
 
     .owner-reports-table-card.dark .owner-reports-empty {
@@ -1146,7 +1146,7 @@
         max-width: 540px;
         margin: 0;
         color: #72635d;
-        font-size: 0.48rem;
+        font-size: 0.61rem;
         line-height: 1.6;
     }
 
@@ -1162,7 +1162,7 @@
         background: #211d1a;
         color: #fff;
         text-decoration: none;
-        font-size: 0.39rem;
+        font-size: 0.56rem;
         font-weight: 500;
         letter-spacing: 0.1em;
     }

@@ -600,7 +600,7 @@ document.addEventListener('DOMContentLoaded', () => {
         display: block;
         margin-bottom: 5px;
         color: #a0796d;
-        font-size: 0.53rem;
+        font-size: 0.64rem;
         font-weight: 500;
         letter-spacing: 0.19em;
     }
@@ -615,7 +615,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .owner-employees-header p {
         margin: 0;
         color: #81766f;
-        font-size: 0.69rem;
+        font-size: 0.76rem;
     }
 
     .owner-employees-header-actions {
@@ -627,7 +627,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .owner-employees-dashboard-link {
         color: #6f655f;
         text-decoration: none;
-        font-size: 0.42rem;
+        font-size: 0.56rem;
         font-weight: 500;
         letter-spacing: 0.1em;
     }
@@ -648,7 +648,7 @@ document.addEventListener('DOMContentLoaded', () => {
         background: #211d1a;
         color: #fff;
         text-decoration: none;
-        font-size: 0.41rem;
+        font-size: 0.56rem;
         font-weight: 500;
         letter-spacing: 0.1em;
         transition:
@@ -694,7 +694,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     .owner-employees-message p {
         margin: 0;
-        font-size: 0.52rem;
+        font-size: 0.66rem;
     }
 
 
@@ -723,7 +723,7 @@ document.addEventListener('DOMContentLoaded', () => {
         display: block;
         margin-bottom: 7px;
         color: #9e796d;
-        font-size: 0.4rem;
+        font-size: 0.55rem;
         font-weight: 500;
         letter-spacing: 0.12em;
     }
@@ -739,7 +739,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .owner-employees-summary p {
         margin: 0;
         color: #968a83;
-        font-size: 0.46rem;
+        font-size: 0.61rem;
     }
 
 
@@ -777,7 +777,7 @@ document.addEventListener('DOMContentLoaded', () => {
         background: transparent;
         color: #211d1a;
         font-family: inherit;
-        font-size: 0.56rem;
+        font-size: 0.69rem;
     }
 
     .owner-employees-search input::placeholder {
@@ -799,7 +799,7 @@ document.addEventListener('DOMContentLoaded', () => {
         background: transparent;
         color: #8a7e77;
         font-family: inherit;
-        font-size: 0.39rem;
+        font-size: 0.53rem;
         font-weight: 500;
         letter-spacing: 0.09em;
         cursor: pointer;
@@ -836,7 +836,7 @@ document.addEventListener('DOMContentLoaded', () => {
         display: block;
         margin-bottom: 4px;
         color: #9f776b;
-        font-size: 0.4rem;
+        font-size: 0.55rem;
         font-weight: 500;
         letter-spacing: 0.13em;
     }
@@ -850,7 +850,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .owner-employees-directory-header > p {
         margin: 0;
         color: #9b8f88;
-        font-size: 0.45rem;
+        font-size: 0.6rem;
     }
 
 
@@ -909,7 +909,7 @@ document.addEventListener('DOMContentLoaded', () => {
         display: block;
         margin-bottom: 4px;
         color: #a1877d;
-        font-size: 0.36rem;
+        font-size: 0.51rem;
         font-weight: 500;
         letter-spacing: 0.1em;
     }
@@ -918,7 +918,7 @@ document.addEventListener('DOMContentLoaded', () => {
         overflow: hidden;
         margin: 0 0 3px;
         color: #29231f;
-        font-size: 0.66rem;
+        font-size: 0.7rem;
         font-weight: 500;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -927,7 +927,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .owner-employee-identity p {
         margin: 0;
         color: #978b84;
-        font-size: 0.43rem;
+        font-size: 0.57rem;
     }
 
 
@@ -942,7 +942,7 @@ document.addEventListener('DOMContentLoaded', () => {
         overflow: hidden;
         margin-bottom: 4px;
         color: #5e5550;
-        font-size: 0.5rem;
+        font-size: 0.64rem;
         font-weight: 500;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -951,7 +951,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .owner-employee-info p {
         margin: 0;
         color: #978b84;
-        font-size: 0.43rem;
+        font-size: 0.57rem;
     }
 
 
@@ -974,13 +974,13 @@ document.addEventListener('DOMContentLoaded', () => {
         padding: 4px 7px;
         background: #eee4de;
         color: #725f57;
-        font-size: 0.37rem;
+        font-size: 0.51rem;
         line-height: 1.25;
     }
 
     .owner-employee-service-tags small {
         color: #a19690;
-        font-size: 0.42rem;
+        font-size: 0.56rem;
     }
 
 
@@ -990,7 +990,7 @@ document.addEventListener('DOMContentLoaded', () => {
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        font-size: 0.38rem;
+        font-size: 0.51rem;
         font-weight: 500;
         letter-spacing: 0.08em;
     }
@@ -1037,7 +1037,7 @@ document.addEventListener('DOMContentLoaded', () => {
         border: 1px solid rgba(33,29,26,0.13);
         color: #5e5550;
         text-decoration: none;
-        font-size: 0.34rem;
+        font-size: 0.5rem;
         font-weight: 500;
         letter-spacing: 0.07em;
         transition:
@@ -1069,13 +1069,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     .owner-employees-directory-footer > span {
         color: #847871;
-        font-size: 0.43rem;
+        font-size: 0.58rem;
     }
 
     .owner-employees-directory-footer a {
         color: #5d544f;
         text-decoration: none;
-        font-size: 0.38rem;
+        font-size: 0.53rem;
         font-weight: 500;
         letter-spacing: 0.09em;
     }
@@ -1092,21 +1092,21 @@ document.addEventListener('DOMContentLoaded', () => {
         display: block;
         margin-bottom: 6px;
         color: #a17d71;
-        font-size: 0.4rem;
+        font-size: 0.54rem;
         letter-spacing: 0.12em;
     }
 
     .owner-employees-no-results strong {
         display: block;
         margin-bottom: 5px;
-        font-size: 0.75rem;
+        font-size: 0.78rem;
         font-weight: 400;
     }
 
     .owner-employees-no-results p {
         margin: 0;
         color: #958a84;
-        font-size: 0.45rem;
+        font-size: 0.6rem;
     }
 
 
@@ -1140,7 +1140,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .owner-employees-empty-eyebrow {
         margin-bottom: 7px;
         color: #a17a6e;
-        font-size: 0.4rem;
+        font-size: 0.54rem;
         letter-spacing: 0.13em;
     }
 
@@ -1154,7 +1154,7 @@ document.addEventListener('DOMContentLoaded', () => {
         max-width: 300px;
         margin: 0 0 18px;
         color: #8e837d;
-        font-size: 0.52rem;
+        font-size: 0.64rem;
         line-height: 1.6;
     }
 

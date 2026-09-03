@@ -555,7 +555,7 @@ document.addEventListener('DOMContentLoaded', () => {
         display: block;
         margin-bottom: 5px;
         color: #a0796d;
-        font-size: 0.53rem;
+        font-size: 0.64rem;
         font-weight: 500;
         letter-spacing: 0.19em;
     }
@@ -570,7 +570,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .owner-services-header p {
         margin: 0;
         color: #81766f;
-        font-size: 0.69rem;
+        font-size: 0.76rem;
     }
 
     .owner-services-header-actions {
@@ -590,7 +590,7 @@ document.addEventListener('DOMContentLoaded', () => {
         background: #211d1a;
         color: #fff;
         text-decoration: none;
-        font-size: 0.43rem;
+        font-size: 0.58rem;
         font-weight: 500;
         letter-spacing: 0.11em;
     }
@@ -610,7 +610,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .owner-services-dashboard-link {
         color: #211d1a;
         text-decoration: none;
-        font-size: 0.42rem;
+        font-size: 0.57rem;
         font-weight: 500;
         letter-spacing: 0.11em;
     }
@@ -639,7 +639,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     .owner-services-success p {
         margin: 0;
-        font-size: 0.57rem;
+        font-size: 0.68rem;
     }
 
 
@@ -663,7 +663,7 @@ document.addEventListener('DOMContentLoaded', () => {
         display: block;
         margin-bottom: 7px;
         color: #967a71;
-        font-size: 0.4rem;
+        font-size: 0.56rem;
         letter-spacing: 0.12em;
     }
 
@@ -678,7 +678,7 @@ document.addEventListener('DOMContentLoaded', () => {
         display: block;
         margin-top: 4px;
         color: #9a8f88;
-        font-size: 0.45rem;
+        font-size: 0.62rem;
     }
 
 
@@ -719,7 +719,7 @@ document.addEventListener('DOMContentLoaded', () => {
         background: transparent;
         color: #211d1a;
         font-family: inherit;
-        font-size: 0.61rem;
+        font-size: 0.7rem;
     }
 
     .owner-services-filters {
@@ -737,7 +737,7 @@ document.addEventListener('DOMContentLoaded', () => {
         background: transparent;
         color: #84766f;
         font-family: inherit;
-        font-size: 0.38rem;
+        font-size: 0.54rem;
         font-weight: 500;
         letter-spacing: 0.1em;
         cursor: pointer;
@@ -770,7 +770,7 @@ document.addEventListener('DOMContentLoaded', () => {
         display: block;
         margin-bottom: 3px;
         color: #9f776b;
-        font-size: 0.41rem;
+        font-size: 0.56rem;
         letter-spacing: 0.14em;
     }
 
@@ -782,7 +782,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     .owner-services-card-heading > strong {
         color: #8b7b73;
-        font-size: 0.42rem;
+        font-size: 0.57rem;
         font-weight: 500;
         letter-spacing: 0.11em;
     }
@@ -805,7 +805,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     .owner-services-list-head span {
-        font-size: 0.37rem;
+        font-size: 0.52rem;
         letter-spacing: 0.12em;
     }
 
@@ -858,7 +858,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     .owner-service-info strong {
         display: block;
-        font-size: 0.61rem;
+        font-size: 0.72rem;
         font-weight: 500;
     }
 
@@ -867,7 +867,7 @@ document.addEventListener('DOMContentLoaded', () => {
         margin: 3px 0 0;
         overflow: hidden;
         color: #91857e;
-        font-size: 0.44rem;
+        font-size: 0.6rem;
         line-height: 1.4;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -882,14 +882,14 @@ document.addEventListener('DOMContentLoaded', () => {
     /* VALUES */
 
     .owner-service-value strong {
-        font-size: 0.61rem;
+        font-size: 0.72rem;
         font-weight: 400;
     }
 
     .owner-service-value small {
         margin-left: 2px;
         color: #948980;
-        font-size: 0.43rem;
+        font-size: 0.58rem;
     }
 
 
@@ -900,7 +900,7 @@ document.addEventListener('DOMContentLoaded', () => {
         align-items: center;
         gap: 6px;
         padding: 5px 8px;
-        font-size: 0.36rem;
+        font-size: 0.52rem;
         font-weight: 500;
         letter-spacing: 0.08em;
     }
@@ -951,7 +951,7 @@ document.addEventListener('DOMContentLoaded', () => {
         justify-content: center;
         padding: 0 9px;
         font-family: inherit;
-        font-size: 0.37rem;
+        font-size: 0.52rem;
         font-weight: 500;
         letter-spacing: 0.09em;
     }
@@ -1003,13 +1003,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     .owner-services-footer span {
-        font-size: 0.43rem;
+        font-size: 0.58rem;
     }
 
     .owner-services-footer a {
         color: #211d1a;
         text-decoration: none;
-        font-size: 0.4rem;
+        font-size: 0.55rem;
         font-weight: 500;
         letter-spacing: 0.09em;
     }
@@ -1025,7 +1025,7 @@ document.addEventListener('DOMContentLoaded', () => {
         padding: 45px 20px;
         color: #8b8079;
         text-align: center;
-        font-size: 0.58rem;
+        font-size: 0.68rem;
     }
 
 
@@ -1055,7 +1055,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .owner-services-empty p {
         margin: 0 0 18px;
         color: #897d76;
-        font-size: 0.58rem;
+        font-size: 0.68rem;
     }
 
 
@@ -1076,7 +1076,7 @@ document.addEventListener('DOMContentLoaded', () => {
             display: block;
             margin-bottom: 4px;
             color: #9e8076;
-            font-size: 0.37rem;
+            font-size: 0.52rem;
             letter-spacing: 0.1em;
         }
 

@@ -56,4 +56,20 @@ class ClientController extends Controller
             'completedReservations'
         ));
     }
+
+    public function toggleActive(User $client)
+    {
+        abort_unless($client->role === 'client', 404);
+
+        $client->update([
+            'is_active' => ! $client->is_active,
+        ]);
+
+        return back()->with(
+            'success',
+            $client->is_active
+                ? 'Client has been activated successfully.'
+                : 'Client has been deactivated successfully.'
+        );
+    }
 }

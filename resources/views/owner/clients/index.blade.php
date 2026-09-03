@@ -141,7 +141,7 @@
 
                     @foreach ($clients as $client)
 
-                        <article class="owner-client-row">
+                        <article class="owner-client-row {{ $client->is_active ? '' : 'is-inactive' }}">
 
                             <div class="owner-client-person">
 
@@ -169,7 +169,7 @@
                                     </strong>
 
                                     <small>
-                                        Client profile
+                                        {{ $client->is_active ? 'Active client' : 'Inactive client' }}
                                     </small>
 
                                 </div>
@@ -290,7 +290,7 @@
         display: block;
         margin-bottom: 5px;
         color: #a0796d;
-        font-size: 0.53rem;
+        font-size: 0.64rem;
         font-weight: 500;
         letter-spacing: 0.19em;
     }
@@ -305,13 +305,13 @@
     .owner-clients-header p {
         margin: 0;
         color: #81766f;
-        font-size: 0.69rem;
+        font-size: 0.76rem;
     }
 
     .owner-clients-back {
         color: #211d1a;
         text-decoration: none;
-        font-size: 0.44rem;
+        font-size: 0.57rem;
         font-weight: 500;
         letter-spacing: 0.11em;
     }
@@ -360,7 +360,7 @@
         background: transparent;
         color: #211d1a;
         font-family: inherit;
-        font-size: 0.61rem;
+        font-size: 0.7rem;
     }
 
     .owner-clients-search-button {
@@ -370,7 +370,7 @@
         background: #211d1a;
         color: #fff;
         font-family: inherit;
-        font-size: 0.41rem;
+        font-size: 0.56rem;
         font-weight: 500;
         letter-spacing: 0.11em;
         cursor: pointer;
@@ -388,7 +388,7 @@
         padding: 0 11px;
         color: #806f67;
         text-decoration: none;
-        font-size: 0.4rem;
+        font-size: 0.55rem;
         font-weight: 500;
         letter-spacing: 0.1em;
     }
@@ -415,7 +415,7 @@
         display: block;
         margin-bottom: 3px;
         color: #9e776b;
-        font-size: 0.42rem;
+        font-size: 0.56rem;
         letter-spacing: 0.14em;
     }
 
@@ -427,7 +427,7 @@
 
     .owner-clients-card-heading > strong {
         color: #8b7b73;
-        font-size: 0.42rem;
+        font-size: 0.56rem;
         font-weight: 500;
         letter-spacing: 0.11em;
     }
@@ -449,7 +449,7 @@
     }
 
     .owner-clients-list-head span {
-        font-size: 0.38rem;
+        font-size: 0.52rem;
         letter-spacing: 0.12em;
     }
 
@@ -502,7 +502,7 @@
 
     .owner-client-person strong {
         display: block;
-        font-size: 0.61rem;
+        font-size: 0.7rem;
         font-weight: 500;
     }
 
@@ -510,13 +510,13 @@
         display: block;
         margin-top: 3px;
         color: #958982;
-        font-size: 0.44rem;
+        font-size: 0.59rem;
     }
 
     .owner-client-contact strong {
         display: block;
         overflow-wrap: anywhere;
-        font-size: 0.56rem;
+        font-size: 0.66rem;
         font-weight: 400;
         color: #554e49;
     }
@@ -539,7 +539,7 @@
         gap: 8px;
         color: #211d1a;
         text-decoration: none;
-        font-size: 0.4rem;
+        font-size: 0.54rem;
         font-weight: 500;
         letter-spacing: 0.1em;
     }
@@ -583,7 +583,7 @@
     .owner-clients-empty p {
         margin: 0;
         color: #887d76;
-        font-size: 0.58rem;
+        font-size: 0.68rem;
     }
 
 
@@ -591,6 +591,14 @@
 
     .owner-clients-pagination {
         margin-top: 17px;
+    }
+
+    .owner-client-row.is-inactive {
+        opacity: 0.58;
+    }
+
+    .owner-client-row.is-inactive:hover {
+        opacity: 0.72;
     }
 
 
@@ -611,7 +619,7 @@
             display: block;
             margin-bottom: 4px;
             color: #9d8076;
-            font-size: 0.37rem;
+            font-size: 0.52rem;
             letter-spacing: 0.1em;
         }
 

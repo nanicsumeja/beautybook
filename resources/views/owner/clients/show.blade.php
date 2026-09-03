@@ -97,6 +97,35 @@
 
                 </div>
 
+                <div class="owner-client-profile-status">
+                    <div>
+                        <span>ACCOUNT STATUS</span>
+
+                        <strong class="{{ $client->is_active ? 'is-active' : 'is-inactive' }}">
+                            {{ $client->is_active ? 'ACTIVE' : 'INACTIVE' }}
+                        </strong>
+                    </div>
+
+                    <form
+                        method="POST"
+                        action="{{ route('owner.clients.toggle-active', $client) }}"
+                        onsubmit="return confirm(
+                            '{{ $client->is_active
+                                ? 'Are you sure you want to deactivate this client? They will no longer be able to log in.'
+                                : 'Are you sure you want to activate this client?' }}'
+                        )"
+                    >
+                        @csrf
+                        @method('PATCH')
+
+                        <button
+                            type="submit"
+                            class="{{ $client->is_active ? 'deactivate' : 'activate' }}"
+                        >
+                            {{ $client->is_active ? 'DEACTIVATE CLIENT' : 'ACTIVATE CLIENT' }}
+                        </button>
+                    </form>
+                </div>
 
                 <div class="owner-client-profile-note">
 
@@ -311,7 +340,7 @@
     .owner-client-profile-back {
         color: #211d1a;
         text-decoration: none;
-        font-size: 0.47rem;
+        font-size: 0.58rem;
         font-weight: 500;
         letter-spacing: 0.12em;
     }
@@ -337,7 +366,7 @@
         display: block;
         margin-bottom: 5px;
         color: #a0796d;
-        font-size: 0.53rem;
+        font-size: 0.64rem;
         font-weight: 500;
         letter-spacing: 0.19em;
     }
@@ -352,7 +381,7 @@
     .owner-client-profile-header p {
         margin: 0;
         color: #81766f;
-        font-size: 0.69rem;
+        font-size: 0.76rem;
     }
 
     .owner-client-profile-avatar {
@@ -394,7 +423,7 @@
         display: block;
         margin-bottom: 5px;
         color: #c7a59b;
-        font-size: 0.43rem;
+        font-size: 0.56rem;
         letter-spacing: 0.14em;
     }
 
@@ -424,7 +453,7 @@
         display: block;
         margin-bottom: 5px;
         color: #b99c92;
-        font-size: 0.41rem;
+        font-size: 0.56rem;
         letter-spacing: 0.12em;
     }
 
@@ -432,7 +461,7 @@
         display: block;
         overflow-wrap: anywhere;
         color: #f4efeb;
-        font-size: 0.61rem;
+        font-size: 0.69rem;
         font-weight: 400;
     }
 
@@ -450,7 +479,7 @@
         display: block;
         margin-bottom: 6px;
         color: #c5a79d;
-        font-size: 0.4rem;
+        font-size: 0.54rem;
         letter-spacing: 0.13em;
     }
 
@@ -465,7 +494,7 @@
         display: block;
         margin-top: 5px;
         color: #bbb0aa;
-        font-size: 0.5rem;
+        font-size: 0.6rem;
     }
 
 
@@ -490,7 +519,7 @@
         display: block;
         margin-bottom: 4px;
         color: #9f776b;
-        font-size: 0.42rem;
+        font-size: 0.56rem;
         letter-spacing: 0.14em;
     }
 
@@ -502,7 +531,7 @@
 
     .owner-client-history-heading > strong {
         color: #8d7e76;
-        font-size: 0.65rem;
+        font-size: 0.7rem;
         font-weight: 400;
     }
 
@@ -524,7 +553,7 @@
     }
 
     .owner-client-history-head span {
-        font-size: 0.37rem;
+        font-size: 0.51rem;
         letter-spacing: 0.11em;
     }
 
@@ -558,7 +587,7 @@
     .owner-client-history-row strong {
         display: block;
         color: #514a45;
-        font-size: 0.55rem;
+        font-size: 0.66rem;
         font-weight: 400;
         line-height: 1.45;
     }
@@ -567,7 +596,7 @@
         display: block;
         margin-top: 4px;
         color: #93877f;
-        font-size: 0.43rem;
+        font-size: 0.58rem;
         line-height: 1.45;
     }
 
@@ -581,7 +610,7 @@
         padding: 5px 8px;
         background: #d9e2d8;
         color: #596958;
-        font-size: 0.36rem;
+        font-size: 0.51rem;
         font-weight: 500;
         letter-spacing: 0.08em;
     }
@@ -615,8 +644,84 @@
     .owner-client-history-empty p {
         margin: 0;
         color: #887d76;
-        font-size: 0.58rem;
+        font-size: 0.68rem;
     }
+
+    .owner-client-profile-status {
+        margin: 12px 24px 0;
+        padding: 16px 0 4px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .owner-client-profile-status > div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+        margin-bottom: 13px;
+    }
+
+    .owner-client-profile-status > div > span {
+        color: #b99c92;
+        font-size: 0.55rem;
+        letter-spacing: 0.12em;
+    }
+
+    .owner-client-profile-status > div > strong {
+        padding: 5px 8px;
+        font-size: 0.51rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+    }
+
+    .owner-client-profile-status .is-active {
+        background: rgba(166, 197, 165, 0.16);
+        color: #b7d2b5;
+    }
+
+    .owner-client-profile-status .is-inactive {
+        background: rgba(201, 137, 125, 0.16);
+        color: #d9aaa0;
+    }
+
+    .owner-client-profile-status form {
+        margin: 0;
+    }
+
+    .owner-client-profile-status button {
+        width: 100%;
+        min-height: 37px;
+        border: 1px solid;
+        background: transparent;
+        font-family: inherit;
+        font-size: 0.55rem;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        cursor: pointer;
+        transition: 0.2s ease;
+    }
+
+    .owner-client-profile-status button.deactivate {
+        border-color: rgba(215, 157, 145, 0.55);
+        color: #d8aaa0;
+    }
+
+    .owner-client-profile-status button.deactivate:hover {
+        background: #b67668;
+        border-color: #b67668;
+        color: #fff;
+    }
+
+    .owner-client-profile-status button.activate {
+        border-color: rgba(172, 201, 169, 0.55);
+        color: #b8d1b5;
+    }
+
+    .owner-client-profile-status button.activate:hover {
+        background: #71866f;
+        border-color: #71866f;
+        color: #fff;
+}
 
 
     /* RESPONSIVE */
@@ -644,7 +749,7 @@
             display: block;
             margin-bottom: 4px;
             color: #9f8075;
-            font-size: 0.37rem;
+            font-size: 0.52rem;
             letter-spacing: 0.1em;
         }
 

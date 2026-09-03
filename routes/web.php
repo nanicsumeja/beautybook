@@ -202,6 +202,11 @@ Route::middleware(['auth', 'role:owner'])
             [OwnerClientController::class, 'show']
         )->name('clients.show');
 
+        Route::patch(
+            '/clients/{client}/toggle-active',
+            [OwnerClientController::class, 'toggleActive']
+        )->name('clients.toggle-active');
+
         Route::get('/reports', [ReportController::class, 'index'])
             ->name('reports.index');
 

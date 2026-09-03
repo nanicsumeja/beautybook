@@ -1044,7 +1044,7 @@
 
         margin-bottom: 5px;
 
-        font-size: 0.53rem;
+        font-size: 0.64rem;
 
         font-weight: 500;
 
@@ -1070,7 +1070,7 @@
 
         margin: 0;
 
-        font-size: 0.68rem;
+        font-size: 0.76rem;
 
         color: #7d746e;
 
@@ -1088,7 +1088,7 @@
 
         margin-bottom: 4px;
 
-        font-size: 0.43rem;
+        font-size: 0.58rem;
 
         letter-spacing: 0.15em;
 
@@ -1098,7 +1098,7 @@
 
     .owner-dashboard-date strong {
 
-        font-size: 0.73rem;
+        font-size: 0.8rem;
 
         font-weight: 500;
 
@@ -1146,7 +1146,7 @@
 
         margin-bottom: 4px;
 
-        font-size: 0.43rem;
+        font-size: 0.58rem;
 
         letter-spacing: 0.14em;
 
@@ -1176,7 +1176,7 @@
 
     .owner-summary-card small {
 
-        font-size: 0.52rem;
+        font-size: 0.65rem;
 
         color: #d6c6bb;
 
@@ -1288,7 +1288,7 @@
 
         margin-bottom: 4px;
 
-        font-size: 0.44rem;
+        font-size: 0.58rem;
 
         letter-spacing: 0.15em;
 
@@ -1324,7 +1324,7 @@
 
         text-decoration: none;
 
-        font-size: 0.43rem;
+        font-size: 0.58rem;
 
         font-weight: 500;
 
@@ -1432,7 +1432,7 @@
 
         margin-top: 5px;
 
-        font-size: 0.42rem;
+        font-size: 0.56rem;
 
         letter-spacing: 0.14em;
 
@@ -1474,13 +1474,13 @@
 
         margin: 0;
 
-        font-size: 0.62rem;
+        font-size: 0.72rem;
 
     }
 
     .owner-status-list strong {
 
-        font-size: 0.67rem;
+        font-size: 0.74rem;
 
         font-weight: 500;
 
@@ -1574,7 +1574,7 @@
 
     .owner-action-list a div span {
 
-        font-size: 0.43rem;
+        font-size: 0.57rem;
 
         letter-spacing: 0.1em;
 
@@ -1584,7 +1584,7 @@
 
     .owner-action-list a strong {
 
-        font-size: 0.65rem;
+        font-size: 0.74rem;
 
         font-weight: 500;
 
@@ -1688,7 +1688,7 @@
 
         margin-bottom: 2px;
 
-        font-size: 0.62rem;
+        font-size: 0.72rem;
 
         font-weight: 500;
 
@@ -1698,7 +1698,7 @@
 
         display: block;
 
-        font-size: 0.5rem;
+        font-size: 0.64rem;
 
         color: #8b8078;
 
@@ -1714,7 +1714,7 @@
 
         display: block;
 
-        font-size: 0.62rem;
+        font-size: 0.72rem;
 
         font-weight: 500;
 
@@ -1726,7 +1726,7 @@
 
         margin-top: 2px;
 
-        font-size: 0.49rem;
+        font-size: 0.62rem;
 
         color: #8a7e77;
 
@@ -1742,7 +1742,7 @@
 
         padding: 6px 8px;
 
-        font-size: 0.39rem;
+        font-size: 0.54rem;
 
         font-weight: 500;
 
@@ -1814,7 +1814,7 @@
 
         margin-bottom: 4px;
 
-        font-size: 0.43rem;
+        font-size: 0.57rem;
 
         letter-spacing: 0.13em;
 
@@ -1824,7 +1824,7 @@
 
     .owner-system-main-status > div > strong {
 
-        font-size: 0.67rem;
+        font-size: 0.74rem;
 
         font-weight: 500;
 
@@ -1834,7 +1834,7 @@
 
         padding: 6px 8px;
 
-        font-size: 0.38rem;
+        font-size: 0.53rem;
 
         font-weight: 500;
 
@@ -1894,7 +1894,7 @@
 
         margin-bottom: 3px;
 
-        font-size: 0.39rem;
+        font-size: 0.54rem;
 
         letter-spacing: 0.11em;
 
@@ -1944,7 +1944,7 @@
 
     .owner-warning-list span {
 
-        font-size: 0.58rem;
+        font-size: 0.7rem;
 
     }
 
@@ -1962,7 +1962,7 @@
 
         color: #92594e;
 
-        font-size: 0.52rem;
+        font-size: 0.64rem;
 
         font-weight: 500;
 
@@ -2004,7 +2004,7 @@
 
         margin-bottom: 2px;
 
-        font-size: 0.62rem;
+        font-size: 0.72rem;
 
         font-weight: 500;
 
@@ -2014,7 +2014,7 @@
 
         margin: 0;
 
-        font-size: 0.51rem;
+        font-size: 0.64rem;
 
         color: #8a7e77;
 
@@ -2084,7 +2084,7 @@
 
         margin-bottom: 3px;
 
-        font-size: 0.59rem;
+        font-size: 0.7rem;
 
         font-weight: 500;
 
@@ -2094,7 +2094,7 @@
 
         display: block;
 
-        font-size: 0.46rem;
+        font-size: 0.61rem;
 
         color: #91857e;
 
@@ -2108,7 +2108,7 @@
 
         background: #eee5df;
 
-        font-size: 0.36rem;
+        font-size: 0.51rem;
 
         letter-spacing: 0.08em;
 
@@ -2126,7 +2126,7 @@
 
         text-align: center;
 
-        font-size: 0.57rem;
+        font-size: 0.68rem;
 
         color: #8b817a;
 

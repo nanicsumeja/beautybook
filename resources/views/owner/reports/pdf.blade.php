@@ -64,7 +64,7 @@
 
         .report-meta-label {
             color: #a0786d;
-            font-size: 8px;
+            font-size: 9px;
             letter-spacing: 1px;
             text-transform: uppercase;
             margin-bottom: 3px;
@@ -84,7 +84,7 @@
         }
 
         .section-eyebrow {
-            font-size: 8px;
+            font-size: 9px;
             letter-spacing: 1.3px;
             color: #a0786d;
             text-transform: uppercase;
@@ -114,7 +114,7 @@
 
         .stat-label {
             color: #857972;
-            font-size: 8px;
+            font-size: 9px;
             text-transform: uppercase;
             letter-spacing: 0.7px;
             margin-bottom: 6px;
@@ -141,7 +141,7 @@
 
         .finance-label {
             color: #7e7069;
-            font-size: 8px;
+            font-size: 9px;
             letter-spacing: 0.6px;
             text-transform: uppercase;
             margin-bottom: 7px;
@@ -163,7 +163,7 @@
             border-bottom: 1px solid #cfc4bd;
             background: #eee4de;
             color: #6c5f59;
-            font-size: 8px;
+            font-size: 9px;
             font-weight: 400;
             letter-spacing: 0.7px;
             text-transform: uppercase;
@@ -204,7 +204,7 @@
         .footer td {
             width: 50%;
             color: #9a8e87;
-            font-size: 8px;
+            font-size: 9px;
         }
 
         .footer td:last-child {

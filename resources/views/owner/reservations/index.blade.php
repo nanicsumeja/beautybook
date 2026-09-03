@@ -653,7 +653,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .owner-appointments-eyebrow {
         display: block;
         margin-bottom: 5px;
-        font-size: 0.54rem;
+        font-size: 0.64rem;
         font-weight: 500;
         letter-spacing: 0.2em;
         color: #9f766a;
@@ -668,7 +668,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     .owner-appointments-header p {
         margin: 0;
-        font-size: 0.7rem;
+        font-size: 0.76rem;
         color: #7f756f;
     }
 
@@ -688,7 +688,7 @@ document.addEventListener('DOMContentLoaded', () => {
         border: 1px solid #211d1a;
         color: #fff;
         text-decoration: none;
-        font-size: 0.46rem;
+        font-size: 0.58rem;
         font-weight: 500;
         letter-spacing: 0.12em;
     }
@@ -702,7 +702,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .owner-back-dashboard {
         color: #211d1a;
         text-decoration: none;
-        font-size: 0.45rem;
+        font-size: 0.57rem;
         font-weight: 500;
         letter-spacing: 0.11em;
     }
@@ -717,7 +717,7 @@ document.addEventListener('DOMContentLoaded', () => {
         align-items: center;
         gap: 9px;
         border-left: 3px solid;
-        font-size: 0.63rem;
+        font-size: 0.69rem;
     }
 
     .owner-appointment-message.success {
@@ -768,7 +768,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .owner-appointments-summary span {
         display: block;
         margin-bottom: 3px;
-        font-size: 0.4rem;
+        font-size: 0.55rem;
         letter-spacing: 0.13em;
         opacity: 0.72;
     }
@@ -815,7 +815,7 @@ document.addEventListener('DOMContentLoaded', () => {
         background: transparent;
         color: #211d1a;
         font-family: inherit;
-        font-size: 0.61rem;
+        font-size: 0.7rem;
     }
 
     .owner-appointments-filters {
@@ -831,7 +831,7 @@ document.addEventListener('DOMContentLoaded', () => {
         background: transparent;
         color: #776d67;
         font-family: inherit;
-        font-size: 0.39rem;
+        font-size: 0.54rem;
         font-weight: 500;
         letter-spacing: 0.09em;
         cursor: pointer;
@@ -868,7 +868,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     .owner-appointments-list-head span {
-        font-size: 0.39rem;
+        font-size: 0.53rem;
         letter-spacing: 0.12em;
     }
 
@@ -922,7 +922,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .owner-appointment-date strong,
     .owner-appointment-price strong {
         display: block;
-        font-size: 0.58rem;
+        font-size: 0.7rem;
         font-weight: 500;
     }
 
@@ -933,7 +933,7 @@ document.addEventListener('DOMContentLoaded', () => {
         display: block;
         margin-top: 3px;
         color: #8c817a;
-        font-size: 0.44rem;
+        font-size: 0.59rem;
     }
 
     .owner-mobile-label {
@@ -949,7 +949,7 @@ document.addEventListener('DOMContentLoaded', () => {
         justify-content: center;
         min-width: 76px;
         padding: 6px 7px;
-        font-size: 0.37rem;
+        font-size: 0.51rem;
         font-weight: 500;
         letter-spacing: 0.08em;
     }
@@ -999,7 +999,7 @@ document.addEventListener('DOMContentLoaded', () => {
         color: #211d1a;
         text-decoration: none;
         font-family: inherit;
-        font-size: 0.35rem;
+        font-size: 0.5rem;
         font-weight: 500;
         letter-spacing: 0.07em;
         cursor: pointer;
@@ -1046,14 +1046,14 @@ document.addEventListener('DOMContentLoaded', () => {
         gap: 20px;
         padding: 0 18px;
         border-top: 1px solid rgba(33,29,26,0.08);
-        font-size: 0.48rem;
+        font-size: 0.59rem;
         color: #81766f;
     }
 
     .owner-appointments-footer a {
         color: #211d1a;
         text-decoration: none;
-        font-size: 0.4rem;
+        font-size: 0.55rem;
         font-weight: 500;
         letter-spacing: 0.1em;
     }
@@ -1085,14 +1085,14 @@ document.addEventListener('DOMContentLoaded', () => {
     .owner-appointments-empty p {
         margin: 0;
         color: #81766f;
-        font-size: 0.61rem;
+        font-size: 0.69rem;
     }
 
     .owner-appointments-no-results {
         padding: 28px;
         text-align: center;
         color: #81766f;
-        font-size: 0.58rem;
+        font-size: 0.68rem;
     }
 
 
@@ -1114,7 +1114,7 @@ document.addEventListener('DOMContentLoaded', () => {
             display: block;
             margin-bottom: 4px;
             color: #9d8076;
-            font-size: 0.38rem;
+            font-size: 0.52rem;
             letter-spacing: 0.1em;
         }
 

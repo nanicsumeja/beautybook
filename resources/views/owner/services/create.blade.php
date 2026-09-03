@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
         display: block;
         margin-bottom: 5px;
         color: #a0796d;
-        font-size: 0.53rem;
+        font-size: 0.64rem;
         font-weight: 500;
         letter-spacing: 0.19em;
     }
@@ -254,13 +254,13 @@ document.addEventListener('DOMContentLoaded', () => {
     .owner-service-form-header p {
         margin: 0;
         color: #81766f;
-        font-size: 0.69rem;
+        font-size: 0.76rem;
     }
 
     .owner-service-form-back {
         color: #211d1a;
         text-decoration: none;
-        font-size: 0.43rem;
+        font-size: 0.58rem;
         font-weight: 500;
         letter-spacing: 0.11em;
     }
@@ -296,7 +296,7 @@ document.addEventListener('DOMContentLoaded', () => {
         display: block;
         margin-bottom: 4px;
         color: #9f776b;
-        font-size: 0.41rem;
+        font-size: 0.56rem;
         font-weight: 500;
         letter-spacing: 0.14em;
     }
@@ -329,14 +329,14 @@ document.addEventListener('DOMContentLoaded', () => {
         display: block;
         margin-bottom: 4px;
         color: #754c45;
-        font-size: 0.57rem;
+        font-size: 0.68rem;
         font-weight: 500;
     }
 
     .owner-service-form-content .service-form-errors > span {
         display: block;
         color: #94675e;
-        font-size: 0.48rem;
+        font-size: 0.61rem;
         line-height: 1.5;
     }
 
@@ -368,7 +368,7 @@ document.addEventListener('DOMContentLoaded', () => {
         gap: 10px;
         margin-bottom: 7px;
         color: #625954;
-        font-size: 0.45rem;
+        font-size: 0.59rem;
         font-weight: 500;
         letter-spacing: 0.08em;
         text-transform: uppercase;
@@ -377,7 +377,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .owner-service-form-content
     .service-form-field > label > span {
         color: #a18f86;
-        font-size: 0.37rem;
+        font-size: 0.52rem;
         font-weight: 400;
         letter-spacing: 0.08em;
     }
@@ -399,7 +399,7 @@ document.addEventListener('DOMContentLoaded', () => {
         box-shadow: none;
         color: #211d1a;
         font-family: inherit;
-        font-size: 0.62rem;
+        font-size: 0.7rem;
         transition:
             border-color 0.15s ease,
             box-shadow 0.15s ease;
@@ -453,7 +453,7 @@ document.addEventListener('DOMContentLoaded', () => {
         right: 12px;
         transform: translateY(-50%);
         color: #968981;
-        font-size: 0.47rem;
+        font-size: 0.6rem;
         pointer-events: none;
     }
 
@@ -472,7 +472,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .owner-service-form-content
     .service-description-footer small {
         color: #978b84;
-        font-size: 0.43rem;
+        font-size: 0.57rem;
     }
 
     .owner-service-form-content
@@ -480,7 +480,7 @@ document.addEventListener('DOMContentLoaded', () => {
         display: block;
         margin-top: 5px;
         color: #a45f55;
-        font-size: 0.43rem;
+        font-size: 0.57rem;
         line-height: 1.45;
     }
 
@@ -504,7 +504,7 @@ document.addEventListener('DOMContentLoaded', () => {
         display: block;
         margin-bottom: 3px;
         color: #4f4742;
-        font-size: 0.58rem;
+        font-size: 0.7rem;
         font-weight: 500;
     }
 
@@ -512,7 +512,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .service-availability > div > span {
         display: block;
         color: #8e817a;
-        font-size: 0.45rem;
+        font-size: 0.6rem;
     }
 
 
@@ -577,7 +577,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .owner-service-form-content
     .service-toggle em {
         color: #5f5651;
-        font-size: 0.49rem;
+        font-size: 0.61rem;
         font-style: normal;
         font-weight: 500;
         letter-spacing: 0.06em;
@@ -600,7 +600,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .owner-service-secondary {
         color: #786d67;
         text-decoration: none;
-        font-size: 0.42rem;
+        font-size: 0.57rem;
         font-weight: 500;
         letter-spacing: 0.1em;
     }
@@ -621,7 +621,7 @@ document.addEventListener('DOMContentLoaded', () => {
         background: #211d1a;
         color: #fff;
         font-family: inherit;
-        font-size: 0.42rem;
+        font-size: 0.57rem;
         font-weight: 500;
         letter-spacing: 0.11em;
         cursor: pointer;
@@ -656,7 +656,7 @@ document.addEventListener('DOMContentLoaded', () => {
         display: block;
         margin-bottom: 9px;
         color: #c6a59a;
-        font-size: 0.41rem;
+        font-size: 0.56rem;
         font-weight: 500;
         letter-spacing: 0.15em;
     }
@@ -674,7 +674,7 @@ document.addEventListener('DOMContentLoaded', () => {
         max-width: 310px;
         margin: 0;
         color: #bfb3ad;
-        font-size: 0.57rem;
+        font-size: 0.68rem;
         line-height: 1.7;
     }
 
@@ -696,7 +696,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     .owner-service-form-steps article > span {
         color: #bc9387;
-        font-size: 0.43rem;
+        font-size: 0.57rem;
         letter-spacing: 0.08em;
     }
 
@@ -704,14 +704,14 @@ document.addEventListener('DOMContentLoaded', () => {
         display: block;
         margin-bottom: 3px;
         color: #f2ebe7;
-        font-size: 0.57rem;
+        font-size: 0.69rem;
         font-weight: 500;
     }
 
     .owner-service-form-steps p {
         margin: 0;
         color: #a99d97;
-        font-size: 0.46rem;
+        font-size: 0.6rem;
         line-height: 1.55;
     }
 
@@ -729,14 +729,14 @@ document.addEventListener('DOMContentLoaded', () => {
         display: block;
         margin-bottom: 6px;
         color: #c6a59a;
-        font-size: 0.39rem;
+        font-size: 0.54rem;
         letter-spacing: 0.12em;
     }
 
     .owner-service-form-side-note p {
         margin: 0;
         color: #bdb0aa;
-        font-size: 0.48rem;
+        font-size: 0.61rem;
         line-height: 1.6;
     }
 

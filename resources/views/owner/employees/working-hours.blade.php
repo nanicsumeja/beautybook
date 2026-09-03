@@ -480,7 +480,7 @@ document.addEventListener('DOMContentLoaded', () => {
         display: block;
         margin-bottom: 5px;
         color: #a0796d;
-        font-size: 0.53rem;
+        font-size: 0.64rem;
         font-weight: 500;
         letter-spacing: 0.19em;
     }
@@ -495,13 +495,13 @@ document.addEventListener('DOMContentLoaded', () => {
     .owner-working-hours-header p {
         margin: 0;
         color: #81766f;
-        font-size: 0.69rem;
+        font-size: 0.76rem;
     }
 
     .owner-working-hours-back {
         color: #211d1a;
         text-decoration: none;
-        font-size: 0.43rem;
+        font-size: 0.57rem;
         font-weight: 500;
         letter-spacing: 0.11em;
     }
@@ -534,7 +534,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     .owner-working-hours-message p {
         margin: 0;
-        font-size: 0.52rem;
+        font-size: 0.66rem;
     }
 
     .owner-working-hours-message.success {
@@ -589,7 +589,7 @@ document.addEventListener('DOMContentLoaded', () => {
         display: block;
         margin-bottom: 4px;
         color: #9f776b;
-        font-size: 0.4rem;
+        font-size: 0.55rem;
         font-weight: 500;
         letter-spacing: 0.13em;
     }
@@ -604,7 +604,7 @@ document.addEventListener('DOMContentLoaded', () => {
         max-width: 180px;
         margin: 0;
         color: #988d86;
-        font-size: 0.44rem;
+        font-size: 0.6rem;
         line-height: 1.55;
         text-align: right;
     }
@@ -644,14 +644,14 @@ document.addEventListener('DOMContentLoaded', () => {
         display: block;
         margin-bottom: 4px;
         color: #a68c82;
-        font-size: 0.35rem;
+        font-size: 0.51rem;
         font-weight: 500;
         letter-spacing: 0.1em;
     }
 
     .owner-working-day-name strong {
         color: #39312d;
-        font-size: 0.66rem;
+        font-size: 0.7rem;
         font-weight: 500;
     }
 
@@ -662,7 +662,7 @@ document.addEventListener('DOMContentLoaded', () => {
         display: block;
         margin-bottom: 6px;
         color: #8f817a;
-        font-size: 0.36rem;
+        font-size: 0.51rem;
         font-weight: 500;
         letter-spacing: 0.09em;
     }
@@ -677,7 +677,7 @@ document.addEventListener('DOMContentLoaded', () => {
         background: #f8f4f0;
         color: #332c28;
         font-family: inherit;
-        font-size: 0.55rem;
+        font-size: 0.68rem;
     }
 
     .owner-working-time input:focus {
@@ -701,7 +701,7 @@ document.addEventListener('DOMContentLoaded', () => {
         display: block;
         margin-top: 4px;
         color: #a45f55;
-        font-size: 0.4rem;
+        font-size: 0.56rem;
         line-height: 1.4;
     }
 
@@ -762,7 +762,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     .owner-working-toggle-text {
         color: #766b65;
-        font-size: 0.37rem;
+        font-size: 0.52rem;
         font-weight: 500;
         letter-spacing: 0.08em;
     }
@@ -783,7 +783,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .owner-working-hours-secondary {
         color: #786d67;
         text-decoration: none;
-        font-size: 0.42rem;
+        font-size: 0.55rem;
         font-weight: 500;
         letter-spacing: 0.1em;
     }
@@ -804,7 +804,7 @@ document.addEventListener('DOMContentLoaded', () => {
         background: #211d1a;
         color: #fff;
         font-family: inherit;
-        font-size: 0.4rem;
+        font-size: 0.56rem;
         font-weight: 500;
         letter-spacing: 0.1em;
         cursor: pointer;
@@ -838,7 +838,7 @@ document.addEventListener('DOMContentLoaded', () => {
         display: block;
         margin-bottom: 14px;
         color: #c6a59a;
-        font-size: 0.41rem;
+        font-size: 0.55rem;
         font-weight: 500;
         letter-spacing: 0.15em;
     }
@@ -867,7 +867,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .owner-working-hours-side > p {
         margin: 0;
         color: #bcb0aa;
-        font-size: 0.53rem;
+        font-size: 0.66rem;
         line-height: 1.7;
     }
 
@@ -889,21 +889,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     .owner-working-hours-notes article > span {
         color: #bc9387;
-        font-size: 0.42rem;
+        font-size: 0.54rem;
     }
 
     .owner-working-hours-notes strong {
         display: block;
         margin-bottom: 3px;
         color: #f2ebe7;
-        font-size: 0.54rem;
+        font-size: 0.68rem;
         font-weight: 500;
     }
 
     .owner-working-hours-notes p {
         margin: 0;
         color: #a99d97;
-        font-size: 0.45rem;
+        font-size: 0.6rem;
         line-height: 1.55;
     }
 
@@ -918,14 +918,14 @@ document.addEventListener('DOMContentLoaded', () => {
         display: block;
         margin-bottom: 6px;
         color: #c6a59a;
-        font-size: 0.38rem;
+        font-size: 0.53rem;
         letter-spacing: 0.12em;
     }
 
     .owner-working-hours-side-note p {
         margin: 0;
         color: #bdb0aa;
-        font-size: 0.46rem;
+        font-size: 0.61rem;
         line-height: 1.6;
     }
 

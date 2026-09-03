@@ -252,7 +252,7 @@
         display: block;
         margin-bottom: 5px;
         color: #a0796d;
-        font-size: 0.53rem;
+        font-size: 0.64rem;
         font-weight: 500;
         letter-spacing: 0.19em;
     }
@@ -267,13 +267,13 @@
     .owner-employee-form-header p {
         margin: 0;
         color: #81766f;
-        font-size: 0.69rem;
+        font-size: 0.76rem;
     }
 
     .owner-employee-form-back {
         color: #211d1a;
         text-decoration: none;
-        font-size: 0.43rem;
+        font-size: 0.57rem;
         font-weight: 500;
         letter-spacing: 0.11em;
     }
@@ -306,7 +306,7 @@
 
     .owner-employee-form-message p {
         margin: 0;
-        font-size: 0.52rem;
+        font-size: 0.66rem;
     }
 
     .owner-employee-form-message.error {
@@ -351,7 +351,7 @@
         display: block;
         margin-bottom: 4px;
         color: #9f776b;
-        font-size: 0.4rem;
+        font-size: 0.55rem;
         font-weight: 500;
         letter-spacing: 0.13em;
     }
@@ -366,7 +366,7 @@
         max-width: 180px;
         margin: 0;
         color: #988d86;
-        font-size: 0.44rem;
+        font-size: 0.6rem;
         line-height: 1.55;
         text-align: right;
     }
@@ -407,7 +407,7 @@
     .owner-employee-form-content
     .employee-form-field > label > span {
         color: #625954;
-        font-size: 0.45rem;
+        font-size: 0.58rem;
         font-weight: 500;
         letter-spacing: 0.08em;
         text-transform: uppercase;
@@ -416,7 +416,7 @@
     .owner-employee-form-content
     .employee-form-field > label > small {
         color: #a18f86;
-        font-size: 0.37rem;
+        font-size: 0.51rem;
         font-weight: 400;
         letter-spacing: 0.08em;
         text-transform: uppercase;
@@ -437,7 +437,7 @@
         box-shadow: none;
         color: #211d1a;
         font-family: inherit;
-        font-size: 0.62rem;
+        font-size: 0.7rem;
         transition:
             border-color 0.15s ease,
             box-shadow 0.15s ease;
@@ -460,7 +460,7 @@
         display: block;
         margin-top: 5px;
         color: #a45f55;
-        font-size: 0.43rem;
+        font-size: 0.57rem;
         line-height: 1.45;
     }
 
@@ -488,7 +488,7 @@
         display: block;
         margin-bottom: 3px;
         color: #4f4742;
-        font-size: 0.61rem;
+        font-size: 0.69rem;
         font-weight: 500;
     }
 
@@ -496,14 +496,14 @@
     .employee-section-heading div > span {
         display: block;
         color: #8f837c;
-        font-size: 0.46rem;
+        font-size: 0.6rem;
     }
 
     .owner-employee-form-content
     .employee-section-heading > small {
         flex-shrink: 0;
         color: #9f796e;
-        font-size: 0.4rem;
+        font-size: 0.53rem;
         font-weight: 500;
         letter-spacing: 0.08em;
         text-transform: uppercase;
@@ -582,7 +582,7 @@
     .employee-service-name {
         min-width: 0;
         color: #5d544f;
-        font-size: 0.51rem;
+        font-size: 0.62rem;
         font-weight: 500;
     }
 
@@ -593,7 +593,7 @@
         padding: 2px 4px;
         background: #ead8d4;
         color: #8c6158;
-        font-size: 0.33rem;
+        font-size: 0.48rem;
         font-weight: 500;
         text-transform: uppercase;
     }
@@ -604,7 +604,7 @@
         border: 1px solid rgba(33,29,26,0.09);
         background: #eee5df;
         color: #8d817a;
-        font-size: 0.49rem;
+        font-size: 0.61rem;
     }
 
 
@@ -627,7 +627,7 @@
         display: block;
         margin-bottom: 3px;
         color: #4f4742;
-        font-size: 0.58rem;
+        font-size: 0.69rem;
         font-weight: 500;
     }
 
@@ -635,7 +635,7 @@
     .employee-access-row > div > span {
         display: block;
         color: #8e817a;
-        font-size: 0.45rem;
+        font-size: 0.59rem;
     }
 
 
@@ -704,7 +704,7 @@
     .owner-employee-form-content
     .employee-access-toggle em {
         color: #5f5651;
-        font-size: 0.49rem;
+        font-size: 0.59rem;
         font-style: normal;
         font-weight: 500;
         letter-spacing: 0.06em;
@@ -727,7 +727,7 @@
     .owner-employee-secondary {
         color: #786d67;
         text-decoration: none;
-        font-size: 0.42rem;
+        font-size: 0.55rem;
         font-weight: 500;
         letter-spacing: 0.1em;
     }
@@ -748,7 +748,7 @@
         background: #211d1a;
         color: #fff;
         font-family: inherit;
-        font-size: 0.4rem;
+        font-size: 0.56rem;
         font-weight: 500;
         letter-spacing: 0.1em;
         cursor: pointer;
@@ -783,7 +783,7 @@
         display: block;
         margin-bottom: 10px;
         color: #c6a59a;
-        font-size: 0.41rem;
+        font-size: 0.55rem;
         font-weight: 500;
         letter-spacing: 0.15em;
     }
@@ -801,7 +801,7 @@
         max-width: 305px;
         margin: 0;
         color: #bfb3ad;
-        font-size: 0.53rem;
+        font-size: 0.66rem;
         line-height: 1.7;
     }
 
@@ -823,21 +823,21 @@
 
     .owner-employee-form-steps article > span {
         color: #bc9387;
-        font-size: 0.42rem;
+        font-size: 0.54rem;
     }
 
     .owner-employee-form-steps strong {
         display: block;
         margin-bottom: 3px;
         color: #f2ebe7;
-        font-size: 0.54rem;
+        font-size: 0.68rem;
         font-weight: 500;
     }
 
     .owner-employee-form-steps p {
         margin: 0;
         color: #a99d97;
-        font-size: 0.45rem;
+        font-size: 0.6rem;
         line-height: 1.55;
     }
 
@@ -855,14 +855,14 @@
         display: block;
         margin-bottom: 6px;
         color: #c6a59a;
-        font-size: 0.38rem;
+        font-size: 0.53rem;
         letter-spacing: 0.12em;
     }
 
     .owner-employee-form-side-note p {
         margin: 0;
         color: #bdb0aa;
-        font-size: 0.46rem;
+        font-size: 0.61rem;
         line-height: 1.6;
     }
 
