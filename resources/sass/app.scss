@@ -7662,3 +7662,134 @@ body:has(.forgot-password-page) main {
     align-items: center;
     justify-content: center;
 }
+/* =========================================================
+   BEAUTYBOOK — GLOBAL NAVBAR
+========================================================= */
+
+.navbar {
+    position: relative;
+    z-index: 50;
+
+    min-height: 66px;
+
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+
+    background: #efebe6 !important;
+
+    border: 0 !important;
+
+    box-shadow: none !important;
+}
+
+
+.navbar .container,
+.navbar .container-fluid {
+    min-height: 66px;
+}
+
+
+/* LOGO */
+
+.navbar-brand {
+    color: #272522 !important;
+
+    font-weight: 400;
+
+    letter-spacing: -0.035em;
+}
+
+
+/* LINKS */
+
+.navbar .nav-link {
+    color: rgba(48, 45, 42, 0.67) !important;
+
+    font-size: 0.82rem;
+
+    font-weight: 300;
+
+    transition: color 0.25s ease;
+}
+
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: #292724 !important;
+}
+
+
+/* USER DROPDOWN */
+
+.navbar .dropdown-toggle {
+    color: rgba(48, 45, 42, 0.67) !important;
+
+    font-size: 0.82rem;
+
+    font-weight: 300;
+}
+
+
+.navbar .dropdown-toggle:hover,
+.navbar .dropdown-toggle:focus {
+    color: #292724 !important;
+}
+
+
+/* DROPDOWN MENU */
+
+.navbar .dropdown-menu {
+    margin-top: 8px;
+
+    padding: 7px 0;
+
+    background: #f4f0ec;
+
+    border: 1px solid rgba(46, 42, 38, 0.11);
+
+    border-radius: 0;
+
+    box-shadow:
+        0 12px 30px rgba(46, 42, 38, 0.07);
+}
+
+
+.navbar .dropdown-item {
+    padding: 8px 16px;
+
+    color: #4b4743;
+
+    font-size: 0.72rem;
+
+    font-weight: 300;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.navbar .dropdown-item:hover,
+.navbar .dropdown-item:focus {
+    background: #e8dfda;
+
+    color: #292724;
+}
+
+
+/* MOBILE TOGGLER */
+
+.navbar-toggler {
+    padding: 5px 7px;
+
+    border: 1px solid rgba(46, 42, 38, 0.14);
+
+    border-radius: 0;
+
+    box-shadow: none !important;
+}
+
+
+.navbar-toggler:focus {
+    box-shadow: none !important;
+}

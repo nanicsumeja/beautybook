@@ -1,112 +1,147 @@
 @extends('layouts.app')
 
-@section('body-class', 'client-lux-page')
+@section('body-class', 'client-film-page')
+
 @section('main-class', '')
 
 @section('content')
 
-<section class="client-space">
+<section class="client-film">
 
-    <div class="client-space-shell">
+    {{-- =====================================================
+         VIDEO
+    ====================================================== --}}
+    <div class="client-film-media">
 
-        <div class="client-space-header">
+        <video
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="auto"
+        >
+            <source
+                src="{{ asset('videos/beauty-loop.mp4') }}"
+                type="video/mp4"
+            >
+        </video>
 
-            <div>
-                <span class="client-space-eyebrow">
+    </div>
+
+
+    {{-- =====================================================
+         PAGE CONTENT
+    ====================================================== --}}
+    <div class="client-film-shell">
+
+        <div class="client-film-content">
+
+            {{-- TOP --}}
+            <div class="client-film-intro">
+
+                <span class="client-film-eyebrow">
                     YOUR BEAUTYBOOK
                 </span>
 
                 <h1>
-                    Hi, {{ Auth::user()->name }}.
+                    Welcome, {{ Auth::user()->name }}.
                 </h1>
 
                 <p>
-                    Your personal space for beauty appointments.
+                    Your personal space for appointments,
+                    treatments and beauty care.
                 </p>
+
             </div>
 
-            <span class="client-space-status">
-                CLIENT ACCOUNT
-            </span>
 
-        </div>
+            {{-- CENTER --}}
+            <div class="client-film-focus">
 
-
-        <div class="client-space-grid">
-
-            <div class="client-space-book">
-
-                <span class="client-space-label">
+                <span class="client-film-focus-label">
                     YOUR NEXT VISIT
                 </span>
 
                 <h2>
-                    Ready for your
-                    next appointment?
+                    Your next visit starts here.
                 </h2>
 
                 <p>
-                    Choose a service, specialist and available time
-                    in just a few steps.
+                    Choose a treatment, specialist and a time
+                    that works for you.
                 </p>
 
                 <a
                     href="{{ route('client.services.index') }}"
-                    class="client-space-main-button"
+                    class="client-film-book"
                 >
-                    BOOK APPOINTMENT
-                    <span>→</span>
-                </a>
+                    <span>BOOK APPOINTMENT</span>
 
-                <div class="client-space-decoration">
-                    BEAUTYBOOK
-                </div>
-
-            </div>
-
-
-            <div class="client-space-side">
-
-                <a
-                    href="{{ route('client.reservations.index') }}"
-                    class="client-space-card client-space-card-pink"
-                >
-                    <div class="client-space-card-label">
-                        MY SPACE
-                    </div>
-
-                    <div>
-                        <h3>My appointments</h3>
-
-                        <p>
-                            Upcoming visits, payments and history.
-                        </p>
-                    </div>
-
-                    <span class="client-space-arrow">→</span>
-                </a>
-
-
-                <a
-                    href="{{ route('client.services.index') }}"
-                    class="client-space-card client-space-card-light"
-                >
-                    <div class="client-space-card-label">
-                        DISCOVER
-                    </div>
-
-                    <div>
-                        <h3>Services</h3>
-
-                        <p>
-                            Explore treatments, duration and prices.
-                        </p>
-                    </div>
-
-                    <span class="client-space-arrow">→</span>
+                    <span class="client-film-arrow">
+                        →
+                    </span>
                 </a>
 
             </div>
+
+
+            {{-- BOTTOM --}}
+            <div class="client-film-links">
+
+                <a href="{{ route('client.reservations.index') }}">
+
+                    <div>
+                        <span>
+                            MY APPOINTMENTS
+                        </span>
+
+                        <small>
+                            Upcoming visits, payments and history
+                        </small>
+                    </div>
+
+                    <strong>
+                        →
+                    </strong>
+
+                </a>
+
+
+                <a href="{{ route('client.services.index') }}">
+
+                    <div>
+                        <span>
+                            SERVICES
+                        </span>
+
+                        <small>
+                            Discover treatments and prices
+                        </small>
+                    </div>
+
+                    <strong>
+                        →
+                    </strong>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        {{-- SMALL DETAIL --}}
+        <div class="client-film-caption">
+
+            <span>
+                BEAUTYBOOK
+            </span>
+
+            <i></i>
+
+            <span>
+                YOUR BEAUTY · YOUR TIME
+            </span>
 
         </div>
 
@@ -118,325 +153,1043 @@
 
 
 @push('styles')
+
 <style>
 
-    .client-lux-page {
-        height: 100vh;
+/* =========================================================
+   BEAUTYBOOK — CLIENT FILM DASHBOARD
+========================================================= */
+
+.client-film-page {
+    --film-bg: #efebe6;
+    --film-dark: #292724;
+    --film-muted: #8f8982;
+
+    margin: 0;
+
+    width: 100%;
+    height: 100svh;
+
+    overflow: hidden;
+
+    background: var(--film-bg);
+
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+/* =========================================================
+   APP
+========================================================= */
+
+.client-film-page #app {
+    position: relative;
+
+    width: 100%;
+    height: 100svh;
+
+    overflow: hidden;
+
+    background: var(--film-bg);
+
+    border: 0 !important;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.client-film-page .navbar {
+    position: absolute !important;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 100;
+
+    min-height: 78px;
+
+    padding: 0 !important;
+
+    background: transparent !important;
+
+    border: 0 !important;
+    border-top: 0 !important;
+    border-bottom: 0 !important;
+
+    box-shadow: none !important;
+
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+
+/* navbar container */
+
+.client-film-page .navbar .container,
+.client-film-page .navbar .container-fluid {
+    width: min(1650px, calc(100% - 110px));
+
+    max-width: none;
+
+    min-height: 78px;
+
+    margin: 0 auto;
+
+    padding: 0 !important;
+
+    display: flex;
+
+    align-items: center;
+}
+
+
+/* logo */
+
+.client-film-page .navbar-brand {
+    margin-right: 40px;
+
+    color: #272522 !important;
+
+    font-size: 1.06rem;
+    font-weight: 400;
+
+    letter-spacing: -0.035em;
+}
+
+
+/* links */
+
+.client-film-page .navbar .nav-link {
+    position: relative;
+
+    padding:
+        12px
+        14px !important;
+
+    color: rgba(48, 45, 42, 0.64) !important;
+
+    font-size: 0.74rem;
+    font-weight: 300;
+
+    transition:
+        color 0.25s ease,
+        opacity 0.25s ease;
+}
+
+
+.client-film-page .navbar .nav-link:hover,
+.client-film-page .navbar .nav-link.active {
+    color: #292724 !important;
+}
+
+
+/* remove active underline */
+
+.client-film-page .navbar .nav-link::after,
+.client-film-page .navbar .nav-link.active::after {
+    display: none !important;
+
+    content: none !important;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.client-film-page main {
+    position: relative;
+
+    width: 100%;
+    height: 100svh;
+
+    min-height: 0;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: hidden;
+
+    background: var(--film-bg);
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.client-film {
+    position: relative;
+
+    width: 100%;
+    height: 100svh;
+
+    overflow: hidden;
+
+    background: var(--film-bg);
+
+    color: var(--film-dark);
+}
+
+
+/* =========================================================
+   VERY SUBTLE LEFT LIGHT
+========================================================= */
+
+.client-film::before {
+    content: "";
+
+    position: absolute;
+
+    left: -130px;
+    top: 22%;
+
+    z-index: 0;
+
+    width: 720px;
+    height: 720px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,0.40),
+            transparent 67%
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   VIDEO
+========================================================= */
+
+.client-film-media {
+    position: absolute;
+
+    /*
+        Namjerno ide izvan ekrana.
+        Zato se fizički rub videa ne vidi.
+    */
+
+    top: -13vh;
+    right: -8vw;
+    bottom: -13vh;
+
+    z-index: 1;
+
+    width: 70vw;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+
+    /*
+        Video postaje postepeno proziran
+        prema lijevoj strani.
+    */
+
+    -webkit-mask-image:
+        linear-gradient(
+            90deg,
+
+            transparent 0%,
+
+            rgba(0,0,0,0.05) 7%,
+
+            rgba(0,0,0,0.18) 13%,
+
+            rgba(0,0,0,0.42) 21%,
+
+            rgba(0,0,0,0.72) 30%,
+
+            rgba(0,0,0,0.92) 39%,
+
+            #000 49%,
+
+            #000 100%
+        );
+
+    mask-image:
+        linear-gradient(
+            90deg,
+
+            transparent 0%,
+
+            rgba(0,0,0,0.05) 7%,
+
+            rgba(0,0,0,0.18) 13%,
+
+            rgba(0,0,0,0.42) 21%,
+
+            rgba(0,0,0,0.72) 30%,
+
+            rgba(0,0,0,0.92) 39%,
+
+            #000 49%,
+
+            #000 100%
+        );
+}
+
+
+/* =========================================================
+   VIDEO ITSELF
+========================================================= */
+
+.client-film-media video {
+    position: absolute;
+
+    inset: 0;
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: 53% 46%;
+
+    filter:
+        grayscale(100%)
+        contrast(0.90)
+        brightness(1.05);
+
+    opacity: 0.94;
+
+    transform: scale(1.025);
+
+    animation:
+        filmVideoEnter
+        1.6s
+        cubic-bezier(.2,.8,.2,1)
+        both;
+}
+
+
+/* =========================================================
+   EXTRA SOFT BLEND
+========================================================= */
+
+.client-film-media::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 3;
+
+    background:
+        linear-gradient(
+            90deg,
+
+            var(--film-bg) 0%,
+
+            rgba(239,235,230,0.93) 9%,
+
+            rgba(239,235,230,0.68) 19%,
+
+            rgba(239,235,230,0.36) 29%,
+
+            rgba(239,235,230,0.10) 40%,
+
+            transparent 52%
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   SHELL
+========================================================= */
+
+.client-film-shell {
+    position: relative;
+
+    z-index: 10;
+
+    width: min(1650px, calc(100% - 110px));
+    height: 100%;
+
+    margin: 0 auto;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   LEFT CONTENT
+========================================================= */
+
+.client-film-content {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 455px;
+    height: 100%;
+
+    display: grid;
+
+    grid-template-rows:
+        auto
+        1fr
+        auto;
+
+    padding:
+        128px
+        0
+        48px;
+
+    box-sizing: border-box;
+
+    animation:
+        filmContentEnter
+        0.95s
+        cubic-bezier(.2,.8,.2,1)
+        0.1s
+        both;
+}
+
+
+/* =========================================================
+   TOP INTRO
+========================================================= */
+
+.client-film-intro {
+    max-width: 390px;
+}
+
+
+.client-film-eyebrow {
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: #918b84;
+
+    font-size: 0.42rem;
+    font-weight: 500;
+
+    letter-spacing: 0.42em;
+}
+
+
+.client-film-intro h1 {
+    margin: 0 0 12px;
+
+    color: #292724;
+
+    font-size: clamp(1.9rem, 2.4vw, 2.65rem);
+    font-weight: 300;
+
+    line-height: 1;
+
+    letter-spacing: -0.05em;
+}
+
+
+.client-film-intro p {
+    max-width: 315px;
+
+    margin: 0;
+
+    color: #97918a;
+
+    font-size: 0.56rem;
+    font-weight: 300;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   CENTER
+========================================================= */
+
+.client-film-focus {
+    align-self: center;
+
+    max-width: 430px;
+    margin-left: 80px;
+
+    padding-bottom: 10px;
+}
+
+
+.client-film-focus-label {
+    display: block;
+
+    margin-bottom: 15px;
+
+    color: #918b84;
+
+    font-size: 0.42rem;
+    font-weight: 500;
+
+    letter-spacing: 0.38em;
+}
+
+
+.client-film-focus h2 {
+    max-width: 420px;
+
+    margin: 0 0 15px;
+
+    color: #292724;
+
+    font-size: clamp(1.8rem, 2.35vw, 2.55rem);
+    font-weight: 300;
+
+    line-height: 1.05;
+
+    letter-spacing: -0.045em;
+
+    white-space: nowrap;
+}
+
+
+.client-film-focus > p {
+    max-width: 315px;
+
+    margin: 0 0 25px;
+
+    color: #8e8881;
+
+    font-size: 0.57rem;
+    font-weight: 300;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   BOOK APPOINTMENT
+========================================================= */
+
+.client-film-book {
+    display: flex;
+    margin: 0 auto;
+
+    width: 255px;
+    height: 52px;
+
+    align-items: center;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+
+    padding: 0 19px;
+
+    border: 1px solid #2d2a27;
+
+    background: #2d2a27;
+
+    color: #fff;
+
+    text-decoration: none;
+
+    font-size: 0.49rem;
+    font-weight: 400;
+
+    letter-spacing: 0.29em;
+
+    transition:
+        color 0.35s ease,
+        background 0.35s ease,
+        transform 0.35s ease;
+}
+
+
+.client-film-book:hover {
+    color: #292724;
+
+    background: transparent;
+
+    transform: translateY(-2px);
+}
+
+
+.client-film-arrow {
+    margin-left: 20px;
+
+    font-size: 0.82rem;
+
+    letter-spacing: 0;
+
+    transition:
+        transform 0.3s ease;
+}
+
+
+.client-film-book:hover
+.client-film-arrow {
+    transform: translateX(5px);
+}
+
+
+/* =========================================================
+   BOTTOM LINKS
+========================================================= */
+
+.client-film-links {
+    width: 430px;
+
+    margin: 0;
+}
+
+
+.client-film-links a {
+    display: flex;
+
+    min-height: 58px;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 25px;
+
+    box-sizing: border-box;
+
+    padding: 0 3px;
+
+    border-bottom:
+        1px solid rgba(46,42,38,0.16);
+
+    color: #3d3935;
+
+    text-decoration: none;
+
+    transition:
+        padding 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease;
+}
+
+
+.client-film-links a:first-child {
+    border-top:
+        1px solid rgba(46,42,38,0.16);
+}
+
+
+.client-film-links a:hover {
+    padding-left: 8px;
+
+    color: #292724;
+
+    border-color:
+        rgba(46,42,38,0.42);
+
+    background:
+        rgba(255,255,255,0.10);
+}
+
+
+/* title */
+
+.client-film-links span {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #504b46;
+
+    font-size: 0.43rem;
+    font-weight: 500;
+
+    letter-spacing: 0.29em;
+}
+
+
+/* subtitle */
+
+.client-film-links small {
+    display: block;
+
+    color: #9e9891;
+
+    font-size: 0.49rem;
+    font-weight: 300;
+
+    letter-spacing: 0;
+}
+
+
+/* arrow */
+
+.client-film-links strong {
+    color: #716b65;
+
+    font-size: 0.75rem;
+    font-weight: 300;
+
+    transition:
+        transform 0.3s ease;
+}
+
+
+.client-film-links a:hover strong {
+    transform: translateX(5px);
+}
+
+
+/* =========================================================
+   BOTTOM RIGHT CAPTION
+========================================================= */
+
+.client-film-caption {
+    position: absolute;
+
+    right: 0;
+    bottom: 26px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    color: rgba(65,60,55,0.40);
+
+    font-size: 0.37rem;
+    font-weight: 500;
+
+    letter-spacing: 0.31em;
+
+    pointer-events: none;
+}
+
+
+.client-film-caption i {
+    display: block;
+
+    width: 35px;
+    height: 1px;
+
+    background:
+        rgba(65,60,55,0.23);
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes filmVideoEnter {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateX(25px)
+            scale(1.055);
+    }
+
+    to {
+        opacity: 0.94;
+
+        transform:
+            translateX(0)
+            scale(1.025);
+    }
+
+}
+
+
+@keyframes filmContentEnter {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   SHORTER DESKTOP SCREENS
+========================================================= */
+
+@media (min-width: 901px) and (max-height: 800px) {
+
+    .client-film-page .navbar,
+    .client-film-page .navbar .container,
+    .client-film-page .navbar .container-fluid {
+        min-height: 66px;
+    }
+
+
+    .client-film-content {
+        padding:
+            93px
+            0
+            27px;
+    }
+
+
+    .client-film-intro h1 {
+        font-size: 1.9rem;
+    }
+
+
+    .client-film-intro p {
+        line-height: 1.55;
+    }
+
+
+    .client-film-focus-label {
+        margin-bottom: 10px;
+    }
+
+
+    .client-film-focus h2 {
+        margin-bottom: 11px;
+
+        font-size: 2.75rem;
+    }
+
+
+    .client-film-focus > p {
+        margin-bottom: 18px;
+
+        line-height: 1.55;
+    }
+
+
+    .client-film-book {
+        height: 48px;
+    }
+
+
+    .client-film-links a {
+        min-height: 49px;
+    }
+
+
+    .client-film-caption {
+        bottom: 16px;
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .client-film-page .navbar .container,
+    .client-film-page .navbar .container-fluid {
+        width: calc(100% - 46px);
+    }
+
+
+    .client-film-shell {
+        width: calc(100% - 50px);
+    }
+
+
+    .client-film-media {
+        right: -22vw;
+
+        width: 89vw;
+    }
+
+
+    .client-film-content {
+        width: 390px;
+
+        padding:
+            108px
+            0
+            38px;
+    }
+
+
+    .client-film-links {
+        width: 370px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .client-film-page,
+    .client-film-page #app,
+    .client-film-page main,
+    .client-film {
+        height: 100svh;
+
         overflow: hidden;
-        background: #f3efea;
     }
 
-    .client-lux-page #app {
-        height: 100vh;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
+
+    .client-film-page .navbar {
+        min-height: 62px;
     }
 
-    .client-lux-page main {
-        flex: 1;
-        min-height: 0;
-        overflow: hidden;
+
+    .client-film-page .navbar .container,
+    .client-film-page .navbar .container-fluid {
+        width: calc(100% - 30px);
+
+        min-height: 62px;
     }
 
-    .client-lux-page {
-        background: #f2ece6;
+
+    .client-film-page .navbar-brand {
+        margin-right: 0;
+
+        font-size: 0.95rem;
     }
 
-    .client-space {
+
+    .client-film-shell {
+        width: calc(100% - 30px);
+    }
+
+
+    /* VIDEO */
+
+    .client-film-media {
+        top: -16vh;
+        right: -57vw;
+        bottom: auto;
+
+        width: 145vw;
+        height: 78vh;
+    }
+
+
+    .client-film-media video {
+        object-position: 53% 35%;
+
+        opacity: 0.64;
+    }
+
+
+    /* CONTENT */
+
+    .client-film-content {
+        position: relative;
+
+        top: 0;
+        left: 0;
+
+        width: 100%;
         height: 100%;
-        min-height: 0;
-        overflow: hidden;
-        padding: 22px 0;
-        box-sizing: border-box;
-        background:
-            radial-gradient(
-                circle at 92% 10%,
-                rgba(201, 163, 151, 0.18),
-                transparent 24%
-            ),
-            #f2ece6;
-        font-family: 'Montserrat', sans-serif;
-        color: #211d1a;
-        box-sizing: border-box;
+
+        padding:
+            87px
+            0
+            18px;
+
+        grid-template-rows:
+            auto
+            1fr
+            auto;
     }
 
 
-    /* HEADER */
-
-    .client-space-header {
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        gap: 40px;
-        margin-bottom: 16px;
-    }
-
-    .client-space-eyebrow {
-        display: block;
-        margin-bottom: 5px;
-        font-size: 0.58rem;
-        font-weight: 500;
-        letter-spacing: 0.22em;
-        color: #a77b6d;
-    }
-
-    .client-space-header h1 {
-        margin: 0 0 3px;
-        font-size: clamp(1.8rem, 3vw, 2.7rem);
-        font-weight: 300;
-        letter-spacing: -0.04em;
-    }
-
-    .client-space-header p {
-        margin: 0;
-        font-size: 0.76rem;
-        color: #7d756f;
-    }
-
-    .client-space-status {
-        padding-bottom: 4px;
-        font-size: 0.57rem;
-        letter-spacing: 0.18em;
-        color: #9b9088;
+    .client-film-intro {
+        max-width: 265px;
     }
 
 
-    /* GRID */
-
-    .client-space-shell {
-        width: min(1180px, calc(100% - 48px));
-        height: 100%;
-        margin: 0 auto;
-
-        display: flex;
-        flex-direction: column;
-    }
-
-    .client-space-grid {
-        display: grid;
-        grid-template-columns: 1.35fr 0.65fr;
-        gap: 16px;
-
-        flex: 1;
-        min-height: 0;
-    }
-
-    /* MAIN CARD */
-
-    .client-space-book {
-        position: relative;
-        min-height: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        overflow: hidden;
-        padding: 44px;
-        background: #211d1a;
-        color: #fff;
-    }
-
-    .client-space-label {
-        margin-bottom: 20px;
-        font-size: 0.6rem;
-        letter-spacing: 0.22em;
-        color: #cba99d;
-    }
-
-    .client-space-book h2 {
-        position: relative;
-        z-index: 2;
-        max-width: 600px;
-        margin: 0 0 16px;
-        font-size: clamp(2.2rem, 4.1vw, 4rem);
-        font-weight: 300;
-        line-height: 0.96;
-        letter-spacing: -0.045em;
-        text-transform: uppercase;
-    }
-
-    .client-space-book p {
-        position: relative;
-        z-index: 2;
-        max-width: 410px;
-        margin: 0 0 24px;
-        font-size: 0.8rem;
-        line-height: 1.65;
-        color: #c9c0ba;
-    }
-
-    .client-space-main-button {
-        position: relative;
-        z-index: 2;
-        display: inline-flex;
-        align-items: center;
-        justify-content: space-between;
-        width: fit-content;
-        min-width: 210px;
-        padding: 13px 16px;
-        background: #f3ebe5;
-        color: #211d1a;
-        text-decoration: none;
-        font-size: 0.65rem;
-        font-weight: 500;
-        letter-spacing: 0.14em;
-    }
-
-    .client-space-main-button:hover {
-        background: #d6b4a7;
-        color: #211d1a;
-    }
-
-    .client-space-decoration {
-        position: absolute;
-        right: -18px;
-        bottom: -5px;
-        font-size: clamp(4rem, 8vw, 7.5rem);
-        font-weight: 300;
-        letter-spacing: -0.06em;
-        color: rgba(255,255,255,0.035);
-        pointer-events: none;
+    .client-film-intro h1 {
+        font-size: 1.8rem;
     }
 
 
-    /* RIGHT SIDE */
+    .client-film-intro p {
+        max-width: 240px;
 
-    .client-space-side {
-        display: grid;
-        grid-template-rows: 1fr 1fr;
-        gap: 14px;
-    }
-
-    .client-space-card {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 26px;
-        color: #211d1a;
-        text-decoration: none;
-        transition: transform 0.2s ease;
-    }
-
-    .client-space-card:hover {
-        transform: translateY(-2px);
-        color: #211d1a;
-    }
-
-    .client-space-card-pink {
-        background: #d8b9ae;
-    }
-
-    .client-space-card-light {
-        background: #e8ddd4;
-    }
-
-    .client-space-card-label {
-        font-size: 0.56rem;
-        letter-spacing: 0.18em;
-        opacity: 0.6;
-    }
-
-    .client-space-card h3 {
-        margin: 0 0 6px;
-        font-size: 1.25rem;
-        font-weight: 400;
-    }
-
-    .client-space-card p {
-        max-width: 230px;
-        margin: 0;
-        font-size: 0.72rem;
-        line-height: 1.5;
-        opacity: 0.72;
-    }
-
-    .client-space-arrow {
-        position: absolute;
-        right: 24px;
-        bottom: 20px;
-        font-size: 1rem;
+        font-size: 0.53rem;
     }
 
 
-    @media (max-width: 900px) {
+    .client-film-focus {
+        align-self: end;
 
-        .client-space-grid {
-            height: auto;
-            max-height: none;
-            grid-template-columns: 1fr;
-        }
+        width: 100%;
 
-        .client-space-book {
-            min-height: 380px;
-        }
-
-        .client-space-side {
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: auto;
-        }
-
-        .client-space-card {
-            min-height: 180px;
-        }
-
-        .client-lux-page,
-        .client-lux-page #app {
-            height: auto;
-            min-height: 100vh;
-            overflow: auto;
-        }
-
-        .client-lux-page main,
-        .client-space {
-            height: auto;
-            overflow: visible;
-        }
-
-        .client-space-shell {
-            height: auto;
-        }
-
-        .client-space-grid {
-            flex: none;
-        }
-
+        margin-bottom: 22px;
     }
 
-    @media (max-width: 575px) {
 
-        .client-space {
-            padding: 18px 0;
-        }
-
-        .client-space-shell {
-            width: calc(100% - 24px);
-        }
-
-        .client-space-status {
-            display: none;
-        }
-
-        .client-space-grid {
-            display: block;
-        }
-
-        .client-space-book {
-            min-height: 360px;
-            padding: 30px 24px;
-            margin-bottom: 12px;
-        }
-
-        .client-space-book h2 {
-            font-size: 2.35rem;
-        }
-
-        .client-space-side {
-            display: grid;
-            grid-template-columns: 1fr;
-        }
-
+    .client-film-focus h2 {
+        font-size: 2.55rem;
     }
+
+
+    .client-film-focus > p {
+        max-width: 260px;
+
+        margin-bottom: 18px;
+    }
+
+
+    .client-film-book {
+        width: 100%;
+    }
+
+
+    .client-film-links {
+        width: 100%;
+    }
+
+
+    .client-film-links a {
+        min-height: 47px;
+    }
+
+
+    .client-film-caption {
+        display: none;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .client-film-media video,
+    .client-film-content {
+        animation: none !important;
+    }
+
+}
 
 </style>
+
 @endpush
